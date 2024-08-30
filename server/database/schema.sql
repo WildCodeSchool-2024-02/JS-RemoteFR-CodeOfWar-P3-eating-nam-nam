@@ -1,4 +1,3 @@
-
 CREATE TABLE Difficulty (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
@@ -89,7 +88,6 @@ INSERT INTO Ingredient (name) VALUES
 ('Quinoa'),
 ('Riz basmati'),
 ('Riz complet');
-
 
 CREATE TABLE Recipe_Ingredient (
     recipe_id INT NOT NULL,
