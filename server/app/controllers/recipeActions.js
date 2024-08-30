@@ -19,7 +19,7 @@ const browse = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     // Fetch a specific recipe from the database based on the provided ID
-    const recipe = await tables.recipe.read(req.params.id);
+    const recipe = await tables.recipe.read(Number(req.params.id));
 
     // If the recipe is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the recipe in JSON format

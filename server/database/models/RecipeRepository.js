@@ -15,6 +15,15 @@ class RecipeRepository extends AbstractRepository {
     return rows;
   }
 
+  async read(id) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where id = ?`,
+      [id]
+    );
+
+    return rows[0];
+  }
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing recipe
 
