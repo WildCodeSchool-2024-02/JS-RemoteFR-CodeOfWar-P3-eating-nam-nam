@@ -17,8 +17,7 @@ const browse = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     // Fetch a specific ingredients from the database based on the provided ID
-    const parseId = parseInt(req.params.id, 10);
-    const ingredient = tables.ingredient.read((p) => p.id === parseId);
+    const ingredient = await tables.ingredient.read(Number(req.params.id));
 
     if (ingredient != null) {
       res.json(ingredient);
