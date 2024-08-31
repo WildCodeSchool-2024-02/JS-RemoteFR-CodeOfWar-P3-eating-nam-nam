@@ -146,7 +146,6 @@ INSERT INTO Ingredient (name) VALUES
 ('Raisin'),
 ('Raisin sec'),
 ('Rhubarbe'),
-('Tomate'),
 ('Yuzu');
 
 CREATE TABLE Recipe_Ingredient (

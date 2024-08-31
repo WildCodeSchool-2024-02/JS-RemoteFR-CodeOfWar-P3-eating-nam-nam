@@ -36,14 +36,23 @@ class IngredientRepository extends AbstractRepository {
 
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing ingredient
-
-  // async update(ingredient) {
-  //   ...
-  // }
+  async update(ingredient) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} set name = ? WHERE id = ?`,
+      [ingredient.name, ingredient.id]
+    );
+    return result.affectedRows;
+  }
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an item by its ID
-
+  async delete(id) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id = ?`,
+      [id]
+    );
+    return result.affectedRows;
+  }
   // async delete(id) {
   //   ...
   // }

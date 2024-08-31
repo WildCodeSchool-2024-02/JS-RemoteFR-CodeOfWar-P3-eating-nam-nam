@@ -42,8 +42,10 @@ const add = async (req, res, next) => {
 };
 
 const edit = async (req, res, next) => {
+  const ingredient = req.body;
   try {
-    console.info("coucou depuis edit");
+    await tables.ingredient.update(ingredient);
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
@@ -51,7 +53,8 @@ const edit = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    console.info("coucou depuis destroy");
+    await tables.ingredient.delete(req.params.id);
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
