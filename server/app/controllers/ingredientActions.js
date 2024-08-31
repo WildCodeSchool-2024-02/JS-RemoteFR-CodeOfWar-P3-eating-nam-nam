@@ -31,8 +31,27 @@ const read = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   // do something
+  const ingredient = req.body;
+
   try {
-    console.info("coucou");
+    const insertId = await tables.ingredient.create(ingredient);
+    res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const edit = async (req, res, next) => {
+  try {
+    console.info("coucou depuis edit");
+  } catch (err) {
+    next(err);
+  }
+};
+
+const destroy = async (req, res, next) => {
+  try {
+    console.info("coucou depuis destroy");
   } catch (err) {
     next(err);
   }
@@ -42,4 +61,6 @@ module.exports = {
   browse,
   read,
   add,
+  edit,
+  destroy,
 };
