@@ -45,7 +45,7 @@ class ItemRepository extends AbstractRepository {
   // TODO: Implement the update operation to modify an existing item
 
   // async update(item) {
-  //   ...
+  // ...
   // }
 
   // The D of CRUD - Delete operation
