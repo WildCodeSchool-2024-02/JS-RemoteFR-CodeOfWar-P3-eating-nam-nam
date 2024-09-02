@@ -24,19 +24,38 @@ class RecipeRepository extends AbstractRepository {
     return rows[0];
   }
 
-  // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing recipe
+  async update(recipe) {
+    // Execute the SQL UPDATE query to update a specific category
+    const [result] = await this.database.query(
+      `update ${this.table} set user_id = ?, difficulty_id = ?, title = ?,
+       description = ?, cooking_time = , preparation_time = ?,
+       instruction = ? where id = ?`,
+      [
+        recipe.user_id,
+        recipe.difficulty_id,
+        recipe.title,
+        recipe.description,
+        recipe.cooking_time,
+        recipe.preparation_time,
+        recipe.instruction,
+        recipe.id,
+      ]
+    );
 
-  // async update(recipe) {
-  //   ...
-  // }
+    // Return how many rows were affected
+    return result.affectedRows;
+  }
 
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an recipe by its ID
+  async delete(id) {
+    // Execute the SQL DELETE query to delete a specific category
+    const [result] = await this.database.query(
+      `delete from ${this.table} where id = ?`,
+      [id]
+    );
 
-  // async delete(id) {
-  //   ...
-  // }
+    // Return how many rows were affected
+    return result.affectedRows;
+  }
 }
 
 module.exports = RecipeRepository;

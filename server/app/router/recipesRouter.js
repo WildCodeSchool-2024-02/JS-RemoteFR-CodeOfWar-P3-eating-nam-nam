@@ -10,4 +10,8 @@ router.get("/:id", recipesActions.read); // Récupérer une recette par ID
 
 router.post("/", recipesActions.add); // Créer une nouvelle recette
 
+router.put("/:id", recipesActions.edit); // Modifier une recette
+
+router.delete("/:id", recipesActions.destroy); // Supprimer une recette
+
 module.exports = router;
