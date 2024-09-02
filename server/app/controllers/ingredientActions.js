@@ -31,8 +31,30 @@ const read = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   // do something
+  const ingredient = req.body;
+
   try {
-    console.info("coucou");
+    const insertId = await tables.ingredient.create(ingredient);
+    res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const edit = async (req, res, next) => {
+  const ingredient = req.body;
+  try {
+    await tables.ingredient.update(ingredient);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const destroy = async (req, res, next) => {
+  try {
+    await tables.ingredient.delete(req.params.id);
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
@@ -42,4 +64,6 @@ module.exports = {
   browse,
   read,
   add,
+  edit,
+  destroy,
 };
