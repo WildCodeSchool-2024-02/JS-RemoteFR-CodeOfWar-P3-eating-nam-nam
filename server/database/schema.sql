@@ -4,14 +4,18 @@ CREATE TABLE Difficulty (
 );
 
 CREATE TABLE User (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+   id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
-    name VARCHAR(100) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    role VARCHAR(20) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   name VARCHAR(100) NOT NULL,
+   password VARCHAR(255) NOT NULL,
+   email VARCHAR(100) NOT NULL UNIQUE,
+   role VARCHAR(20) NOT NULL,
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO User (username, name, password, email, role)
+VALUES ('Ewan', 'Senergous', 'password', 'ewan@outlook.fr', 'admin')
+,('Anais', 'Dufourneau', 'password', 'anais@outlook.fr', 'user');
 
 CREATE TABLE Recipes (
     id INT AUTO_INCREMENT PRIMARY KEY,
