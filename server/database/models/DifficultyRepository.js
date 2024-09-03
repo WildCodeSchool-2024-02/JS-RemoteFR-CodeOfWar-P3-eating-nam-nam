@@ -46,7 +46,7 @@ class DifficultyRepository extends AbstractRepository {
   async update(difficulty) {
     // Execute the SQL UPDATE query to modify an existing user
     const [result] = await this.database.query(
-      `update ${this.table} set id = ?, WHERE name = ?`,
+      `update ${this.table} set id = ? WHERE name = ?`,
       [difficulty.id, difficulty.name]
     );
 
