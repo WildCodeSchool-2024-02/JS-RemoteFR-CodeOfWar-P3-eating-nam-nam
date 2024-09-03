@@ -12,7 +12,7 @@ class DifficultyRepository extends AbstractRepository {
   async create(difficulty) {
     // Execute the SQL INSERT query to add a new item to the "user" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (id, name) values (?, ?, ?)`,
+      `insert into ${this.table} (id, name) values (?, ?)`,
       [difficulty.id, difficulty.name]
     );
 
