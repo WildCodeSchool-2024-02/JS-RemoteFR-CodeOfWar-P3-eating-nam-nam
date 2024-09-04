@@ -4,9 +4,9 @@ const router = express.Router();
 
 const difficultytActions = require("../controllers/difficultyActions");
 
-router.get("/", difficultytActions.browse);
-router.get("/:id", difficultytActions.read);
-router.post("/", difficultytActions.add);
-router.put("/:id", difficultytActions.edit);
+router.get("/", difficultytActions.browse); // Récupérer toutes les difficultés
+router.get("/:id", difficultytActions.read); // Récupérer une difficulté par ID
+router.post("/", difficultytActions.add); // Ajouter une nouvel difficulté
+router.put("/:id", difficultytActions.edit); // Modifier une difficulté
 
 module.exports = router;
