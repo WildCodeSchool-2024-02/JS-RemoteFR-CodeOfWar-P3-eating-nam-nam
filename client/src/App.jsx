@@ -1,11 +1,11 @@
-import "./styles/App.css";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
-function App() {
+export default function App() {
   return (
     <main>
-      <h1>Hello World</h1>
+      <Navbar />
+      <Outlet />
     </main>
   );
 }
-
-export default App;
