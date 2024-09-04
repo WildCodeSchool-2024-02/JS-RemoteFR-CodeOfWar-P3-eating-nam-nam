@@ -6,12 +6,12 @@ export default function Navbar() {
     <>
       <nav>
         <section>
-          <a href="/#">Passer en cuisine</a>
-          <a href="/#">Recettes</a>
+          <a href="/passer-en-cuisine">Passer en cuisine</a>
+          <a href="/recettes">Recettes</a>
         </section>
         <img src={Logo} alt="Miam" />
         <section>
-          <a href="/#">Inscription</a>
+          <a href="/inscription">Inscription</a>
           <button type="button">Connexion</button>
         </section>
       </nav>
