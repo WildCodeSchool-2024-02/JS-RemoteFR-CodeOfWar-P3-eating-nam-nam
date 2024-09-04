@@ -1,4 +1,4 @@
-import plat1 from "../assets/images/salade_ceasar.svg";
+import plat1 from "../assets/images/salade_césar.svg";
 import plat2 from "../assets/images/pomme_de_terre_farcies.svg";
 import plat3 from "../assets/images/risotto.svg";
 import plat4 from "../assets/images/omelette_garnies.svg";
@@ -51,6 +51,19 @@ export default function Home() {
               douceur parfait.
             </p>
             <img src={dessert1} alt="Tarte aux pommes" />
+          </article>
+        </section>
+        <section className="right">
+          <h3>Voir aussi...</h3>
+          <article>
+            <h4>IDEE RECETTE</h4>
+            <h5>Salade césar</h5>
+            <p>La recette incontournable de la salade césar.</p>
+          </article>
+          <article>
+            <h4>IDEE RECETTE</h4>
+            <h5>Salade grecque</h5>
+            <p>La recette incontournable de la salade grecque.</p>
           </article>
         </section>
       </div>
