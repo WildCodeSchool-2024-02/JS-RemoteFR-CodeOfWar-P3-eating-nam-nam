@@ -1,10 +1,12 @@
-import plat1 from "../assets/images/salade_césar.svg";
-import plat2 from "../assets/images/pomme_de_terre_farcies.svg";
-import plat3 from "../assets/images/risotto.svg";
-import plat4 from "../assets/images/omelette_garnies.svg";
-import plat5 from "../assets/images/dahl_de_lentille_curry.svg";
-import plat6 from "../assets/images/spaghettis_bolognaise.svg";
-import dessert1 from "../assets/images/tarte_aux_pommes.png";
+import saladeCésar from "../assets/images/salade_césar.svg";
+import pommeDeTerreFarcies from "../assets/images/pomme_de_terre_farcies.svg";
+import risotto from "../assets/images/risotto.svg";
+import omelette from "../assets/images/omelette_garnies.svg";
+import dahl from "../assets/images/dahl_de_lentille_curry.svg";
+import spaghettisBolognaise from "../assets/images/spaghettis_bolognaise.svg";
+import saladeGrecque from "../assets/images/salade_grecque.svg";
+import tarteAuxPommes from "../assets/images/tarte_aux_pommes.png";
+import saladeCeasarCarre from "../assets/images/salade_césar2.png";
 
 export default function Home() {
   return (
@@ -27,12 +29,12 @@ export default function Home() {
           </article>
         </section>
         <section className="right">
-          <img src={plat1} alt="Salade Céasar" />
-          <img src={plat2} alt="Pomme de terre farcies" />
-          <img src={plat3} alt="Colin et son Risotto" />
-          <img src={plat4} alt="Omelette garnies" />
-          <img src={plat5} alt="Dahl de lentilles au curry" />
-          <img src={plat6} alt="Spaghettis bolognaise" />
+          <img src={saladeCésar} alt="Salade Céasar" />
+          <img src={pommeDeTerreFarcies} alt="Pomme de terre farcies" />
+          <img src={risotto} alt="Colin et son Risotto" />
+          <img src={omelette} alt="Omelette garnies" />
+          <img src={dahl} alt="Dahl de lentilles au curry" />
+          <img src={spaghettisBolognaise} alt="Spaghettis bolognaise" />
         </section>
       </div>
       <div className="Recipe-card">
@@ -50,7 +52,7 @@ export default function Home() {
               vanille ou d'une cuillerée de crème fraîche pour un moment de
               douceur parfait.
             </p>
-            <img src={dessert1} alt="Tarte aux pommes" />
+            <img src={tarteAuxPommes} alt="Tarte aux pommes" />
           </article>
         </section>
         <section className="right">
@@ -58,11 +60,13 @@ export default function Home() {
           <article>
             <h4>IDEE RECETTE</h4>
             <h5>Salade césar</h5>
+            <img src={saladeCeasarCarre} alt="Salade césar" />
             <p>La recette incontournable de la salade césar.</p>
           </article>
           <article>
             <h4>IDEE RECETTE</h4>
             <h5>Salade grecque</h5>
+            <img src={saladeGrecque} alt="Salade grecque" />
             <p>La recette incontournable de la salade grecque.</p>
           </article>
         </section>
