@@ -7,12 +7,12 @@ export default function Navbar() {
     <>
       <nav>
         <section>
-          <Link href="/passer-en-cuisine">Passer en cuisine</Link>
-          <Link href="/recettes">Recettes</Link>
+          <Link to="/passer-en-cuisine">Passer en cuisine</Link>
+          <Link to="/recettes">Recettes</Link>
         </section>
         <img src={Logo} alt="Miam" />
         <section>
-          <Link href="/inscription">Inscription</Link>
+          <Link to="/inscription">Inscription</Link>
           <button type="button">Connexion</button>
         </section>
       </nav>
