@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import "../styles/Navbar.css";
 
@@ -6,12 +7,12 @@ export default function Navbar() {
     <>
       <nav>
         <section>
-          <a href="/passer-en-cuisine">Passer en cuisine</a>
-          <a href="/recettes">Recettes</a>
+          <Link href="/passer-en-cuisine">Passer en cuisine</Link>
+          <Link href="/recettes">Recettes</Link>
         </section>
         <img src={Logo} alt="Miam" />
         <section>
-          <a href="/inscription">Inscription</a>
+          <Link href="/inscription">Inscription</Link>
           <button type="button">Connexion</button>
         </section>
       </nav>
