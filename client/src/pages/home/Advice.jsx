@@ -11,9 +11,13 @@ export default function Advice() {
       <section>
         <h3>Elsa</h3>
         <p>
-          Des supers idées de recettes ! Tout est livré à domicile ! Les
-          produits sont frais et bons. Gain de temps énorme sur les courses !
-          J’adore.
+          "J'ai testé cette recette de lasagnes végétariennes hier soir, et
+          c'était un pur délice! Les couches d'aubergines et de courgettes
+          grillées se marient parfaitement avec la sauce tomate maison, riche et
+          parfumée. Le mélange de fromages fondus ajoute une onctuosité
+          irrésistible. Le tout est simple à préparer et a été un véritable
+          succès auprès de toute la famille. Une recette que je referai sans
+          hésiter!"
         </p>
       </section>
       <section className="Star">
