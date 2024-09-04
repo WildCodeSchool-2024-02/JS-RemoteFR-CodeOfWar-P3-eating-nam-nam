@@ -7,6 +7,8 @@ import spaghettisBolognaise from "../assets/images/spaghettis_bolognaise.svg";
 import saladeGrecque from "../assets/images/salade_grecque.svg";
 import tarteAuxPommes from "../assets/images/tarte_aux_pommes.png";
 import saladeCeasarCarre from "../assets/images/salade_césar2.png";
+import fruitDeMer from "../assets/images/fruit_de_mer.png";
+import gateauChocolat from "../assets/images/gateau_chocolat.png";
 
 export default function Home() {
   return (
@@ -70,6 +72,19 @@ export default function Home() {
             <p>La recette incontournable de la salade grecque.</p>
           </article>
         </section>
+      </div>
+      <div className="buffet">
+        <img src={fruitDeMer} alt="Fruit de mer" />
+        <section>
+          <h2>Le buffet</h2>
+          <p>
+            Composez votre planning de recettes grace à notre buffet
+            spécialement conçu pour vous proposer différents plats équilibrés en
+            fonctions de vos critères
+          </p>
+          <button type="button">Cliquez ici</button>
+        </section>
+        <img src={gateauChocolat} alt="Gateau aux chocolats et fruits rouges" />
       </div>
     </>
   );
