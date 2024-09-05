@@ -9,6 +9,13 @@
   font-family: "Poppins";
 }
 
+html,
+body,
+#root,
+#root > main {
+  min-height: 100%;
+}
+
 a,
 a:visited,
 a:link {
@@ -23,5 +30,9 @@ a:hover {
 button {
   cursor: pointer;
   background-color: transparent;
+  border: 0;
+}
+
+input {
   border: 0;
 }
