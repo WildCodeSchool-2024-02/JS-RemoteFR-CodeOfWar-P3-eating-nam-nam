@@ -17,7 +17,6 @@ body {
 a,
 a:visited,
 a:link {
-  color: var(--primary-font);
   text-decoration: none;
 }
 
