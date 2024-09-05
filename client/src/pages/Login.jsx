@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/Auth.css";
 
 export default function Login() {
@@ -30,6 +31,7 @@ export default function Login() {
         />
       </section>
       <button type="submit">Je me connecte</button>
+      <Link to="/connexion?forgot=true">J’ai oublié mon mot de passe...</Link>
     </form>
   );
 }

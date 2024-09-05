@@ -7,6 +7,7 @@ import App from "./App";
 import Home from "./pages/Home";
 
 import "./styles/main.css";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/connexion",
+        element: <Login />,
       },
     ],
   },
