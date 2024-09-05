@@ -2,6 +2,8 @@ import apostrophe from "../../assets/images/Apostrophe.png";
 import star from "../../assets/images/étoile.png";
 
 export default function Advice() {
+  const stars = [1, 2, 3, 4, 5];
+
   return (
     <div className="Advice">
       <div className="Apostrophe">
@@ -21,11 +23,9 @@ export default function Advice() {
         </p>
       </section>
       <section className="Star">
-        <img src={star} alt="étoiles" />
-        <img src={star} alt="étoiles" />
-        <img src={star} alt="étoiles" />
-        <img src={star} alt="étoiles" />
-        <img src={star} alt="étoiles" />
+        {stars.map((starId) => (
+          <img key={starId} src={star} alt="étoiles" />
+        ))}
       </section>
     </div>
   );
