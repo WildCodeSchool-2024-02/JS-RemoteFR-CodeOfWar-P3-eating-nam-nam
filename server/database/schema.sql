@@ -5,7 +5,7 @@ CREATE TABLE difficulty (
 
 INSERT INTO difficulty (name) VALUES ('Facile'), ('Intermédiaire'), ('Difficile');
 
-CREATE TABLE User (
+CREATE TABLE user (
    id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
    name VARCHAR(100) NOT NULL,
@@ -19,7 +19,7 @@ INSERT INTO user (username, name, password, email, role)
 VALUES ('Ewan', 'Senergous', 'password', 'ewan@outlook.fr', 'admin')
 ,('Anais', 'Dufourneau', 'password', 'anais@outlook.fr', 'user');
 
-CREATE TABLE Recipes (
+CREATE TABLE recipe (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
   difficulty_id INT NOT NULL,
@@ -36,12 +36,12 @@ CREATE TABLE Recipes (
 
 INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) VALUES (2, 3, "Saint-honoré", 'lorem', 60, 120, 'lorem' );
 
-CREATE TABLE Ingredient (
+CREATE TABLE ingredient (
     id INT AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(100) NOT NULL UNIQUE
  );
 
-INSERT INTO Ingredient (name) VALUES 
+INSERT INTO ingredient (name) VALUES 
 ('Ail'),
 ('Artichaut'),
 ('Asperge'),
@@ -150,13 +150,13 @@ INSERT INTO Ingredient (name) VALUES
 ('Yuzu');
 
 
--- CREATE TABLE Recipe_Ingredient (
---     recipe_id INT NOT NULL,
---     ingredient_id INT NOT NULL,
---    quantity DECIMAL(10,2),
---    unit VARCHAR(20),
---     PRIMARY KEY (recipe_id, ingredient_id),
---     FOREIGN KEY (recipe_id) REFERENCES Recipes(id) ON DELETE CASCADE,
---     FOREIGN KEY (ingredient_id) REFERENCES Ingredient(id) ON DELETE CASCADE
--- );
+CREATE TABLE Recipe_Ingredient (
+    recipe_id INT NOT NULL,
+    ingredient_id INT NOT NULL,
+   quantity DECIMAL(10,2),
+   unit VARCHAR(20),
+    PRIMARY KEY (recipe_id, ingredient_id),
+    FOREIGN KEY (recipe_id) REFERENCES Recipes(id) ON DELETE CASCADE,
+    FOREIGN KEY (ingredient_id) REFERENCES Ingredient(id) ON DELETE CASCADE
+);
  
