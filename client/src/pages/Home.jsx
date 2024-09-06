@@ -11,7 +11,7 @@ import saladeCésarCarre from "../assets/images/salade_césar2.png";
 import "../styles/home.css";
 
 export default function Home() {
-  const litteRecipe = [
+  const littleRecipes = [
     {
       id: 1,
       name: "Salade césar",
@@ -45,7 +45,7 @@ export default function Home() {
       <Reception />
       <div className="RecipeCard-SeeMore">
         <RecipeCard recipe={recipe} />
-        <SeeMoreRecipe littleRecipe={litteRecipe} />
+        <SeeMoreRecipe littleRecipe={littleRecipes} />
       </div>
       <Buffet />
       <Advice />
