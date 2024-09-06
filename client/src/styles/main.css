@@ -9,10 +9,14 @@
   font-family: "Poppins";
 }
 
+html,
+body {
+  margin: 0;
+}
+
 a,
 a:visited,
 a:link {
-  color: var(--primary-font);
   text-decoration: none;
 }
 
