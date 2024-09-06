@@ -1,0 +1,42 @@
+.See_more {
+  display: flex;
+  max-width: 70%;
+  padding: 2rem 0.6rem 2rem 0.6rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin: auto;
+}
+
+.See_more > article {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: auto;
+  gap: 0.6rem;
+}
+
+.See_more > article > section > h4 {
+  color: rgba(213, 108, 6, 0.5);
+  font-family: Poppins;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+}
+
+.See_more > article > section > h5 {
+  color: var(--primary-black);
+  text-align: justify;
+  font-family: Poppins;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+}
+
+.See_more > article > p {
+  color: var(--primary-black);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 1rem;
+  font-weight: 300;
+}

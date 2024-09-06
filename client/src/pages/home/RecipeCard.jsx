@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "../../styles/style_home/recipeCard.css";
+import "../../styles/home/recipeCard.css";
 
 export default function RecipeCard({ recipe }) {
   return (

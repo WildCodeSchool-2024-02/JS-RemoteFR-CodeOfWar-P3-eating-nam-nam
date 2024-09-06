@@ -5,7 +5,7 @@ import omelette from "../../assets/images/omelette_garnies.svg";
 import dahl from "../../assets/images/dahl_de_lentille_curry.svg";
 import spaghettisBolognaise from "../../assets/images/spaghettis_bolognaise.svg";
 import loupe from "../../assets/images/loupe.png";
-import "../../styles/style_home/reception.css";
+import "../../styles/home/reception.css";
 
 export default function Reception() {
   return (
