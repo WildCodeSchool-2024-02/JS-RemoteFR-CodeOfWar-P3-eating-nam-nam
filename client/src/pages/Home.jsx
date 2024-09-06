@@ -45,7 +45,7 @@ export default function Home() {
       <Reception />
       <div className="RecipeCard-SeeMore">
         <RecipeCard recipe={recipe} />
-        <SeeMoreRecipe littleRecipe={littleRecipes} />
+        <SeeMoreRecipe littleRecipes={littleRecipes} />
       </div>
       <Buffet />
       <Advice />

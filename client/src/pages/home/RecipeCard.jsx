@@ -1,10 +1,14 @@
 import PropTypes from "prop-types";
+import "../../styles/style_home/recipeCard.css";
 
 export default function RecipeCard({ recipe }) {
   return (
     <div className="Recipe-card">
       <h2>{recipe.name}</h2>
-      <h3>descrition</h3>
+      <section>
+        <h3>Description</h3>
+        <div />
+      </section>
       <div className="card">
         <p>{recipe.description}</p>
         <img src={recipe.image} alt={recipe.name} />
