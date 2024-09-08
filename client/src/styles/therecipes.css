@@ -9,21 +9,3 @@ section h2 {
   text-align: center;
   margin: 2rem;
 }
-
-.image-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.image-box {
-  text-align: center;
-  font-weight: bolder;
-}
-
-.image-box img {
-  width: 19rem;
-  max-width: 300px;
-  height: auto;
-  display: block;
-}

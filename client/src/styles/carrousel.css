@@ -19,11 +19,6 @@
   display: flex;
   scroll-behavior: smooth;
   overflow-x: auto;
-  scrollbar-width: none; /* Masquer la scrollbar pour Firefox */
-}
-
-.carrousel::-webkit-scrollbar {
-  display: none; /* Masquer la scrollbar pour Chrome, Safari et Opera */
 }
 
 .card {
@@ -31,24 +26,20 @@
   margin: 0 10px;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #fff;
+  background-color: grey;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease;
 }
 
 .card img {
-  width: 100%;
+  width: 11rem;
   height: 150px;
   object-fit: cover;
 }
 
-.card-info {
-  padding: 10px;
-}
-
 .card h3 {
-  margin: 10px 0;
+  margin-bottom: 1rem;
   font-size: 1.2em;
 }
 

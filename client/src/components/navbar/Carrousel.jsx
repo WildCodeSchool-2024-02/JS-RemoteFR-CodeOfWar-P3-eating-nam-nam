@@ -1,37 +1,40 @@
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../../styles/carrousel.css";
 
 function Carrousel({ items }) {
-  const carrouselRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const scrollLeft = () => {
-    carrouselRef.current.scrollBy({
-      left: -300, // Ajuste cette valeur pour contrôler le défilement vers la gauche
-      behavior: "smooth",
-    });
+    setScrollPosition((prevPosition) => prevPosition - 300);
   };
 
   const scrollRight = () => {
-    carrouselRef.current.scrollBy({
-      left: 300, // Ajuste cette valeur pour contrôler le défilement vers la droite
-      behavior: "smooth",
-    });
+    setScrollPosition((prevPosition) => prevPosition + 300);
   };
+
+  useEffect(() => {
+    const carrouselElement = document.querySelector(".carrousel");
+    if (carrouselElement) {
+      carrouselElement.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+    }
+  }, [scrollPosition]);
 
   return (
     <div className="carrousel-container">
       <button className="carrousel-btn left" onClick={scrollLeft} type="button">
         &#10094;
       </button>
-      <div className="carrousel" ref={carrouselRef}>
+      <div className="carrousel">
         {items.map((item) => (
           <div key={item.id} className="card">
             <img src={item.image} alt={item.name} />
             <div className="card-info">
               <h3>{item.name}</h3>
-              {/* Optionnel : les champs 'price' et 'deliveryTime' */}
               {item.price && <p>{item.price}</p>}
               {item.deliveryTime && <p>{item.deliveryTime}</p>}
             </div>
@@ -53,10 +56,10 @@ function Carrousel({ items }) {
 Carrousel.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // Clé unique obligatoire
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       name: PropTypes.string.isRequired,
-      price: PropTypes.string, // Optionnel, certaines données peuvent ne pas l'avoir
-      deliveryTime: PropTypes.string, // Optionnel
+      price: PropTypes.string,
+      deliveryTime: PropTypes.string,
       image: PropTypes.string.isRequired,
     })
   ).isRequired,
