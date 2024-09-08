@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* src/components/Carousel.css */
+.carrousel-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carrousel {
+  display: flex;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scrollbar-width: none; /* Masquer la scrollbar pour Firefox */
+}
+
+.carrousel::-webkit-scrollbar {
+  display: none; /* Masquer la scrollbar pour Chrome, Safari et Opera */
+}
+
+.card {
+  min-width: 250px;
+  margin: 0 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 10px;
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.carrousel-btn {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  padding: 0 10px;
+}
+
+.carrousel-btn.left {
+  left: 0;
+}
+
+.carrousel-btn.right {
+  right: 0;
+}
+
+.carrousel-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
