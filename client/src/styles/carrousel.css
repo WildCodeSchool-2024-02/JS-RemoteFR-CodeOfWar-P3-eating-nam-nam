@@ -10,7 +10,7 @@
   overflow-x: auto;
 }
 
-.card {
+.cards {
   min-width: 318px;
   margin: 0.5rem;
   border-radius: 1rem;
@@ -19,22 +19,22 @@
   text-align: center;
 }
 
-.card img {
+.cards img {
   width: 15rem;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.card img:hover {
+.cards img:hover {
   transform: scale(1.2);
 }
 
-.card h3 {
+.cards h3 {
   font-size: 1.2rem;
   margin-top: -1rem;
 }
 
-.card:hover h3 {
+.cards:hover h3 {
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }

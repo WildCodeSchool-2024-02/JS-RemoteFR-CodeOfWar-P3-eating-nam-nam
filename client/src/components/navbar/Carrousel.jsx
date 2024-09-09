@@ -1,53 +1,58 @@
-import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { useRef } from "react";
 import PropTypes from "prop-types";
 import "../../styles/carrousel.css";
 
 export default function Carrousel({ items }) {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const carrouselRef = useRef(null);
 
-  const scrollLeft = () => {
-    setScrollPosition((prevPosition) => prevPosition - 350);
-  };
+  const scroll = (direction) => {
+    if (carrouselRef.current) {
+      const scrollAmount = carrouselRef.current.offsetWidth;
+      const maxScrollLeft =
+        carrouselRef.current.scrollWidth - carrouselRef.current.clientWidth;
 
-  const scrollRight = () => {
-    setScrollPosition((prevPosition) => prevPosition + 350);
-  };
-
-  useEffect(() => {
-    const carrouselElement = document.querySelector(".carrousel");
-    if (carrouselElement) {
-      carrouselElement.scrollTo({
-        left: scrollPosition,
-        behavior: "smooth",
-      });
+      if (direction === "left") {
+        if (carrouselRef.current.scrollLeft === 0) {
+          carrouselRef.current.scrollLeft = maxScrollLeft;
+        } else {
+          carrouselRef.current.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth",
+          });
+        }
+      } else if (direction === "right") {
+        if (carrouselRef.current.scrollLeft >= maxScrollLeft) {
+          carrouselRef.current.scrollLeft = 0;
+        } else {
+          carrouselRef.current.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth",
+          });
+        }
+      }
     }
-  }, [scrollPosition]);
+  };
 
   return (
     <div className="carrousel-container">
       <button
         className="carrousel-bouton left"
-        onClick={scrollLeft}
+        onClick={() => scroll("left")}
         type="button"
       >
         &#10094;
       </button>
-      <div className="carrousel">
+      <div className="carrousel" ref={carrouselRef}>
         {items.map((item) => (
-          <div key={item.id} className="card">
+          <div key={item.id} className="cards">
             <img src={item.image} alt={item.name} />
-            <div className="card-info">
-              <h3>{item.name}</h3>
-              {item.price && <p>{item.price}</p>}
-              {item.deliveryTime && <p>{item.deliveryTime}</p>}
-            </div>
+            <h3>{item.name}</h3>
           </div>
         ))}
       </div>
       <button
         className="carrousel-bouton right"
-        onClick={scrollRight}
+        onClick={() => scroll("right")}
         type="button"
       >
         &#10095;
@@ -56,14 +61,11 @@ export default function Carrousel({ items }) {
   );
 }
 
-// Validation des props avec PropTypes
 Carrousel.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      price: PropTypes.string,
-      deliveryTime: PropTypes.string,
       image: PropTypes.string.isRequired,
     })
   ).isRequired,

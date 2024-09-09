@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import Carrousel from "../components/navbar/Carrousel";
 import "../styles/therecipes.css";
 
