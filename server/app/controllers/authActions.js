@@ -11,13 +11,10 @@ const login = async (req, res, next) => {
       return;
     }
 
-    const verified = await argon2.verify(
-      user.hashed_password,
-      req.body.password
-    );
+    const verified = await argon2.verify(user.password, req.body.password);
 
     if (verified) {
-      delete user.hashed_password;
+      delete user.password;
 
       res.json(user);
     } else {
