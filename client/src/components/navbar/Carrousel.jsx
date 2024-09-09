@@ -3,15 +3,15 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "../../styles/carrousel.css";
 
-function Carrousel({ items }) {
+export default function Carrousel({ items }) {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const scrollLeft = () => {
-    setScrollPosition((prevPosition) => prevPosition - 300);
+    setScrollPosition((prevPosition) => prevPosition - 350);
   };
 
   const scrollRight = () => {
-    setScrollPosition((prevPosition) => prevPosition + 300);
+    setScrollPosition((prevPosition) => prevPosition + 350);
   };
 
   useEffect(() => {
@@ -26,7 +26,11 @@ function Carrousel({ items }) {
 
   return (
     <div className="carrousel-container">
-      <button className="carrousel-btn left" onClick={scrollLeft} type="button">
+      <button
+        className="carrousel-bouton left"
+        onClick={scrollLeft}
+        type="button"
+      >
         &#10094;
       </button>
       <div className="carrousel">
@@ -42,7 +46,7 @@ function Carrousel({ items }) {
         ))}
       </div>
       <button
-        className="carrousel-btn right"
+        className="carrousel-bouton right"
         onClick={scrollRight}
         type="button"
       >
@@ -64,5 +68,3 @@ Carrousel.propTypes = {
     })
   ).isRequired,
 };
-
-export default Carrousel;
