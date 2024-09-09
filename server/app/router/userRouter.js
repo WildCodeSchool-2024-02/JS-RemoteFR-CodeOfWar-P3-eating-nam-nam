@@ -8,9 +8,10 @@ const {
   edit,
   add,
   destroy,
-  hashPassword,
   userActions,
 } = require("../controllers/userActions");
+
+const { hashPassword } = require("../services/auth");
 
 router.get("/", browse); // Pour lister tous les utilisateurs.
 
