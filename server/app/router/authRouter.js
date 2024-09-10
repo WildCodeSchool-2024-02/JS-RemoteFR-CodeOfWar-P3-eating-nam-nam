@@ -4,6 +4,8 @@ const router = express.Router();
 
 const authActions = require("../controllers/authActions");
 
-router.post("/login", authActions.login);
+const auth = require("../services/auth");
+
+router.post("/login", auth.verifyPassword, auth.createToken, authActions.login);
 
 module.exports = router;
