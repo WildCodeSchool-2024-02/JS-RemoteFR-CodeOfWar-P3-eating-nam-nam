@@ -1,3 +1,5 @@
+const tables = require("../../database/tables");
+
 const login = async (req, res, next) => {
   try {
     res.cookie("auth", req.token).json({
@@ -9,8 +11,20 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
+
 const register = async (req, res, next) => {
   try {
+    const { username, name, hashPassword, email, role } = req.body;
+    await tables.user.create({
+      username,
+      name,
+      password: hashPassword,
+      email,
+      role,
+    });
+
+    console.info(req.body.hashPassword);
+
     res.status(200).json({ message: "Inscription réussie" });
   } catch (error) {
     next(error);
