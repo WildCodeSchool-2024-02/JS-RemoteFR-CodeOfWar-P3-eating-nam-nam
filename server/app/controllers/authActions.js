@@ -10,6 +10,18 @@ const login = async (req, res, next) => {
   }
 };
 
+// FAIRE L'ACTION register POUR ENREGISTRER UN UTILISATEUR
+// ON PEUT FAIRE DES MIDDLEWARES -> auth.js
+const register = async (req, res, next) => {
+  try {
+    // La suite...
+    res.status(200).json({ message: "Inscription réussie" })
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
   login,
+  register
 };

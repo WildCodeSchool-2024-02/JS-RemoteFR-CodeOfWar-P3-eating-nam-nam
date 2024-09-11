@@ -3,13 +3,19 @@ import "../styles/Auth.css";
 export default function SignUp() {
   const handleSumbit = async (event) => {
     event.preventDefault();
+
+    // CHANGER LES event.target POUR AVOIR UNE SOLUTION PLUS OPTIMISER
+    // (ON L'A FAIT DANS LE LOGIN)
+
     const username = event.target[0].value;
     const password = event.target[1].value;
     const confirmPassword = event.target[2].value;
     console.info(
       `Username: ${username}\nPassword: ${password}\nConfirm Password: ${confirmPassword}`
     );
-    // SignUp...
+
+    // LA REQUÊTE VERS POST /register
+    // (ON L'A FAIT DANS LE LOGIN)
   };
 
   return (
