@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../../styles/home/buffet.css";
 
 import fruitDeMer from "../../assets/images/fruit_de_mer.png";
 import gateauChocolat from "../../assets/images/gateau_chocolat.png";
