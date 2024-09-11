@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE TABLE difficulty (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE

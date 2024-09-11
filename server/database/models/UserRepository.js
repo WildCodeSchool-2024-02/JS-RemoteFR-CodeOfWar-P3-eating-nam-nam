@@ -41,6 +41,14 @@ class UserRepository extends AbstractRepository {
     );
     return result.affectedRows;
   }
+
+  async readByEmailWithPassword(email) {
+    const [result] = await this.database.query(
+      `select * from ${this.table} WHERE email = ?`,
+      [email]
+    );
+    return result;
+  }
 }
 
 module.exports = UserRepository;
