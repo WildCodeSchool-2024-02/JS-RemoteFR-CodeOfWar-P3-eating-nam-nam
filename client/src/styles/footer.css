@@ -4,10 +4,11 @@ footer {
   width: 100%;
   height: auto;
   padding-top: 20px;
+  margin-top: 2rem;
 }
 
 footer > section > p {
-  font-family: Roboto;
+  font-family: var(--lorem-font);
   font-size: 16px;
 }
 
@@ -30,7 +31,7 @@ footer > section.Newsletter {
 
 footer > section.Newsletter > section > h2 {
   color: var(--primary-green, #2f5b12);
-  font-family: Roboto;
+  font-family: var(--title-font);
   font-size: 1.1rem;
   font-weight: 700;
 }
@@ -38,7 +39,7 @@ footer > section.Newsletter > section > h2 {
 footer > section.Newsletter > section > p {
   text-align: center;
   color: var(--primary-green, #2f5b12);
-  font-family: Roboto;
+  font-family: var(--lorem-font);
   font-weight: 500;
   margin: 0 auto;
 }
@@ -61,7 +62,7 @@ footer > section.Newsletter > section > input::placeholder {
   color: rgba(0, 0, 0, 0.5);
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: Roboto;
+  font-family: var(--lorem-font);
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -75,7 +76,7 @@ footer > section > input {
   color: rgba(0, 0, 0, 0.5);
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: Roboto;
+  font-family: var(--lorem-font);
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 20px;
@@ -112,7 +113,7 @@ footer .links > p {
 
 section .links h3 {
   color: var(--primary-green, #2f5b12);
-  font-family: Roboto;
+  font-family: var(--title-font);
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -122,7 +123,7 @@ section .links h3 {
 
 section .links p {
   color: var(--primary-green, #2f5b12);
-  font-family: Roboto;
+  font-family: var(--lorem-font);
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
