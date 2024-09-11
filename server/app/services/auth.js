@@ -25,12 +25,15 @@ const hashPassword = async (req, res, next) => {
   }
 };
 
+// UNIQUEMENT POUT LE /login
+
 const verifyPassword = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await tables.user.readByEmail(email);
     if (!user) {
       res.sendStatus(401);
+      return;
     }
     req.user = {
       id: user.id,
@@ -61,6 +64,8 @@ const createToken = async (req, res, next) => {
     next(error);
   }
 };
+
+// ---
 
 const verifyToken = async (req, res, next) => {
   try {
