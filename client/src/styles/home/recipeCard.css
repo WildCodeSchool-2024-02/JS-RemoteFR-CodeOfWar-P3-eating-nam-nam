@@ -1,6 +1,5 @@
 .Recipe-card {
   display: flex;
-  margin: auto;
   width: 23rem;
   height: fit-content;
   flex-direction: column;
@@ -78,10 +77,11 @@
   background-color: transparent;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .Recipe-card {
     display: flex;
     width: 100%;
+    max-width: 55rem;
     height: auto;
     align-items: flex-start;
     gap: 0.6rem;

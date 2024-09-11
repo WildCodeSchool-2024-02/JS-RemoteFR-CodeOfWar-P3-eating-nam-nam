@@ -2,7 +2,7 @@ import Reception from "./home/Reception";
 import RecipeCard from "./home/RecipeCard";
 import SeeMoreRecipe from "./home/SeeMoreRecipe";
 import Buffet from "./home/Buffet";
-import Advice from "./home/Advice";
+import Advices from "./home/Advices";
 
 import tarteAuxPommes from "../assets/images/tarte_aux_pommes.png";
 import saladeGrecque from "../assets/images/salade_grecque.svg";
@@ -90,7 +90,7 @@ export default function Home() {
         <SeeMoreRecipe littleRecipes={littleRecipes} />
       </div>
       <Buffet />
-      <Advice advices={advices} />
+      <Advices advices={advices} />
     </>
   );
 }

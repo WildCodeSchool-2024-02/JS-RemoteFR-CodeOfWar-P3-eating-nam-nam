@@ -2,13 +2,11 @@
   font-family: var(--title-font);
   font-weight: 500;
   display: flex;
-  width: fit-content;
-  position: relative;
-  height: fit-content;
+  width: 100%;
+  max-width: 30rem;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
 }
 
 .Apostrophe {
@@ -21,9 +19,20 @@
   justify-content: center;
 }
 
-.Advice > img {
+.star {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+
+  padding: 5rem;
+  width: 100%;
+}
+
+.star > img {
   z-index: 1;
   position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
   opacity: 0.3;
@@ -47,5 +56,8 @@
 .Advice > .Star {
   z-index: 3;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 1280px) {
+  div.Advice:not(:last-child) {
+    display: none;
+  }
 }
