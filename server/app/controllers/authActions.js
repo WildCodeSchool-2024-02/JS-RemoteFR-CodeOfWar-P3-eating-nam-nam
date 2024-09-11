@@ -9,7 +9,15 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
+const register = async (req, res, next) => {
+  try {
+    res.status(200).json({ message: "Inscription réussie" });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   login,
+  register,
 };
