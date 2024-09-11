@@ -1,11 +1,14 @@
-left {
+.RecipeCard-SeeMore {
   display: flex;
-  width: 361px;
-  height: 531px;
-  max-width: 700px;
-  padding: 10px;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
+  flex-direction: column;
+}
+
+@media (min-width: 1280px) {
+  .RecipeCard-SeeMore {
+    justify-content: center;
+    flex-direction: row;
+    padding: 4rem;
+    gap: 10rem;
+  }
 }

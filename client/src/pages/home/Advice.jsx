@@ -1,32 +1,32 @@
+import PropTypes from "prop-types";
 import apostrophe from "../../assets/images/Apostrophe.png";
 import star from "../../assets/images/étoile.png";
 
-export default function Advice() {
+import "../../styles/home/advice.css";
+
+export default function Advice({ name, description }) {
   const stars = [1, 2, 3, 4, 5];
 
   return (
     <div className="Advice">
       <div className="Apostrophe">
-        <img src={apostrophe} alt="apostrophe" />
-        <img src={apostrophe} alt="apostrophe" />
+        <img src={apostrophe} alt="Apostrophe" />
+        <img src={apostrophe} alt="Apostrophe" />
       </div>
-      <section>
-        <h3>Elsa</h3>
-        <p>
-          "J'ai testé cette recette de lasagnes végétariennes hier soir, et
-          c'était un pur délice! Les couches d'aubergines et de courgettes
-          grillées se marient parfaitement avec la sauce tomate maison, riche et
-          parfumée. Le mélange de fromages fondus ajoute une onctuosité
-          irrésistible. Le tout est simple à préparer et a été un véritable
-          succès auprès de toute la famille. Une recette que je referai sans
-          hésiter!"
-        </p>
+      <section className="Advice1">
+        <h3>{name}</h3>
+        <p>{description}</p>
       </section>
       <section className="Star">
         {stars.map((starId) => (
-          <img key={starId} src={star} alt="étoiles" />
+          <img src={star} key={starId} alt="Star" />
         ))}
       </section>
     </div>
   );
 }
+
+Advice.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
