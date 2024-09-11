@@ -14,11 +14,11 @@ const login = async (req, res, next) => {
 
 const register = async (req, res, next) => {
   try {
-    const { username, name, hashPassword, email, role } = req.body;
+    const { username, name, hashedPassword, email, role } = req.body;
     await tables.user.create({
       username,
       name,
-      password: hashPassword,
+      password: hashedPassword,
       email,
       role,
     });
