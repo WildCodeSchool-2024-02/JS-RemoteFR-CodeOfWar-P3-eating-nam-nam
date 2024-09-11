@@ -1,8 +1,4 @@
-body {
-  background-color: #f5f5f5;
-}
-
 section h2 {
-  color: #2f5b12;
+  color: var(--primary-green);
   text-align: center;
 }

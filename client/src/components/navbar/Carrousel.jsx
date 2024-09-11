@@ -6,31 +6,26 @@ export default function Carrousel({ items }) {
   const carrouselRef = useRef(null);
 
   const scroll = (direction) => {
-    if (carrouselRef.current) {
-      const scrollAmount = carrouselRef.current.offsetWidth;
-      const maxScrollLeft =
-        carrouselRef.current.scrollWidth - carrouselRef.current.clientWidth;
+    if (!carrouselRef.current) return;
 
-      if (direction === "left") {
-        if (carrouselRef.current.scrollLeft === 0) {
-          carrouselRef.current.scrollLeft = maxScrollLeft;
-        } else {
-          carrouselRef.current.scrollBy({
-            left: -scrollAmount,
-            behavior: "smooth",
-          });
-        }
-      } else if (direction === "right") {
-        if (carrouselRef.current.scrollLeft >= maxScrollLeft) {
-          carrouselRef.current.scrollLeft = 0;
-        } else {
-          carrouselRef.current.scrollBy({
-            left: scrollAmount,
-            behavior: "smooth",
-          });
-        }
-      }
+    const { offsetWidth, scrollWidth, clientWidth, scrollLeft } =
+      carrouselRef.current;
+    const scrollAmount = offsetWidth;
+    const maxScrollLeft = scrollWidth - clientWidth;
+
+    let newScrollLeft;
+    if (direction === "left") {
+      newScrollLeft =
+        scrollLeft === 0 ? maxScrollLeft : scrollLeft - scrollAmount;
+    } else if (direction === "right") {
+      newScrollLeft =
+        scrollLeft >= maxScrollLeft ? 0 : scrollLeft + scrollAmount;
     }
+
+    carrouselRef.current.scrollTo({
+      left: newScrollLeft,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -43,10 +38,10 @@ export default function Carrousel({ items }) {
         &#10094;
       </button>
       <div className="carrousel" ref={carrouselRef}>
-        {items.map((item) => (
-          <div key={item.id} className="cards">
-            <img src={item.image} alt={item.name} />
-            <h3>{item.name}</h3>
+        {items.map(({ id, image, name }) => (
+          <div key={id} className="cards">
+            <img src={image} alt={name} />
+            <h3>{name}</h3>
           </div>
         ))}
       </div>
