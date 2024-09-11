@@ -15,7 +15,7 @@
   margin: 0.5rem;
   border-radius: 1rem;
   overflow: hidden;
-  background-color: grey;
+  background-color: #d3e4cd;
   text-align: center;
 }
 
@@ -60,4 +60,27 @@
 
 .carrousel-bouton:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 768px) {
+  .carrousel {
+    display: block;
+    overflow-x: hidden;
+  }
+
+  .cards {
+    margin: 1rem;
+  }
+
+  .cards img {
+    width: 100%;
+  }
+
+  .cards h3 {
+    font-size: 7vw;
+  }
+
+  .carrousel-bouton {
+    display: none;
+  }
 }
