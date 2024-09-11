@@ -14,12 +14,12 @@ body,
 #root,
 #root > main {
   min-height: 100%;
+  margin: 0;
 }
 
 a,
 a:visited,
 a:link {
-  color: var(--primary-font);
   text-decoration: none;
 }
 

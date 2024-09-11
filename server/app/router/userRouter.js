@@ -2,22 +2,18 @@ const express = require("express");
 
 const router = express.Router();
 
-const {
-  browse,
-  read,
-  edit,
-  add,
-  destroy,
-} = require("../controllers/userActions");
+const userActions = require("../controllers/userActions");
 
-router.get("/", browse); // Pour lister tous les utilisateurs.
+const { hashPassword } = require("../services/auth");
 
-router.get("/:id", read); // Pour afficher un utilisateur spécifique
+router.get("/", userActions.browse); // Pour lister tous les utilisateurs.
 
-router.post("/", add); // Pour ajouter un nouvel utilisateur
+router.get("/:id", userActions.read); // Pour afficher un utilisateur spécifique
 
-router.put("/:id", edit); // Pour modifier un utilisateur existant
+router.post("/", hashPassword, userActions.add); // Pour ajouter un nouvel utilisateur
 
-router.delete("/:id", destroy); // Pour supprimer un utilisateur
+router.put("/:id", userActions.edit); // Pour modifier un utilisateur existant
+
+router.delete("/:id", userActions.destroy); // Pour supprimer un utilisateur
 
 module.exports = router;
