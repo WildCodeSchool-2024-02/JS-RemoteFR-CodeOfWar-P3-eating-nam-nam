@@ -42,12 +42,12 @@ class UserRepository extends AbstractRepository {
     return result.affectedRows;
   }
 
-  async readByEmailWithPassword(email) {
+  async readByEmail(email) {
     const [result] = await this.database.query(
       `select * from ${this.table} WHERE email = ?`,
       [email]
     );
-    return result;
+    return result[0];
   }
 }
 
