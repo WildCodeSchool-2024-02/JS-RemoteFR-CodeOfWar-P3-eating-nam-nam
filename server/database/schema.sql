@@ -23,19 +23,26 @@ VALUES ('Ewan', 'Senergous', 'password', 'ewan@outlook.fr', 'admin')
 CREATE TABLE recipe (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-  difficulty_id INT NOT NULL,
-   title VARCHAR(100) NOT NULL,
-     description text NOT NULL,
+    difficulty_id INT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    description text NOT NULL,
     cooking_time INT NOT NULL,
     preparation_time INT NOT NULL,
     instruction text NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
-   FOREIGN KEY (difficulty_id) REFERENCES Difficulty(id)
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
+    FOREIGN KEY (difficulty_id) REFERENCES Difficulty(id)
 );
 
 INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) VALUES (2, 3, "Saint-honoré", 'lorem', 60, 120, 'lorem' );
+
+CREATE TABLE image (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image VARCHAR(255) NOT NULL,
+    recipe_id INT NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES Recipes(id) ON DELETE CASCADE
+);
 
 CREATE TABLE ingredient (
     id INT AUTO_INCREMENT PRIMARY KEY,
