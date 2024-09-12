@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "../../styles/home/seeMoreRecipe.css";
 
 export default function SeeMoreRecipe({ littleRecipes }) {
   return (
@@ -6,10 +7,12 @@ export default function SeeMoreRecipe({ littleRecipes }) {
       <h3>Voir aussi...</h3>
       {littleRecipes.map((littleRecipe) => (
         <article key={littleRecipe.id}>
-          <h4>IDEE RECETTE</h4>
-          <h5>{littleRecipe.name}</h5>
           <img src={littleRecipe.image} alt={littleRecipe.name} />
-          <p>{littleRecipe.description}</p>
+          <section>
+            <h4>IDEE RECETTE</h4>
+            <h5>{littleRecipe.name}</h5>
+            <p>{littleRecipe.description}</p>
+          </section>
         </article>
       ))}
     </div>
