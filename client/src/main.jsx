@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import "./styles/main.css";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import UserInfo from "./pages/userProfile/UserInfo";
+import UserProfile from "./pages/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profil_utilisateur",
-        element: <UserInfo />,
+        element: <UserProfile />,
       },
     ],
   },

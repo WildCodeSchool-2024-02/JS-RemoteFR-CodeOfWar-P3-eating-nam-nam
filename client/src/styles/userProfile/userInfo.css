@@ -8,23 +8,28 @@
 
 .UserReception .Left {
   display: flex;
-  width: 6rem;
-  height: 5.5rem;
+  width: 7rem;
+  height: 7rem;
   padding: 0.6rem;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
 }
+.UserReception .Left img {
+  width: 6rem;
+}
 
 .UserReception .Right {
   display: flex;
-  height: auto;
+  height: 6rem;
   width: 10rem;
+  justify-content: space-between;
   text-align: center;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: var(--secondary-green);
+  padding: 0.5rem;
 }
 
 .UserReception > .Right > .top {
@@ -47,4 +52,5 @@
   font-family: (var(--lorem-font));
   font-size: 0.6rem;
   font-weight: 300;
+  margin: 0;
 }

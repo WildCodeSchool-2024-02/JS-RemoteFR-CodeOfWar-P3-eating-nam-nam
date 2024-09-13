@@ -1,0 +1,20 @@
+.personal-info {
+  display: flex;
+  padding: 0.6rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.personal-info > h2 {
+  color: var(--primary-green);
+}
+
+.personal-info > .form-info {
+  display: flex;
+  height: 1.9rem;
+  padding: 0rem 0.6rem;
+  align-items: center;
+  gap: 0.6rem;
+  align-self: stretch;
+}
