@@ -29,53 +29,6 @@
   margin-top: 0.3rem;
 }
 
-.recipe-section {
-  margin: 1.25rem 0;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.view-all-button {
-  background-color: var(--primary-green);
-  color: white;
-  border: none;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  border-radius: 0.3rem;
-  transition:
-    background-color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.recipe-list {
-  display: flex;
-  gap: 15px;
-  margin-top: 1rem;
-}
-
-.recipe-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.recipe-image {
-  width: 6.2rem;
-  height: 6.2rem;
-  object-fit: cover;
-  border-radius: 0.3rem;
-}
-
-.recipe-title {
-  margin-top: 0.6rem;
-  font-weight: bold;
-  text-align: center;
-}
-
 .action-buttons {
   display: flex;
   flex-direction: column;
@@ -107,11 +60,6 @@
     transform 0.3s ease;
 }
 
-.title {
-  color: var(--primary-green);
-}
-
-.view-all-button:hover,
 .add-recipe-button:hover,
 .edit-recipe-button:hover {
   transform: scale(1.25);

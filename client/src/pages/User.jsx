@@ -1,36 +1,6 @@
 import PropTypes from "prop-types";
+import RecipeSection from "./user/RecipeSection";
 import "../styles/user.css";
-
-function Recipe({ title, image }) {
-  return (
-    <div className="recipe-card">
-      <img src={image} alt={title} className="recipe-image" />
-      <p className="recipe-title">{title}</p>
-    </div>
-  );
-}
-
-function RecipeSection({ title, recipes = [] }) {
-  return (
-    <div className="recipe-section">
-      <div className="section-header">
-        <h2 className="title">{title}</h2>
-        <button type="button" className="view-all-button">
-          Voir tout ❯
-        </button>
-      </div>
-      <div className="recipe-list">
-        {Array.isArray(recipes) && recipes.length > 0 ? (
-          recipes.map((recipe) => (
-            <Recipe key={recipe.id} title={recipe.title} image={recipe.image} />
-          ))
-        ) : (
-          <p>Aucune recette disponible</p>
-        )}
-      </div>
-    </div>
-  );
-}
 
 export default function User({
   profileImage,
@@ -68,22 +38,6 @@ export default function User({
     </div>
   );
 }
-
-Recipe.propTypes = {
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-};
-
-RecipeSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  recipes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
 
 User.propTypes = {
   profileImage: PropTypes.string.isRequired,
