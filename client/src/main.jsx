@@ -5,10 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
 import Home from "./pages/Home";
-import TheRecipes from "./pages/TheRecipes";
 
 import "./styles/main.css";
-import CreateRecipe from "./pages/CreateRecipe";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import User from "./pages/User";
@@ -21,21 +19,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-
-      {
-        path: "/theRecipes",
-        element: <TheRecipes />,
-      },
-
-      {
-        path: "/create-recipe",
-        element: <CreateRecipe />,
-      },
       {
         path: "/connexion",
         element: <Login />,
       },
-
       {
         path: "/inscription",
         element: <SignUp />,
