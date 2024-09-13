@@ -36,7 +36,7 @@ CREATE TABLE recipe (
     FOREIGN KEY (difficulty_id) REFERENCES Difficulty(id)
 );
 
-INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) VALUES (2, 3, "Saint-honoré", 'lorem', 60, 120, 'lorem' );
+INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) VALUES (2, 3, "Saint-honoré", 'lorem', 60, 120, 'lorem'), (3, 1, "Quiche Thon et tomates", 'lorem', 60, 20, 'lorem'), (2, 2, "Lasagnes bolognaise", 'lorem', 60, 60, 'lorem');
 
 CREATE TABLE ingredient (
   id INT AUTO_INCREMENT PRIMARY KEY,
