@@ -5,6 +5,23 @@ class RecipeRepository extends AbstractRepository {
     super({ table: "recipe" });
   }
 
+  async create(recipe) {
+    const [result] = await this.database.query(
+      `insert into ${this.table} (id, user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        recipe.id,
+        recipe.user_id,
+        recipe.difficulty_id,
+        recipe.title,
+        recipe.description,
+        recipe.cokking_time,
+        recipe.preparation_time,
+        recipe.instruction,
+      ]
+    );
+    return result.insertId;
+  }
+
   async readAll() {
     const [rows] = await this.database.query(`select * from ${this.table}`);
     return rows;
@@ -21,9 +38,7 @@ class RecipeRepository extends AbstractRepository {
 
   async update(recipe) {
     const [result] = await this.database.query(
-      `update ${this.table} set user_id = ?, difficulty_id = ?, title = ?,
-       description = ?, cooking_time = , preparation_time = ?,
-       instruction = ? where id = ?`,
+      `update ${this.table} set user_id = ?, difficulty_id = ?, title = ?, description = ?, cooking_time = , preparation_time = ?,instruction = ? where id = ?`,
       [
         recipe.user_id,
         recipe.difficulty_id,

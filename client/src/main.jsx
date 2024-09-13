@@ -11,7 +11,9 @@ import "./styles/main.css";
 import CreateRecipe from "./pages/CreateRecipe";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+
 import Admin from "./pages/userAdmin/PanelAdmin";
+import User from "./pages/User";
 
 const router = createBrowserRouter([
   {
@@ -32,17 +34,20 @@ const router = createBrowserRouter([
         element: <CreateRecipe />,
       },
       {
-        path: "/connexion",
+        path: "/login",
         element: <Login />,
       },
-
       {
-        path: "/inscription",
+        path: "/register",
         element: <SignUp />,
       },
       {
-        path: "/Panel-Admin",
+        path: "/panel-admin",
         element: <Admin />,
+      },
+      {
+        path: "/user",
+        element: <User />,
       },
     ],
   },
