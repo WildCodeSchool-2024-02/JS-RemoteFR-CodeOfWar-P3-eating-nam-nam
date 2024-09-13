@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { motion, Reorder } from 'framer-motion';
-import '../../styles/create/recipeSteps.css';
+import { useState } from "react";
+import { motion, Reorder } from "framer-motion";
+import "../../styles/create/recipeSteps.css";
 
 function RecipeSteps() {
   const [steps, setSteps] = useState([
-    { id: '1', content: 'Préchauffez le four à 180°C' },
-    { id: '2', content: 'Mélangez les ingrédients dans un bol' },
-    { id: '3', content: 'Versez la pâte dans le moule' },
+    { id: "1", content: "Préchauffez le four à 180°C" },
+    { id: "2", content: "Mélangez les ingrédients dans un bol" },
+    { id: "3", content: "Versez la pâte dans le moule" },
   ]);
 
   const addStep = () => {
@@ -18,13 +18,15 @@ function RecipeSteps() {
   };
 
   const updateStep = (id, newContent) => {
-    setSteps(steps.map(step => 
-      step.id === id ? { ...step, content: newContent } : step
-    ));
+    setSteps(
+      steps.map((step) =>
+        step.id === id ? { ...step, content: newContent } : step
+      )
+    );
   };
 
   const deleteStep = (id) => {
-    setSteps(steps.filter(step => step.id !== id));
+    setSteps(steps.filter((step) => step.id !== id));
   };
 
   return (
@@ -33,7 +35,7 @@ function RecipeSteps() {
       <Reorder.Group axis="y" values={steps} onReorder={setSteps}>
         {steps.map((step, index) => (
           <Reorder.Item key={step.id} value={step}>
-            <motion.div 
+            <motion.div
               className="step-card"
               layout
               initial={{ opacity: 0 }}
@@ -49,9 +51,9 @@ function RecipeSteps() {
                   onChange={(e) => updateStep(step.id, e.target.value)}
                   className="step-input"
                 />
-                <button 
-                  className="delete-button" 
-                  type='button'
+                <button
+                  className="delete-button"
+                  type="button"
                   onClick={() => deleteStep(step.id)}
                 >
                   &#10060;
