@@ -2,9 +2,11 @@
 
 :root {
   --primary-font: #000;
+  --primary-green: #2f5b12;
 }
 
 * {
+  margin: 0;
   box-sizing: border-box;
   font-family: "Poppins";
 }
