@@ -31,12 +31,11 @@ const router = createBrowserRouter([
         element: <CreateRecipe />,
       },
       {
-        path: "/connexion",
+        path: "/login",
         element: <Login />,
       },
-
       {
-        path: "/inscription",
+        path: "/register",
         element: <SignUp />,
       },
     ],
