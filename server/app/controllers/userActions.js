@@ -3,7 +3,13 @@ const tables = require("../../database/tables");
 const browse = async (req, res, next) => {
   try {
     const users = await tables.user.readAll();
-    res.json(users);
+
+    if (users.length) {
+      res.json({ result: users });
+    } else {
+      res.json({ message: "Aucun utilisateur", result: users });
+    }
+    console.info(users);
   } catch (err) {
     next(err);
   }

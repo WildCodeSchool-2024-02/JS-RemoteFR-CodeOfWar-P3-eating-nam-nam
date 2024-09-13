@@ -1,0 +1,41 @@
+.See_more {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0.6rem 2rem 0.6rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.See_more > article {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 25rem;
+  height: auto;
+  gap: 1rem;
+}
+
+.See_more > article > section > h4 {
+  color: rgba(213, 108, 6, 0.5);
+  font-family: var(--title-font);
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+}
+
+.See_more > article > section > h5 {
+  color: var(--primary-black);
+  text-align: justify;
+  font-family: var(--title-font);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+}
+
+.See_more > article > section > p {
+  color: var(--primary-black);
+  text-align: start;
+  font-family: var(--lorem-font);
+  font-size: 1rem;
+  font-weight: 300;
+}

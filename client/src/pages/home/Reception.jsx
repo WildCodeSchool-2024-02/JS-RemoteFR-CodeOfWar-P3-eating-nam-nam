@@ -4,23 +4,24 @@ import risotto from "../../assets/images/risotto.svg";
 import omelette from "../../assets/images/omelette_garnies.svg";
 import dahl from "../../assets/images/dahl_de_lentille_curry.svg";
 import spaghettisBolognaise from "../../assets/images/spaghettis_bolognaise.svg";
+import loupe from "../../assets/images/loupe.png";
+import "../../styles/home/reception.css";
 
 export default function Reception() {
   return (
     <div className="reception">
       <section className="left">
-        <h1>Selectionne, innove et collectionne tes meilleures recettes !</h1>
+        <h1>Cuisinez des souvenirs, savourez des instants.</h1>
         <div className="search_box">
+          <img src={loupe} alt="loupe" />
           <input type="text" placeholder="Votre recettes..." />
         </div>
         <article className="welcome">
-          <p>
-            Bienvenue sur Miam ! Votre destination ultime pour découvrir et
-            partager des recettes gourmandes et variées ! Que vous soyez un
-            cuisinier débutant ou un chef expérimenté, notre site est conçu pour
-            vous inspirer et vous guider à travers une multitude de recettes
-            délicieuses, faciles à suivre et adaptées à tous les goûts.
-          </p>
+          Bienvenue sur Miam ! Votre destination ultime pour découvrir et
+          partager des recettes gourmandes et variées ! Que vous soyez un
+          cuisinier débutant ou un chef expérimenté, notre site est conçu pour
+          vous inspirer et vous guider à travers une multitude de recettes
+          délicieuses, faciles à suivre et adaptées à tous les goûts.
         </article>
       </section>
       <section className="right">

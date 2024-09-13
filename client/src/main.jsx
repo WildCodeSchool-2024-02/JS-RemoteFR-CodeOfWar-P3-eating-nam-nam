@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 
 import "./styles/main.css";
 import CreateRecipe from "./pages/CreateRecipe";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "/create-recipe",
         element: <CreateRecipe />,
+      },
+      {
+        path: "/connexion",
+        element: <Login />,
+      },
+      {
+        path: "/inscription",
+        element: <SignUp />,
       },
     ],
   },

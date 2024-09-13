@@ -1,0 +1,128 @@
+.left {
+  display: flex;
+  width: 22rem;
+  height: fit-content;
+  max-width: 43.75rem;
+  padding: 0.625rem;
+  gap: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.left > h1 {
+  color: var(--primary-green);
+  text-align: center;
+  font-family: var(--title-font);
+  font-weight: 400;
+  font-size: 32px;
+  font-style: normal;
+  margin: 0;
+}
+
+.search_box {
+  display: flex;
+  width: fit-content;
+  padding: 0.5rem 1.5rem;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--primary-black, #010101);
+  background: #ffff;
+}
+
+.search_box > input {
+  border: 0;
+  background-color: transparent;
+}
+
+.search_box > input::placeholder {
+  font-family: var(--lorem-font);
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.search_box > img {
+  width: 26px;
+  height: 23px;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+
+.left {
+  margin: auto;
+}
+
+.left > article {
+  display: flex;
+  height: fit-content;
+  max-width: 31.25rem;
+  padding: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 0.5rem;
+  background: var(--secondary-green, #ecfae3);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-family: var(--lorem-font);
+  font-size: 0.875rem;
+  line-height: 1.6875rem;
+  text-align: center;
+  color: var(--primary-green);
+}
+
+.right {
+  display: none;
+}
+
+@media screen and (min-width: 1280px) {
+  .reception {
+    display: flex;
+    padding: 2rem 4rem;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+  }
+
+  .left {
+    display: flex;
+    margin: 0;
+    max-width: 43.75rem;
+    padding: 0.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .left > h1 {
+    width: 43.0625rem;
+    color: var(--primary-green, #2f5b12);
+    font-family: var(--title-font);
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3.0625rem;
+    text-align: left;
+  }
+  .left > article {
+    align-self: stretch;
+    display: flex;
+    width: 28.25rem;
+    text-align: left;
+  }
+  .right {
+    display: flex;
+    width: 36rem;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 0.8125rem 3.6875rem;
+    align-self: stretch;
+    flex-wrap: wrap;
+    margin-left: 11rem;
+  }
+}
