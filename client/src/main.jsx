@@ -7,6 +7,7 @@ import App from "./App";
 import Home from "./pages/Home";
 
 import "./styles/main.css";
+import CreateRecipe from "./pages/CreateRecipe";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/create-recipe",
+        element: <CreateRecipe />,
       },
     ],
   },
