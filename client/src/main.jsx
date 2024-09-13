@@ -11,6 +11,7 @@ import "./styles/main.css";
 import CreateRecipe from "./pages/CreateRecipe";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import User from "./pages/User";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/inscription",
         element: <SignUp />,
+      },
+      {
+        path: "/user",
+        element: <User />,
       },
     ],
   },
