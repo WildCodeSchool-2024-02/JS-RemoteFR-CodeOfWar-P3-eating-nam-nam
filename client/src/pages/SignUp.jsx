@@ -11,7 +11,6 @@ export default function SignUp() {
     // CHANGER LES event.target POUR AVOIR UNE SOLUTION PLUS OPTIMISER
     // (ON L'A FAIT DANS LE LOGIN)
 
-    navigate("/login");
     const username = event.target.elements.namedItem("username").value;
     const password = event.target.elements.namedItem("pass").value;
     const confirmPassword =
@@ -23,6 +22,10 @@ export default function SignUp() {
         { username, password, confirmPassword }
       );
       console.info("Réponse du server: ", response);
+
+      if (response.status === 200) {
+        navigate("/login");
+      }
     } catch (err) {
       console.error("Erreur lors de l'inscription : ", err);
     }
