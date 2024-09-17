@@ -13,6 +13,8 @@ import UserProfil from "./pages/UserProfile";
 
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
 import User from "./pages/User";
+import TheRecipes from "./pages/TheRecipes";
+import RecipesInstruction from "./pages/RecipesInstruction";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
       {
         path: "/user",
         element: <User />,
+      },
+      {
+        path: "/recipes",
+        element: <TheRecipes />,
+      },
+      {
+        path: "/recipes-instruction",
+        element: <RecipesInstruction />,
       },
     ],
   },
