@@ -64,10 +64,13 @@
 
 .Ingredients {
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .Ingredients h2 {
   text-align: center;
+  color: var(--primary-green);
 }
 
 .Liste-Ingredients {
@@ -75,11 +78,18 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   max-width: 400px;
-  margin: 1rem;
+  margin: 2rem auto;
+  margin-right: 5.5rem;
 }
 
-.Recette h2 {
+.Recette-test {
+  background-color: var(--secondary-green);
+  padding: 1rem;
+}
+
+.Recette > h2 {
   text-align: center;
+  color: var(--primary-green);
 }
 
 .Etape-Global {
@@ -102,4 +112,5 @@
   gap: 10px;
   align-items: center;
   padding: 1rem;
+  margin-top: 2rem;
 }
