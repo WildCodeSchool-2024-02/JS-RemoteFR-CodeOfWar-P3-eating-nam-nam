@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   flex-shrink: 0;
+  margin: auto;
 }
 .reception > .left > h1 {
   color: var(--primary-green);
