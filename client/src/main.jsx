@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import "./styles/main.css";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+
+import PanelAdmin from "./pages/userAdmin/PanelAdmin";
 import User from "./pages/User";
 
 const router = createBrowserRouter([
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <SignUp />,
+      },
+      {
+        path: "/panel-admin",
+        element: <PanelAdmin />,
       },
       {
         path: "/user",
