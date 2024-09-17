@@ -10,16 +10,15 @@ CREATE TABLE user (
    id INT AUTO_INCREMENT PRIMARY KEY,
    pseudo VARCHAR(50) NOT NULL,
    username VARCHAR(50) NOT NULL UNIQUE,
-   name VARCHAR(100) NOT NULL,
    password VARCHAR(255) NOT NULL,
    email VARCHAR(100) NOT NULL UNIQUE,
-   role VARCHAR(20) NOT NULL,
+   role VARCHAR(20) NOT NULL DEFAULT 0,
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO user (pseudo, username, name, password, email, role)
-VALUES ('GastroGeek', 'Ewan', 'Senergous', 'password', 'ewan@outlook.fr', 'admin')
-,('Chef_Gourmand', 'Kevin', 'Peset', 'password','kevin@outlook.fr', 'user'),
-('PatissierePoetique','Anais', 'Dufourneau', 'password', 'anais@outlook.fr','user');
+INSERT INTO user (pseudo, username, password, email, role)
+VALUES ('GastroGeek', 'Ewan', 'password', 'ewan@outlook.fr', 'admin')
+,('Chef_Gourmand', 'Kevin', 'password','kevin@outlook.fr', 'user'),
+('PatissierePoetique','Anais', 'password', 'anais@outlook.fr','user');
 
 CREATE TABLE recipe (
     id INT AUTO_INCREMENT PRIMARY KEY,
