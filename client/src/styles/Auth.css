@@ -11,6 +11,13 @@ form.auth {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+form.auth select {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--thirty-white, #f5f5f5);
+  width: 100%;
+}
+
 form.auth > h1 {
   margin: 0;
   font-size: 2rem;
