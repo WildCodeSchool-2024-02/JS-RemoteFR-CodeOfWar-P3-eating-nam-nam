@@ -1,9 +1,10 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Auth.css";
 import { useState } from "react";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [error, setError] = useState("");
 
   const handleSumbit = async (event) => {
@@ -12,15 +13,13 @@ export default function Login() {
     const password = event.target.elements.namedItem("pass").value;
 
     try {
-      const response = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_API_URL}/api/auth/login`,
         { email, password }
       );
-      console.info("Réponse du serveur: ", response);
 
-      // METTRE UNE REPONSE POUR L'UTILISATEUR
-      // Si jamais le login fail, il faut l'indiquer à l'utilisateur par la balise error
       setError("");
+      navigate("/")
     } catch (err) {
       console.error("Erreur lors de la connexion : ", err);
       setError("La connexion a échoué. Vérifiez vos identifiants");
