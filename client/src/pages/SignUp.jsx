@@ -12,14 +12,16 @@ export default function SignUp() {
     // (ON L'A FAIT DANS LE LOGIN)
 
     const username = event.target.elements.namedItem("username").value;
-    const password = event.target.elements.namedItem("pass").value;
+    const pseudo = event.target.elements.namedItem("pseudo").value;
+    const email = event.target.elements.namedItem("email").value;
+    const password = event.target.elements.namedItem("password").value;
     const confirmPassword =
-      event.target.elements.namedItem("confirmPass").value;
+      event.target.elements.namedItem("confirmPassword").value;
 
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/auth/register`,
-        { username, password, confirmPassword }
+        { username, password, pseudo, email, confirmPassword }
       );
       console.info("Réponse du server: ", response);
 
@@ -41,16 +43,34 @@ export default function SignUp() {
           <label htmlFor="username">Nom d'utilisateur</label>
           <input
             type="text"
-            name=""
+            name="username"
             id="username"
             placeholder="Votre nom d’utilisateur..."
+          />
+        </section>
+        <section>
+          <label htmlFor="pseudo">Pseudo</label>
+          <input
+            type="text"
+            name="pseudo"
+            id="pseudo"
+            placeholder="Votre pseudo..."
+          />
+        </section>
+        <section>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Votre email..."
           />
         </section>
         <section>
           <label htmlFor="password">Mot de passe</label>
           <input
             type="password"
-            name=""
+            name="password"
             id="password"
             placeholder="Votre mot de passe..."
           />
@@ -59,7 +79,7 @@ export default function SignUp() {
           <label htmlFor="password">Confirmer le mot de passe</label>
           <input
             type="password"
-            name=""
+            name="confirmPassword"
             id="confirm-password"
             placeholder="Votre mot de passe..."
           />
