@@ -1,21 +1,30 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/Auth.css";
+import { useState } from "react";
 
 export default function Login() {
+  const [error, setError] = useState("");
+
   const handleSumbit = async (event) => {
     event.preventDefault();
     const email = event.target.elements.namedItem("email").value;
     const password = event.target.elements.namedItem("pass").value;
 
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/auth/login`,
-      { email, password }
-    );
-    console.info("Réponse du serveur: ", response);
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        { email, password }
+      );
+      console.info("Réponse du serveur: ", response);
 
-    // METTRE UNE REPONSE POUR L'UTILISATEUR
-    // Si jamais le login fail, il faut l'indiquer à l'utilisateur par la balise error
+      // METTRE UNE REPONSE POUR L'UTILISATEUR
+      // Si jamais le login fail, il faut l'indiquer à l'utilisateur par la balise error
+      setError("");
+    } catch (err) {
+      console.error("Erreur lors de la connexion : ", err);
+      setError("La connexion a échoué. Vérifiez vos identifiants");
+    }
   };
 
   return (
@@ -40,7 +49,7 @@ export default function Login() {
             placeholder="Votre mot de passe..."
           />
         </section>
-        <p>...</p>
+        <p className="error">{error}</p>
       </div>
       <button type="submit">Je me connecte</button>
       <Link to="/connexion?forgot=true">J’ai oublié mon mot de passe...</Link>

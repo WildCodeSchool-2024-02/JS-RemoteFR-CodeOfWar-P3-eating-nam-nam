@@ -1,22 +1,37 @@
 import "../styles/Auth.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const navigate = useNavigate();
+
   const handleSumbit = async (event) => {
     event.preventDefault();
 
     // CHANGER LES event.target POUR AVOIR UNE SOLUTION PLUS OPTIMISER
     // (ON L'A FAIT DANS LE LOGIN)
 
-    const username = event.target[0].value;
-    const password = event.target[1].value;
-    const confirmPassword = event.target[2].value;
-    console.info(
-      `Username: ${username}\nPassword: ${password}\nConfirm Password: ${confirmPassword}`
-    );
+    const username = event.target.elements.namedItem("username").value;
+    const password = event.target.elements.namedItem("pass").value;
+    const confirmPassword =
+      event.target.elements.namedItem("confirmPass").value;
 
-    // LA REQUÊTE VERS POST /register
-    // (ON L'A FAIT DANS LE LOGIN)
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/register`,
+        { username, password, confirmPassword }
+      );
+      console.info("Réponse du server: ", response);
+
+      if (response.status === 200) {
+        navigate("/login");
+      }
+    } catch (err) {
+      console.error("Erreur lors de l'inscription : ", err);
+    }
   };
+  // LA REQUÊTE VERS POST /register
+  // (ON L'A FAIT DANS LE LOGIN)
 
   return (
     <form className="auth" onSubmit={handleSumbit}>

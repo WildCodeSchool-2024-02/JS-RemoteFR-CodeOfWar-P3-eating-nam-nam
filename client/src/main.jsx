@@ -11,6 +11,9 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import UserProfile from "./pages/UserProfile";
 
+import PanelAdmin from "./pages/userAdmin/PanelAdmin";
+import User from "./pages/User";
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -20,16 +23,24 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/connexion",
+        path: "/login",
         element: <Login />,
       },
       {
-        path: "/inscription",
+        path: "/register",
         element: <SignUp />,
       },
       {
         path: "/profil_utilisateur",
         element: <UserProfile />,
+      },
+      {
+        path: "/panel-admin",
+        element: <PanelAdmin />,
+      },
+      {
+        path: "/user",
+        element: <User />,
       },
     ],
   },

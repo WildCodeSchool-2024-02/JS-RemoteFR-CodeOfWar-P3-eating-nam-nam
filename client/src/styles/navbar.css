@@ -8,6 +8,7 @@ nav {
 
 nav + hr {
   width: 50%;
+  margin: auto;
 }
 
 nav > img {

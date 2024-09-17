@@ -50,6 +50,10 @@
   background-color: transparent;
 }
 
+.reception > .left {
+  margin: auto;
+}
+
 .reception > .left > article {
   display: flex;
   height: fit-content;
