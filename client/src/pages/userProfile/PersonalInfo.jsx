@@ -12,23 +12,25 @@ export default function PersonalInfo() {
     <div className="personal_info">
       <h2>MES INFOS PERSO</h2>
       <form>
-        {["PRENOM", "NOM", "EMAIL"].map((label) => (
-          <div key={label} className="user_info">
-            <label htmlFor={label.toLowerCase()}>{label}</label>
-            <input
-              id={label.toLowerCase()}
-              type={label === "EMAIL" ? "email" : "text"}
-            />
-          </div>
-        ))}
+        {["Nom d'utilisateur", "Civilité", "Prenom", "Nom", "E-mail"].map(
+          (label) => (
+            <div key={label} className="user_info">
+              <label htmlFor={label.toLowerCase()}>{label}</label>
+              <input
+                id={label.toLowerCase()}
+                type={label === "E-mail" ? "email" : "text"}
+              />
+            </div>
+          )
+        )}
 
         <div className="">
-          <label htmlFor="password">MOT DE PASSE</label>
+          <label htmlFor="password">Mot de passe</label>
           <div className="password_field">
             <input id="password" type={showPassword ? "text" : "password"} />
             <button
               type="button"
-              className="toggle_password_btn"
+              className="toggle_password_button"
               onClick={togglePassword}
             >
               {showPassword ? "Masquer" : "Afficher"}
@@ -39,7 +41,7 @@ export default function PersonalInfo() {
           </div>
         </div>
 
-        <button type="submit" className="submit-button">
+        <button type="submit" className="submit_button">
           Enregistrer
         </button>
       </form>
