@@ -70,9 +70,16 @@ const createToken = async (req, res, next) => {
 const verifyToken = async (req, res, next) => {
   try {
     const { auth } = req.cookies;
-    const result = await jwt.verify(auth, process.env.APP_SECRET);
-    console.info(result);
-    next();
+    jwt.verify(auth, process.env.APP_SECRET, (err, decoded) => {
+      if (err) {
+        return next(err);
+      }
+
+      console.info("Données décodées du token :", decoded);
+      req.params.id = decoded.id;
+
+      return next();
+    });
   } catch (error) {
     next(error);
   }

@@ -4,7 +4,9 @@ const router = express.Router();
 
 const userActions = require("../controllers/userActions");
 
-const { hashPassword } = require("../services/auth");
+const { hashPassword, verifyToken } = require("../services/auth");
+
+router.get("/profile", verifyToken, userActions.read);
 
 router.get("/", userActions.browse); // Pour lister tous les utilisateurs.
 
