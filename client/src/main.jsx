@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import "./styles/main.css";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import UserProfile from "./pages/UserProfile";
+import UserProfil from "./pages/UserProfile";
 
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
 import User from "./pages/User";
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: "/profil_utilisateur",
-        element: <UserProfile />,
+        path: "/User_profil",
+        element: <UserProfil />,
       },
       {
         path: "/panel-admin",
