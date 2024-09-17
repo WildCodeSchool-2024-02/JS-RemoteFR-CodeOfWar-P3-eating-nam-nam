@@ -12,7 +12,7 @@ import CreateRecipe from "./pages/CreateRecipe";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
-import Admin from "./pages/userAdmin/PanelAdmin";
+import PanelAdmin from "./pages/userAdmin/PanelAdmin";
 import User from "./pages/User";
 
 const router = createBrowserRouter([
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/panel-admin",
-        element: <Admin />,
+        element: <PanelAdmin />,
       },
       {
         path: "/user",

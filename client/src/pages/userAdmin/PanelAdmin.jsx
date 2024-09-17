@@ -7,7 +7,7 @@ const sections = [
   { title: "Newsletters" },
 ];
 
-export default function Admin() {
+export default function PanelAdmin() {
   return (
     <div className="dashboard-container">
       <h1>Modération Miam</h1>
