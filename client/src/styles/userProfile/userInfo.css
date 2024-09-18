@@ -4,6 +4,9 @@
   align-items: center;
   gap: 0.6rem;
   align-self: stretch;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .UserReception .Left {
@@ -19,10 +22,16 @@
   width: 6rem;
 }
 
+.UserReception .Left img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
 .UserReception .Right {
   display: flex;
   height: 6rem;
   width: 10rem;
+  border-radius: 8px;
   justify-content: space-between;
   text-align: center;
   flex-direction: column;

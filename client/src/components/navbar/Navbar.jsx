@@ -7,8 +7,8 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate("/login")
-  }
+    navigate("/login");
+  };
 
   return (
     <>
@@ -21,7 +21,9 @@ export default function Navbar() {
         <MenuBurger />
         <section>
           <Link to="/register">Inscription</Link>
-          <button onClick={handleLogin} type="button">Connexion</button>
+          <button onClick={handleLogin} type="button">
+            Connexion
+          </button>
         </section>
       </nav>
       <hr />
