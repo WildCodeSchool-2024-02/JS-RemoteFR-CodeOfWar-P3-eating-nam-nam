@@ -8,7 +8,7 @@ export default function UserProfile() {
     fullname: "",
     username: "",
     email: "",
-    civility: 0,
+    civility: "0",
   });
 
   useEffect(() => {

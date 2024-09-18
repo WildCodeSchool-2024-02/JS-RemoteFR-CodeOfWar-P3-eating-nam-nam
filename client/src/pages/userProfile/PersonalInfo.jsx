@@ -40,6 +40,7 @@ export default function PersonalInfo({ userData, setUserData }) {
         <div className="user_info">
           <label htmlFor="civility">Civilité</label>
           <select
+            name="civility"
             id="civility"
             value={userData.civility}
             onChange={handleInputChange}
@@ -53,6 +54,7 @@ export default function PersonalInfo({ userData, setUserData }) {
         <div className="user_info">
           <label htmlFor="username">Nom d'utilisateur</label>
           <input
+            name="username"
             id="username"
             type="text"
             value={userData.username}
@@ -63,6 +65,7 @@ export default function PersonalInfo({ userData, setUserData }) {
         <div className="user_info">
           <label htmlFor="fullname">Nom et prénom</label>
           <input
+            name="fullname"
             id="fullname"
             type="text"
             value={userData.fullname}
@@ -73,6 +76,7 @@ export default function PersonalInfo({ userData, setUserData }) {
         <div className="user_info">
           <label htmlFor="email">E-mail</label>
           <input
+            name="email"
             id="email"
             type="email"
             value={userData.email}
@@ -84,9 +88,9 @@ export default function PersonalInfo({ userData, setUserData }) {
           <label htmlFor="password">Mot de passe</label>
           <div className="password_field">
             <input
+              name="password"
               id="password"
               type={showPassword ? "text" : "password"}
-              value=""
               onChange={handleInputChange}
             />
             <button
