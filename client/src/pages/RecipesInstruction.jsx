@@ -87,7 +87,7 @@ export default function RecipesInstruction() {
         </div>
       </article>
 
-      <article className="Recette-test">
+      <article className="Recette-green">
         <div className="Recette">
           <h2>Recette</h2>
           <div className="Etape-Global">

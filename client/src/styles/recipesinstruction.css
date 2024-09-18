@@ -75,14 +75,13 @@
 
 .Liste-Ingredients {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 2fr);
   gap: 10px;
   max-width: 400px;
   margin: 2rem auto;
-  margin-right: 5.5rem;
 }
 
-.Recette-test {
+.Recette-green {
   background-color: var(--secondary-green);
   padding: 1rem;
 }
@@ -113,4 +112,14 @@
   align-items: center;
   padding: 1rem;
   margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .card-recipe-orange,
+  .card-recipe-green,
+  .Recette-green,
+  .Smiley-Langue {
+    max-width: 50%;
+    margin: 2rem auto;
+    border-radius: 24px;
+  }
 }
