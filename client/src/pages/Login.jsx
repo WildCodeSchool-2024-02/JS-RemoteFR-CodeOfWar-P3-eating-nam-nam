@@ -24,7 +24,8 @@ export default function Login() {
     try {
       await axios.post(
         `${import.meta.env.VITE_API_URL}/api/auth/login`,
-        formData
+        formData,
+        { withCredentials: true }
       );
       setError("");
       navigate("/");
