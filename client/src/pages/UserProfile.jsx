@@ -4,7 +4,12 @@ import UserInfo from "./userProfile/UserInfo";
 import { getUserProfil } from "../services/request";
 
 export default function UserProfile() {
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState({
+    fullname: "",
+    username: "",
+    email: "",
+    civility: 0,
+  });
 
   useEffect(() => {
     const fetchUserData = async () => {

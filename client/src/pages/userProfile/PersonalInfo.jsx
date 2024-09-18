@@ -17,8 +17,9 @@ export default function PersonalInfo({ userData, setUserData }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.info(userData);
     try {
-      const updatedUser = await updateUserProfil(userData.id, userData);
+      const updatedUser = await updateUserProfil(userData);
       setUserData(updatedUser);
       setNotification({
         type: "success",
@@ -85,7 +86,7 @@ export default function PersonalInfo({ userData, setUserData }) {
             <input
               id="password"
               type={showPassword ? "text" : "password"}
-              value={userData.password}
+              value=""
               onChange={handleInputChange}
             />
             <button

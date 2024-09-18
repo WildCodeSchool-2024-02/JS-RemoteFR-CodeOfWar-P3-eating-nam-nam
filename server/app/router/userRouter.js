@@ -14,7 +14,7 @@ router.get("/:id", userActions.read); // Pour afficher un utilisateur spécifiqu
 
 router.post("/", hashPassword, userActions.add); // Pour ajouter un nouvel utilisateur
 
-router.put("/:id", userActions.edit); // Pour modifier un utilisateur existant
+router.put("/:id", verifyToken, userActions.edit); // Pour modifier un utilisateur existant
 
 router.delete("/:id", userActions.destroy); // Pour supprimer un utilisateur
 

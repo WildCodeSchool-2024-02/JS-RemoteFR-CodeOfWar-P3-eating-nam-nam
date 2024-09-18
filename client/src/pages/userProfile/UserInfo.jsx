@@ -30,8 +30,6 @@ export default function UserInfo({ userData }) {
 }
 
 UserInfo.propTypes = {
-  userData: PropTypes.shape({
-    civility: PropTypes.oneOf(["0", "1", "2"]).isRequired,
-    created_at: PropTypes.string.isRequired,
-  }).isRequired,
-};
+  civility: PropTypes.oneOf([0, 1, 2]).isRequired,
+  created_at: PropTypes.string.isRequired,
+}.isRequired;
