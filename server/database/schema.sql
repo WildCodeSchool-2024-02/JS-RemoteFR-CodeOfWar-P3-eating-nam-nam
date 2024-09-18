@@ -8,7 +8,7 @@ INSERT INTO difficulty (name) VALUES ('Facile'), ('Intermédiaire'), ('Difficile
 
 CREATE TABLE user (
    id INT AUTO_INCREMENT PRIMARY KEY,
-   pseudo VARCHAR(50) NOT NULL,
+   fullname VARCHAR(50) NOT NULL,
    username VARCHAR(50) NOT NULL UNIQUE,
    password VARCHAR(255) NOT NULL,
    email VARCHAR(100) NOT NULL UNIQUE,
@@ -17,7 +17,7 @@ CREATE TABLE user (
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-INSERT INTO user (pseudo, username, password, email, role)
+INSERT INTO user (username, fullname, password, email, role)
 VALUES ('GastroGeek', 'Ewan', 'password', 'ewan@outlook.fr', 'admin')
 ,('Chef_Gourmand', 'Kevin', 'password','kevin@outlook.fr', 'user'),
 ('PatissierePoetique','Anais', 'password', 'anais@outlook.fr','user');
@@ -30,14 +30,19 @@ CREATE TABLE recipe (
     description text NOT NULL,
     cooking_time INT NOT NULL,
     preparation_time INT NOT NULL,
-    instruction text NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
     FOREIGN KEY (difficulty_id) REFERENCES Difficulty(id)
 );
 
-INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) VALUES (2, 3, "Saint-honoré", 'lorem', 60, 120, 'lorem'), (3, 1, "Quiche Thon et tomates", 'lorem', 60, 20, 'lorem'), (2, 2, "Lasagnes bolognaise", 'lorem', 60, 60, 'lorem');
+CREATE TABLE recipe_step (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id INT NOT NULL,
+    step_number INT NOT NULL,
+    description TEXT NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES recipe(id) ON DELETE CASCADE
+);
 
 CREATE TABLE ingredient (
   id INT AUTO_INCREMENT PRIMARY KEY,
