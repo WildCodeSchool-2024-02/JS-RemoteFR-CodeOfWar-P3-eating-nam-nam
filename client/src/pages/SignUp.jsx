@@ -8,7 +8,7 @@ export default function SignUp() {
   const [formData, setFormData] = useState({
     civility: "0",
     username: "",
-    pseudo: "",
+    fullname: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -66,13 +66,13 @@ export default function SignUp() {
           />
         </section>
         <section>
-          <label htmlFor="pseudo">Pseudo</label>
+          <label htmlFor="pseudo">Nom et prénom</label>
           <input
             type="text"
-            name="pseudo"
-            id="pseudo"
-            placeholder="Votre pseudo..."
-            value={formData.pseudo}
+            name="fullname"
+            id="fullname"
+            placeholder="Votre nom et prénom..."
+            value={formData.fullname}
             onChange={handleChange}
           />
         </section>

@@ -8,7 +8,7 @@ INSERT INTO difficulty (name) VALUES ('Facile'), ('Intermédiaire'), ('Difficile
 
 CREATE TABLE user (
    id INT AUTO_INCREMENT PRIMARY KEY,
-   pseudo VARCHAR(50) NOT NULL,
+   fullname VARCHAR(50) NOT NULL,
    username VARCHAR(50) NOT NULL UNIQUE,
    password VARCHAR(255) NOT NULL,
    email VARCHAR(100) NOT NULL UNIQUE,
@@ -17,7 +17,7 @@ CREATE TABLE user (
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-INSERT INTO user (pseudo, username, password, email, role)
+INSERT INTO user (username, fullname, password, email, role)
 VALUES ('GastroGeek', 'Ewan', 'password', 'ewan@outlook.fr', 'admin')
 ,('Chef_Gourmand', 'Kevin', 'password','kevin@outlook.fr', 'user'),
 ('PatissierePoetique','Anais', 'password', 'anais@outlook.fr','user');
