@@ -15,24 +15,24 @@
   color: var(--primary-green);
 }
 
-form {
+.personal_info form {
   display: flex;
   flex-direction: column;
 }
 
-.user_info {
+.personal_info .user_info {
   margin-bottom: 15px;
 }
 
-.user_info label {
+.personal_info .user_info label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   font-family: var(--lorem-font);
 }
 
-.user_info input,
-.user_info select {
+.personal_info .user_info input,
+.personal_info .user_info select {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -40,12 +40,16 @@ form {
   font-size: 16px;
 }
 
-.password_field {
+.personal_info .password_field {
   display: flex;
   align-items: center;
 }
 
-.password_field input {
+.personal_info .settings-password-block label {
+  font-weight: bold;
+}
+
+.personal_info .password_field input {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
@@ -53,7 +57,7 @@ form {
   font-size: 16px;
 }
 
-.toggle_password_button {
+.personal_info .toggle_password_button {
   margin-left: 10px;
   padding: 10px 15px;
   border: none;
@@ -63,7 +67,7 @@ form {
   cursor: pointer;
 }
 
-.modify_button {
+.personal_info .modify_button {
   margin-left: 10px;
   padding: 10px 15px;
   border: none;
@@ -73,11 +77,11 @@ form {
   cursor: pointer;
 }
 
-.modify_button:active {
+.personal_info .modify_button:active {
   transform: scale(1.03);
 }
 
-.submit_button {
+.personal_info .submit_button {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -88,22 +92,22 @@ form {
   margin-top: 20px;
 }
 
-.submit_button:active {
+.personal_info .submit_button:active {
   transform: scale(1.01);
 }
 
-.notification {
+.personal_info .notification {
   margin-top: 20px;
   padding: 10px;
   border-radius: 4px;
 }
 
-.notification.success {
+.personal_info .notification.success {
   background-color: #d4edda;
   color: #155724;
 }
 
-.notification.error {
+.personal_info .notification.error {
   color: red;
   text-align: center;
   text-transform: uppercase;
