@@ -12,7 +12,11 @@ export default function PersonalInfo({ userData, setUserData }) {
   };
 
   const handleInputChange = (event) => {
-    setUserData({ ...userData, [event.target.id]: event.target.value });
+    const { name, value } = event.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (event) => {
