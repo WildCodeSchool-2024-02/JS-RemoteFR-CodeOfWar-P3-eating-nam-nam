@@ -16,10 +16,7 @@ class DifficultyRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `SELECT difficulty.name
-FROM recipe
-INNER JOIN difficulty
-ON difficulty.id = recipe.difficulty_id;`,
+      `select * from ${this.table} where id = ?`,
       [id]
     );
     return rows[0];
