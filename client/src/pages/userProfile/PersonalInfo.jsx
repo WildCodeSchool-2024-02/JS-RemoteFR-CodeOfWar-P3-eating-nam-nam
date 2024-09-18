@@ -38,12 +38,15 @@ export default function PersonalInfo({ userData, setUserData }) {
       <form onSubmit={handleSubmit}>
         <div className="user_info">
           <label htmlFor="civility">Civilité</label>
-          <input
+          <select
             id="civility"
-            type="text"
             value={userData.civility}
             onChange={handleInputChange}
-          />
+          >
+            <option value="0">Monsieur</option>
+            <option value="1">Madame</option>
+            <option value="2">Autre</option>
+          </select>
         </div>
 
         <div className="user_info">

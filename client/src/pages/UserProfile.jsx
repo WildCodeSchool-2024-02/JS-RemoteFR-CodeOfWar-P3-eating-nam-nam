@@ -21,7 +21,7 @@ export default function UserProfile() {
 
   return (
     <>
-      <UserInfo userData={userData} />
+      {userData ? <UserInfo userData={userData} /> : null}
       {userData ? (
         <PersonalInfo userData={userData} setUserData={setUserData} />
       ) : null}
