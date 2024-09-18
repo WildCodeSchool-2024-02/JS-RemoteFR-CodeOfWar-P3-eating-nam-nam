@@ -14,6 +14,7 @@ import SignUp from "./pages/SignUp";
 
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
 import User from "./pages/User";
+import LeBuffet from "./pages/leBuffet/LeBuffet";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/user",
         element: <User />,
+      },
+      {
+        path: "/le-buffet",
+        element: <LeBuffet />,
       },
     ],
   },
