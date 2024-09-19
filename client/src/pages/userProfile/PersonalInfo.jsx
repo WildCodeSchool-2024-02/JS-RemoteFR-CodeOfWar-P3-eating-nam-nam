@@ -1,7 +1,7 @@
 import "../../styles/userProfile/personalInfo.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { updateUserProfil } from "../../services/request";
+import { updateUserProfil } from "../../services/requestUserProfile";
 
 export default function PersonalInfo({ userData, setUserData }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,10 +21,8 @@ export default function PersonalInfo({ userData, setUserData }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.info(userData);
     try {
-      const updatedUser = await updateUserProfil(userData);
-      setUserData(updatedUser);
+      await updateUserProfil(userData);
       setNotification({
         type: "success",
         message: "Profil mis à jour avec succès !",
@@ -34,6 +32,10 @@ export default function PersonalInfo({ userData, setUserData }) {
         type: "error",
         message: "Échec de la mise à jour du profil.",
       });
+    } finally {
+      setTimeout(() => {
+        setNotification({ type: "", message: "" });
+      }, 10000);
     }
   };
 

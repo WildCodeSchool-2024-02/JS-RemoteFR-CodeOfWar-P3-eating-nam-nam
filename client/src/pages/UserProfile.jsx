@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import PersonalInfo from "./userProfile/PersonalInfo";
 import UserInfo from "./userProfile/UserInfo";
-import { getUserProfil } from "../services/request";
+import { getUserProfil } from "../services/requestUserProfile";
 
 export default function UserProfile() {
   const [userData, setUserData] = useState({
