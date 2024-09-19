@@ -43,7 +43,7 @@ const platData = [
   { name: "Cheeseburger", image: cheeseburger },
   { name: "Galette complète", image: galetteComplete },
   { name: "Makis", image: makis },
-  { name: "Pate bolognaise", image: pateBolognaise },
+  { name: "Boulettes bolognaise", image: pateBolognaise },
   { name: "Poisson haricots purée", image: poissonHaricotsPuree },
   { name: "Porc au caramel", image: porcAuCaramel },
   { name: "Poulet au curry", image: pouletAuCurry },
