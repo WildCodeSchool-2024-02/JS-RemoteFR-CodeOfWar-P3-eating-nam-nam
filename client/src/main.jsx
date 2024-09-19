@@ -14,7 +14,7 @@ import UserProfil from "./pages/UserProfile";
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
 import User from "./pages/User";
 
-import LeBuffet from "./pages/leBuffet/LeBuffet";
+import Buffet from "./pages/leBuffet/Buffet";
 
 import TheRecipes from "./pages/TheRecipes";
 import RecipesInstruction from "./pages/RecipesInstruction";
@@ -48,8 +48,8 @@ const router = createBrowserRouter([
         element: <User />,
       },
       {
-        path: "/the-buffet",
-        element: <LeBuffet />,
+        path: "/buffet",
+        element: <Buffet />,
       },
       {
         path: "/recipes",
