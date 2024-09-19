@@ -103,8 +103,10 @@
 }
 
 .personal_info .notification.success {
-  background-color: #d4edda;
-  color: #155724;
+  color: var(--primary-green);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .personal_info .notification.error {
