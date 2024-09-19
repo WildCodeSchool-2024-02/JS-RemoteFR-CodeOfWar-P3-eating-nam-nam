@@ -15,9 +15,11 @@ export default function Navbar() {
       <nav>
         <section>
           <Link to="/passer-en-cuisine">Passer en cuisine</Link>
-          <Link to="/recettes">Recettes</Link>
+          <Link to="/recipes">Recettes</Link>
         </section>
-        <img src={Logo} alt="Miam" />
+        <Link to="/">
+          <img src={Logo} alt="Miam" />
+        </Link>
         <MenuBurger />
         <section>
           <Link to="/register">Inscription</Link>
