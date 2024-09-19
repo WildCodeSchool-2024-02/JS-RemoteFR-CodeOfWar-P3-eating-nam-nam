@@ -5,16 +5,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
 import Home from "./pages/Home";
-import TheRecipes from "./pages/TheRecipes";
 
 import "./styles/main.css";
-import CreateRecipe from "./pages/CreateRecipe";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import UserProfil from "./pages/UserProfile";
 
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
 import User from "./pages/User";
+
 import LeBuffet from "./pages/leBuffet/LeBuffet";
+
+import TheRecipes from "./pages/TheRecipes";
+import RecipesInstruction from "./pages/RecipesInstruction";
 
 const router = createBrowserRouter([
   {
@@ -24,16 +27,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-
-      {
-        path: "/theRecipes",
-        element: <TheRecipes />,
-      },
-
-      {
-        path: "/create-recipe",
-        element: <CreateRecipe />,
-      },
       {
         path: "/login",
         element: <Login />,
@@ -41,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <SignUp />,
+      },
+      {
+        path: "/user-profil",
+        element: <UserProfil />,
       },
       {
         path: "/panel-admin",
@@ -53,6 +50,14 @@ const router = createBrowserRouter([
       {
         path: "/the-buffet",
         element: <LeBuffet />,
+      },
+      {
+        path: "/recipes",
+        element: <TheRecipes />,
+      },
+      {
+        path: "/recipes-instruction",
+        element: <RecipesInstruction />,
       },
     ],
   },
