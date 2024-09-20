@@ -15,14 +15,14 @@
 
 .le-buffet-container > p {
   color: var(--primary-brown);
-  width: 60%;
+  min-width: 10rem;
   text-align: center;
   margin: 0 auto;
   font-size: 1.5rem;
 }
 
 .Buffet-quote {
-  width: 50%;
+  min-width: 10rem;
   margin: 0 auto;
   margin-top: 5rem;
   margin-bottom: 5rem;
@@ -51,7 +51,7 @@
   color: var(--primary-green);
   font-family: var(--title-font);
   text-align: center;
-  font-size: 6rem;
+  font-size: 4rem;
   text-decoration: underline;
   text-decoration-thickness: 0.4em;
   text-decoration-color: #aee18d;
@@ -64,5 +64,14 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .Buffet-quote {
+    width: 50%;
+  }
+  .le-buffet-container > p {
+    width: 60%;
+  }
+  .dish-section > h2 {
+    font-size: 6rem;
   }
 }
