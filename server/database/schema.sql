@@ -152,7 +152,10 @@ INSERT INTO ingredient (name) VALUES
 ('Raisin sec'),
 ('Rhubarbe'),
 ('Thon'),
+('Foie gras'),
+('Pain'),
 ('Yuzu');
+
 
 
  CREATE TABLE Recipe_Ingredient (
@@ -165,5 +168,6 @@ INSERT INTO ingredient (name) VALUES
     FOREIGN KEY (ingredient_id) REFERENCES Ingredient(id) ON DELETE CASCADE
 ); 
 INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id ) 
-VALUES (2, 1, 'boite de', 106 ), (2, 2, "", 66 );
+VALUES (4, 4, 'tranches de', 107 ), (4, 10, "toasts de", 108 ),
+(2, 1, 'boite de', 106 ), (2, 2, "", 66 );
 
