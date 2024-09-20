@@ -9,6 +9,15 @@ import Home from "./pages/Home";
 import CreateRecipe from "./pages/CreateRecipe";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import UserProfil from "./pages/UserProfile";
+
+import PanelAdmin from "./pages/userAdmin/PanelAdmin";
+import User from "./pages/User";
+
+import Buffet from "./pages/leBuffet/Buffet";
+
+import TheRecipes from "./pages/TheRecipes";
+import RecipesInstruction from "./pages/RecipesInstruction";
 
 import "./styles/main.css";
 
@@ -40,17 +49,41 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/connexion",
+        path: "/login",
         element: <Login />,
       },
       {
-        path: "/inscription",
+        path: "/register",
         element: <SignUp />,
       },
       {
         path: "/create-recipe",
         element: <CreateRecipe />,
         loader: combinedLoader,
+      },
+      {
+        path: "/user-profil",
+        element: <UserProfil />,
+      },
+      {
+        path: "/panel-admin",
+        element: <PanelAdmin />,
+      },
+      {
+        path: "/user",
+        element: <User />,
+      },
+      {
+        path: "/buffet",
+        element: <Buffet />,
+      },
+      {
+        path: "/recipes",
+        element: <TheRecipes />,
+      },
+      {
+        path: "/recipes-instruction",
+        element: <RecipesInstruction />,
       },
     ],
   },

@@ -8,6 +8,7 @@ div.reception > .left {
   flex-direction: column;
   align-items: center;
   flex-shrink: 0;
+  margin: auto;
 }
 div.reception > .left > h1 {
   color: var(--primary-green);
@@ -74,7 +75,7 @@ div.reception > .left > article {
   color: var(--primary-green);
 }
 
-.right {
+.reception > .right {
   display: none;
 }
 

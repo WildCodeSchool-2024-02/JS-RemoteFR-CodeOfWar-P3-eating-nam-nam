@@ -1,0 +1,66 @@
+.user-page {
+  margin: 1rem;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  background-color: var(--primary-white);
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 50%;
+  margin-right: 0.6rem;
+}
+
+.profile-details {
+  margin-left: 0.6rem;
+}
+
+.profile-description {
+  margin-top: 0.3rem;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.add-recipe-button {
+  padding: 0.6rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  background-color: var(--primary-green);
+  color: white;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.edit-recipe-button {
+  padding: 0.6rem 3.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  background-color: var(--primary-green);
+  color: white;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.add-recipe-button:hover,
+.edit-recipe-button:hover {
+  transform: scale(1.25);
+}

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { motion, Reorder } from "framer-motion";
 import "../../styles/create/recipeSteps.css";
 
-function RecipeSteps({ steps, updateSteps }) {
+export default function RecipeSteps({ steps, updateSteps }) {
   const addStep = () => {
     const newStep = {
       id: String(Date.now()),
@@ -74,5 +74,3 @@ RecipeSteps.propTypes = {
   ).isRequired,
   updateSteps: PropTypes.func.isRequired,
 };
-
-export default RecipeSteps;

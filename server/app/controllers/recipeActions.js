@@ -13,7 +13,7 @@ const read = async (req, res, next) => {
   try {
     const recipe = await tables.recipe.read(Number(req.params.id));
     if (recipe == null) {
-      res.sendStatus(404);
+      res.status(404).send("Aucun résultat");
     } else {
       res.json(recipe);
     }
