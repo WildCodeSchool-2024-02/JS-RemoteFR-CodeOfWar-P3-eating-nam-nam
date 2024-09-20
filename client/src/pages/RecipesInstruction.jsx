@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import "../styles/recipesinstruction.css";
 import photoProfil from "../assets/images/user_picture.png";
@@ -12,21 +13,20 @@ import smileyLangue from "../assets/images/smiley_langue.svg";
 import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
-  const [recipe, setRecipe] = useState([]);
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState({});
   const stars = [1, 2, 3, 4, 5];
 
-  const fetchData = () => {
+  const fetchData = useCallback(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recipes/2`)
+      .get(`${import.meta.env.VITE_API_URL}/api/recipes/${id}`)
       .then((response) => setRecipe(response.data))
       .catch((error) => console.error(error));
-  };
+  }, [id]);
 
   useEffect(() => {
     fetchData();
-  }, []);
-
-  console.info(recipe);
+  }, [fetchData]);
 
   return (
     <div className="card-recipe">
