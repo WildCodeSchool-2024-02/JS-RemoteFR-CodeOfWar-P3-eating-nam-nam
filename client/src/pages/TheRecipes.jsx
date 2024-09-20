@@ -1,4 +1,4 @@
-import Carrousel from "../components/navbar/Carrousel";
+import Carrousel from "../components/Carrousel";
 import "../styles/therecipes.css";
 
 import gazpachoTomate from "../assets/images/gazpacho_tomate.svg";

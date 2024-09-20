@@ -1,4 +1,4 @@
--- SQLBook: Code
+
 CREATE TABLE difficulty (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
@@ -154,18 +154,16 @@ INSERT INTO ingredient (name) VALUES
 ('Thon'),
 ('Yuzu');
 
-SELECT * 
-FROM ingredient
-ORDER BY name;
-
 
  CREATE TABLE Recipe_Ingredient (
     recipe_id INT NOT NULL,
-    ingredient_id INT NOT NULL,
     quantity DECIMAL(10,2),
     unit VARCHAR(20),
+    ingredient_id INT NOT NULL,
     PRIMARY KEY (recipe_id, ingredient_id),
     FOREIGN KEY (recipe_id) REFERENCES Recipe(id) ON DELETE CASCADE,
     FOREIGN KEY (ingredient_id) REFERENCES Ingredient(id) ON DELETE CASCADE
 ); 
-INSERT INTO recipe_ingredient (recipe_id, ingredient_id, quantity, unit ) VALUES (2, 106, 1, 0 ), (2, 66, 2, 0);
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id ) 
+VALUES (2, 1, 'boite de', 106 ), (2, 2, "", 66 );
+
