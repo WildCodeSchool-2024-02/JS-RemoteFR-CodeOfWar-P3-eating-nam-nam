@@ -17,7 +17,7 @@ export default function RecipesInstruction() {
 
   const fetchData = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recipes/1`)
+      .get(`${import.meta.env.VITE_API_URL}/api/recipes/2`)
       .then((response) => setRecipe(response.data))
       .catch((error) => console.error(error));
   };
@@ -58,7 +58,7 @@ export default function RecipesInstruction() {
           <div className="Difficulty-Heart">
             <div className="Difficulty-bar">
               <img src={difficulty} alt="difficulté" />
-              <p className="difficulty-name">{recipe.difficulty_name}</p>
+              <p className="difficulty-name">{recipe.difficulty}</p>
             </div>
             <img src={heartRed} alt="coeur rouge" />
           </div>
@@ -89,14 +89,16 @@ export default function RecipesInstruction() {
         <article className="Ingredients">
           <h2>Ingrédients</h2>
           <div className="Liste-Ingredients">
-            <div>100g de pâtes</div>
-            <div>80g sauce tomate</div>
-            <div>1 càs parmesan</div>
-            <div>1 càs chapelure</div>
-            <div>1 steak haché</div>
-            <div>1/4 oeuf</div>
-            <div>1/4 échalote</div>
-            <div>3 feuilles de basilic</div>
+            {recipe?.ingredients?.length > 0 ? (
+              recipe.ingredients.map((ingredient) => (
+                <div key={ingredient.name}>
+                  {parseInt(ingredient.quantity, 10)} {ingredient.unit}{" "}
+                  {ingredient.name}
+                </div>
+              ))
+            ) : (
+              <p>Ingrédients non disponibles</p>
+            )}
           </div>
         </article>
 

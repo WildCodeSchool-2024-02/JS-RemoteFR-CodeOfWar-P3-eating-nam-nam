@@ -90,7 +90,7 @@ export default function PersonalInfo({ userData, setUserData }) {
           />
         </div>
 
-        <div className="">
+        <div className="settings-password-block">
           <label htmlFor="password">Mot de passe</label>
           <div className="password_field">
             <input

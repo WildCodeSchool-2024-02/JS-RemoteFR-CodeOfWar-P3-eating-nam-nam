@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "../../styles/carrousel.css";
+import "../styles/carrousel.css";
 
 export default function Carrousel({ items }) {
   const carrouselRef = useRef(null);

@@ -19,9 +19,13 @@ export default function UserInfo({ userData }) {
           <h1>MON PROFIL</h1>
         </article>
         <article className="bottom">
-          <p>Civilité: {getCivility(userData.civility)}</p>
           <p>
-            Inscrit depuis: {new Date(userData.created_at).toLocaleDateString()}
+            <span className="bold-text">Civilité:</span>{" "}
+            {getCivility(userData.civility)}
+          </p>
+          <p>
+            <span className="bold-text">Inscrit depuis:</span>{" "}
+            {new Date(userData.created_at).toLocaleDateString()}
           </p>
         </article>
       </section>

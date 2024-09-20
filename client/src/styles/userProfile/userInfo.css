@@ -12,14 +12,15 @@
 .UserReception .Left {
   display: flex;
   width: 7rem;
-  height: 7rem;
+  height: auto;
   padding: 0.6rem;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
 }
+
 .UserReception .Left img {
-  width: 6rem;
+  width: 100%;
 }
 
 .UserReception .Left img:hover {
@@ -30,9 +31,9 @@
 .UserReception .Right {
   display: flex;
   height: 6rem;
-  width: 10rem;
+  width: 15rem;
   border-radius: 8px;
-  justify-content: space-between;
+  justify-content: space-around;
   text-align: center;
   flex-direction: column;
   align-items: center;
@@ -62,4 +63,24 @@
   font-size: 0.6rem;
   font-weight: 300;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.UserReception .bold-text {
+  font-weight: bold;
+}
+
+@media (min-width: 1280px) {
+  .UserReception .Left {
+    width: 10rem;
+  }
+  .UserReception .Right {
+    height: 8rem;
+    width: 20rem;
+  }
+  .UserReception > .Right > .bottom > p {
+    font-size: 0.9rem;
+  }
 }
