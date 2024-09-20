@@ -30,11 +30,19 @@ CREATE TABLE recipe (
     description text NOT NULL,
     cooking_time INT NOT NULL,
     preparation_time INT NOT NULL,
-    instruction text NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
     FOREIGN KEY (difficulty_id) REFERENCES Difficulty(id)
+);
+
+CREATE TABLE recipe_step (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id INT NOT NULL,
+    step_number INT NOT NULL,
+    description TEXT NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES recipe(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_recipe_step (recipe_id, step_number)
 );
 
 INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) VALUES (2, 3, "Saint-honoré", "Le Saint-Honoré est un dessert classique de la pâtisserie française, composé d'une base de pâte feuilletée, surmontée de choux garnis de crème chiboust et caramélisés, le tout décoré de chantilly", 60, 120, 'lorem'), (3, 1, "Quiche Thon et tomates","Une quiche savoureuse et facile à réaliser, à base de thon et de tomates fraîches, parfaite pour un repas léger ou un pique-nique.", 60, 20, 'lorem'), (2, 2, "Lasagnes bolognaise","Des lasagnes à la bolognaise classiques, avec une sauce riche en viande hachée, sauce tomate et une béchamel crémeuse. Un plat italien incontournable et généreux." , 60, 60, 'lorem'),(2, 1, "Toast foie gras", "Le foie gras est un mets délicat français, préparé à partir du foie d'oie ou de canard engraissé. Il est apprécié pour sa texture fondante et son goût riche et subtil.", 2, 5, 'lorem');
