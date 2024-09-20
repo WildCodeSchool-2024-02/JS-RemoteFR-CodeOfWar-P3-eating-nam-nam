@@ -4,15 +4,15 @@ import "../../styles/userProfile/userInfo.css";
 
 export default function UserInfo({ userData }) {
   const getCivility = (civility) => {
-    if (civility === "0") return "Monsieur";
-    if (civility === "1") return "Madame";
+    if (civility === 0 || civility === "0") return "Monsieur";
+    if (civility === 1 || civility === "1") return "Madame";
     return "Autre";
   };
 
   return (
     <div className="UserReception">
       <section className="Left">
-        <img src={userPicture} alt="Photo_utilisateur" />
+        <img src={userPicture} alt="utilisateur" />
       </section>
       <section className="Right">
         <article className="top">

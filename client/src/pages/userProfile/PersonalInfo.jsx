@@ -1,7 +1,7 @@
 import "../../styles/userProfile/personalInfo.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { updateUserProfil } from "../../services/request";
+import { updateUserProfil } from "../../services/requestUserProfile";
 
 export default function PersonalInfo({ userData, setUserData }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,15 +12,17 @@ export default function PersonalInfo({ userData, setUserData }) {
   };
 
   const handleInputChange = (event) => {
-    setUserData({ ...userData, [event.target.id]: event.target.value });
+    const { name, value } = event.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.info(userData);
     try {
-      const updatedUser = await updateUserProfil(userData);
-      setUserData(updatedUser);
+      await updateUserProfil(userData);
       setNotification({
         type: "success",
         message: "Profil mis à jour avec succès !",
@@ -30,6 +32,10 @@ export default function PersonalInfo({ userData, setUserData }) {
         type: "error",
         message: "Échec de la mise à jour du profil.",
       });
+    } finally {
+      setTimeout(() => {
+        setNotification({ type: "", message: "" });
+      }, 10000);
     }
   };
 
@@ -40,6 +46,7 @@ export default function PersonalInfo({ userData, setUserData }) {
         <div className="user_info">
           <label htmlFor="civility">Civilité</label>
           <select
+            name="civility"
             id="civility"
             value={userData.civility}
             onChange={handleInputChange}
@@ -53,6 +60,7 @@ export default function PersonalInfo({ userData, setUserData }) {
         <div className="user_info">
           <label htmlFor="username">Nom d'utilisateur</label>
           <input
+            name="username"
             id="username"
             type="text"
             value={userData.username}
@@ -63,6 +71,7 @@ export default function PersonalInfo({ userData, setUserData }) {
         <div className="user_info">
           <label htmlFor="fullname">Nom et prénom</label>
           <input
+            name="fullname"
             id="fullname"
             type="text"
             value={userData.fullname}
@@ -73,6 +82,7 @@ export default function PersonalInfo({ userData, setUserData }) {
         <div className="user_info">
           <label htmlFor="email">E-mail</label>
           <input
+            name="email"
             id="email"
             type="email"
             value={userData.email}
@@ -84,9 +94,9 @@ export default function PersonalInfo({ userData, setUserData }) {
           <label htmlFor="password">Mot de passe</label>
           <div className="password_field">
             <input
+              name="password"
               id="password"
               type={showPassword ? "text" : "password"}
-              value=""
               onChange={handleInputChange}
             />
             <button
