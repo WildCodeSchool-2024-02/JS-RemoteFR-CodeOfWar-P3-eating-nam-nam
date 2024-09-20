@@ -1,39 +1,35 @@
-import { useState } from 'react';
-import { motion, Reorder } from 'framer-motion';
-import '../../styles/create/recipeSteps.css';
+import PropTypes from "prop-types";
+import { motion, Reorder } from "framer-motion";
+import "../../styles/create/recipeSteps.css";
 
-function RecipeSteps() {
-  const [steps, setSteps] = useState([
-    { id: '1', content: 'Préchauffez le four à 180°C' },
-    { id: '2', content: 'Mélangez les ingrédients dans un bol' },
-    { id: '3', content: 'Versez la pâte dans le moule' },
-  ]);
-
+function RecipeSteps({ steps, updateSteps }) {
   const addStep = () => {
     const newStep = {
       id: String(Date.now()),
       content: `Nouvelle étape ${steps.length + 1}`,
     };
-    setSteps([...steps, newStep]);
+    updateSteps([...steps, newStep]);
   };
 
   const updateStep = (id, newContent) => {
-    setSteps(steps.map(step => 
-      step.id === id ? { ...step, content: newContent } : step
-    ));
+    updateSteps(
+      steps.map((step) =>
+        step.id === id ? { ...step, content: newContent } : step
+      )
+    );
   };
 
   const deleteStep = (id) => {
-    setSteps(steps.filter(step => step.id !== id));
+    updateSteps(steps.filter((step) => step.id !== id));
   };
 
   return (
     <div className="recipe-steps">
       <h2>Étapes de la Recette</h2>
-      <Reorder.Group axis="y" values={steps} onReorder={setSteps}>
+      <Reorder.Group axis="y" values={steps} onReorder={updateSteps}>
         {steps.map((step, index) => (
           <Reorder.Item key={step.id} value={step}>
-            <motion.div 
+            <motion.div
               className="step-card"
               layout
               initial={{ opacity: 0 }}
@@ -49,9 +45,9 @@ function RecipeSteps() {
                   onChange={(e) => updateStep(step.id, e.target.value)}
                   className="step-input"
                 />
-                <button 
-                  className="delete-button" 
-                  type='button'
+                <button
+                  className="delete-button"
+                  type="button"
                   onClick={() => deleteStep(step.id)}
                 >
                   &#10060;
@@ -68,5 +64,15 @@ function RecipeSteps() {
     </div>
   );
 }
+
+RecipeSteps.propTypes = {
+  steps: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  updateSteps: PropTypes.func.isRequired,
+};
 
 export default RecipeSteps;

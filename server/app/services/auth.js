@@ -54,7 +54,7 @@ const createToken = async (req, res, next) => {
   try {
     const payload = req.user;
 
-    const token = await jwt.sign(payload, process.env.APP_SECRET, {
+    const token = jwt.sign(payload, process.env.APP_SECRET, {
       expiresIn: "1h",
     });
 
@@ -70,8 +70,10 @@ const createToken = async (req, res, next) => {
 const verifyToken = async (req, res, next) => {
   try {
     const { auth } = req.cookies;
-    const result = await jwt.verify(auth, process.env.APP_SECRET);
-    console.info(result);
+    jwt.verify(auth, process.env.APP_SECRET, (err, decode) => {
+      if (err) console.error(err);
+      req.body.jwtUser = decode;
+    });
     next();
   } catch (error) {
     next(error);

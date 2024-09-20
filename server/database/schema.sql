@@ -150,7 +150,6 @@ INSERT INTO ingredient (name) VALUES
 ('Rhubarbe'),
 ('Yuzu');
 
-
 CREATE TABLE Recipe_Ingredient (
     recipe_id INT NOT NULL,
     ingredient_id INT NOT NULL,
