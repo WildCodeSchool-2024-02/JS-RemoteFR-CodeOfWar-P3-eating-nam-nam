@@ -1,6 +1,6 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-// import "../../styles/carrousel.css";
 import "../styles/carrousel.css";
 
 export default function Carrousel({ items }) {
@@ -41,8 +41,12 @@ export default function Carrousel({ items }) {
       <div className="carrousel" ref={carrouselRef}>
         {items.map(({ id, image, name }) => (
           <div key={id} className="cards">
-            <img src={image} alt={name} />
-            <h3>{name}</h3>
+            <Link to="/recipes-instruction">
+              <img src={image} alt={name} />
+            </Link>
+            <Link to="/recipes-instruction">
+              <h3>{name}</h3>
+            </Link>
           </div>
         ))}
       </div>
