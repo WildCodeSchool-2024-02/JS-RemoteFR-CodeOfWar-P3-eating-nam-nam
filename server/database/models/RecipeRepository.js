@@ -36,7 +36,7 @@ class RecipeRepository extends AbstractRepository {
        ingredient.name AS ingredient_name
       FROM ${this.table} 
       INNER JOIN difficulty 
-      ON recipe.ddynaifficulty_id = difficulty.id
+      ON recipe.difficulty_id = difficulty.id
       INNER JOIN recipe_ingredient 
       ON recipe_ingredient.recipe_id = recipe.id
       INNER JOIN ingredient
