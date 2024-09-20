@@ -1,4 +1,4 @@
--- SQLBook: Code
+
 CREATE TABLE difficulty (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
@@ -166,3 +166,4 @@ INSERT INTO ingredient (name) VALUES
 ); 
 INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id ) 
 VALUES (2, 1, 'boite de', 106 ), (2, 2, "", 66 );
+
