@@ -188,3 +188,13 @@ CREATE TABLE Recipe_Ingredient (
 
 INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id ) 
 VALUES (2, 1, 'boite de', 106 ), (2, 2, "", 66 );
+
+CREATE TABLE comment (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    recipes_id INT NOT NULL,
+    user_id INT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (recipe_id) REFERENCES recipe(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+);
