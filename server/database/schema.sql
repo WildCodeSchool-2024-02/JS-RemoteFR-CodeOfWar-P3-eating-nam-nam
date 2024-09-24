@@ -45,27 +45,17 @@ CREATE TABLE recipe_step (
     UNIQUE KEY unique_recipe_step (recipe_id, step_number)
 );
 
-INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) VALUES (2, 3, "Saint-honoré", "Le Saint-Honoré est un dessert classique de la pâtisserie française, composé d'une base de pâte feuilletée, surmontée de choux garnis de crème chiboust et caramélisés, le tout décoré de chantilly", 60, 120, 'lorem'), (3, 1, "Quiche Thon et tomates","Une quiche savoureuse et facile à réaliser, à base de thon et de tomates fraîches, parfaite pour un repas léger ou un pique-nique.", 60, 20, 'lorem'), (2, 2, "Lasagnes bolognaise","Des lasagnes à la bolognaise classiques, avec une sauce riche en viande hachée, sauce tomate et une béchamel crémeuse. Un plat italien incontournable et généreux." , 60, 60, 'lorem'),(2, 1, "Toast foie gras", "Le foie gras est un mets délicat français, préparé à partir du foie d'oie ou de canard engraissé. Il est apprécié pour sa texture fondante et son goût riche et subtil.", 2, 5, 'lorem');
+INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, preparation_time) 
+VALUES 
+(2, 3, "Saint-honoré", "Le Saint-Honoré est un dessert classique de la pâtisserie française, composé d'une base de pâte feuilletée, surmontée de choux garnis de crème chiboust et caramélisés, le tout décoré de chantilly", 60, 120),
+(3, 1, "Quiche Thon et tomates","Une quiche savoureuse et facile à réaliser, à base de thon et de tomates fraîches, parfaite pour un repas léger ou un pique-nique.", 60, 20),
+(2, 2, "Lasagnes bolognaise","Des lasagnes à la bolognaise classiques, avec une sauce riche en viande hachée, sauce tomate et une béchamel crémeuse. Un plat italien incontournable et généreux." , 60, 60),
+(2, 1, "Toast foie gras", "Le foie gras est un mets délicat français, préparé à partir du foie d'oie ou de canard engraissé. Il est apprécié pour sa texture fondante et son goût riche et subtil.", 2, 5);
 
 CREATE TABLE ingredient (
     id INT AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(100) NOT NULL UNIQUE
  );
-
-CREATE TABLE Recipe_Ingredient (
-    recipe_id INT NOT NULL,
-    ingredient_id INT NOT NULL,
-    quantity DECIMAL(10,2),
-    unit VARCHAR(20),
-    PRIMARY KEY (recipe_id, ingredient_id),
-    FOREIGN KEY (recipe_id) REFERENCES Recipes(id) ON DELETE CASCADE,
-    FOREIGN KEY (ingredient_id) REFERENCES Ingredient(id) ON DELETE CASCADE
-);
-
-CREATE TABLE ingredient (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100) NOT NULL UNIQUE
-);
 
 INSERT INTO ingredient (name) VALUES 
 ('Ail'),
