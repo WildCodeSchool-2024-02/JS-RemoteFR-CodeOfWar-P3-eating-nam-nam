@@ -26,6 +26,4 @@ const upload = multer({ storage });
 
 router.post("/", verifyToken, upload.single("file"), add);
 
-router.use("/", verifyToken, express.static("public/upload/"));
-
 module.exports = router;
