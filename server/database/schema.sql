@@ -29,7 +29,6 @@ CREATE TABLE recipe (
     description text NOT NULL,
     cooking_time INT NOT NULL,
     preparation_time INT NOT NULL,
-    instruction text NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
