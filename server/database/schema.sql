@@ -199,7 +199,9 @@ INSERT INTO ingredient (name) VALUES
 ('huile végétale'),
 ('gingembre frais'),
 ('croûtons'),
-('anchois');
+('anchois'),
+('maizena'),
+("blancs d'oeuf");
 
 
 
@@ -273,3 +275,12 @@ VALUES (12, 3, '', 111), (12, 100, 'g de', 110), (12, 200, 'ml de', 112), (12, 1
 -- Ratatouille
 INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id ) 
 VALUES (13, 2, '', 4), (13, 2, '', 30), (13, 2, '', 10), (13, 2, '', 66), (13, 1, '', 42), (13, 2, 'gousses d', 1), (13, 1, 'pincée de', 133), (13, 1, 'pincée de', 132);
+
+-- Tarte citron Meringuée
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
+VALUES (14, 1, 'cas de', 154), (14, 3, '', 111), (14, 200, 'g de', 100), 
+(14, 3, 'zeste de', 142), (14, 1, 'pincée de', 133), (14, 1, 'pâte', 117), (14, 2, "", 155), (14, 100, 'g de', 115);
+
+-- Curry de légumes
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
+VALUES (15, 1, '', 4), (15, 1, '', 30), (15, 1, '', 44), (15, 1, 'cas de', 149), (15, 200, 'ml de', 147), (15, 1, 'pincée de', 132), (15, 1, 'pincée de', 133);

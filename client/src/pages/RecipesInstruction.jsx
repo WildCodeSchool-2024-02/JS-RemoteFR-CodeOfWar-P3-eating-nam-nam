@@ -17,7 +17,7 @@ export default function RecipesInstruction() {
 
   const fetchData = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recipes/13`)
+      .get(`${import.meta.env.VITE_API_URL}/api/recipes/15`)
       .then((response) => setRecipe(response.data))
       .catch((error) => console.error(error));
   };
