@@ -1,4 +1,3 @@
-
 CREATE TABLE difficulty (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
@@ -17,9 +16,10 @@ CREATE TABLE user (
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
 INSERT INTO user (pseudo, username, password, email, role)
-VALUES ('GastroGeek', 'Ewan', 'password', 'ewan@outlook.fr', 'admin')
-,('Chef_Gourmand', 'Kevin', 'password','kevin@outlook.fr', 'user'),
+VALUES ('GastroGeek', 'Ewan', 'password', 'ewan@outlook.fr', 'admin'),
+('Chef_Gourmand', 'Kevin', 'password','kevin@outlook.fr', 'user'),
 ('PatissierePoetique','Anais', 'password', 'anais@outlook.fr','user');
 
 CREATE TABLE recipe (
@@ -30,11 +30,19 @@ CREATE TABLE recipe (
     description text NOT NULL,
     cooking_time INT NOT NULL,
     preparation_time INT NOT NULL,
-    instruction text NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
     FOREIGN KEY (difficulty_id) REFERENCES Difficulty(id)
+);
+
+CREATE TABLE recipe_step (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id INT NOT NULL,
+    step_number INT NOT NULL,
+    description TEXT NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES recipe(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_recipe_step (recipe_id, step_number)
 );
 
 INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) VALUES (3, 1, "Quiche Thon et tomates","Une quiche savoureuse et facile à réaliser, à base de thon et de tomates fraîches, parfaite pour un repas léger ou un pique-nique.", 60, 20, 'lorem'), (2, 2, "Lasagnes bolognaise","Des lasagnes à la bolognaise classiques, avec une sauce riche en viande hachée, sauce tomate et une béchamel crémeuse. Un plat italien incontournable et généreux." , 60, 60, 'lorem'), (2, 1, "Toast foie gras", "Le foie gras est un mets délicat français, préparé à partir du foie d'oie ou de canard engraissé. Il est apprécié pour sa texture fondante et son goût riche et subtil.", 2, 5, 'lorem'), (2, 2, "Tarte Tatin", "La Tarte Tatin est une célèbre tarte aux pommes caramélisées à l'envers, cuite au four. Elle est croquante et fondante à la fois.", 45, 30, 'lorem'), (3, 1, "Salade César", "La salade César est une salade classique composée de laitue romaine, de croûtons, de parmesan et d'une sauce à base de mayonnaise et d'anchois.", 0, 15, 'lorem'), (2, 2, "Bœuf Bourguignon", "Un plat traditionnel français à base de bœuf mijoté dans une sauce au vin rouge, agrémenté de légumes comme les carottes, champignons et oignons.", 180, 45, 'lorem'), (2, 3, "Soufflé au fromage", "Un soufflé au fromage est un plat aérien à base de fromage râpé et d'œufs battus en neige. Il gonfle à la cuisson pour un résultat léger et moelleux.", 25, 20, 'lorem'), (3, 2, "Poulet au curry", "Un plat épicé à base de morceaux de poulet mijotés dans une sauce au curry crémeuse. Parfait pour un repas savoureux et rapide.", 40, 15, 'lorem'), (3, 1, "Omelette aux champignons", "Une omelette simple et savoureuse aux champignons sautés. Idéale pour un repas léger et rapide.", 5, 10, 'lorem'),(2, 2, "Pâtes carbonara", "Un classique italien, les pâtes carbonara sont préparées avec des œufs, du parmesan, du lard et beaucoup de poivre.", 20, 10, 'lorem'), (3, 3, "Canard à l'orange", "Un plat sophistiqué où le canard est cuit avec une sauce à base d'orange pour un goût sucré-salé exquis.", 60, 30, 'lorem'), (1, 1, "Crêpes", "Les crêpes françaises sont fines et délicates, parfaites pour être servies avec du sucre, de la confiture ou du chocolat.", 10, 5, 'lorem'), (3, 2, "Ratatouille", "Un ragoût de légumes du sud de la France, composé principalement d'aubergines, de courgettes, de poivrons et de tomates.", 60, 30, 'lorem'), (2, 1, "Tarte au citron meringuée", "Un dessert classique, une tarte au citron acidulée recouverte d'une meringue légère et dorée.", 30, 20, 'lorem'), 
@@ -43,8 +51,8 @@ INSERT INTO recipe (user_id, difficulty_id, title, description, cooking_time, pr
 
 CREATE TABLE ingredient (
   id INT AUTO_INCREMENT PRIMARY KEY,
-   name VARCHAR(100) NOT NULL UNIQUE
- );
+  name VARCHAR(100) NOT NULL UNIQUE
+);
 
 INSERT INTO ingredient (name) VALUES 
 ('ail'),
@@ -205,7 +213,7 @@ INSERT INTO ingredient (name) VALUES
 
 
 
- CREATE TABLE Recipe_Ingredient (
+CREATE TABLE Recipe_Ingredient (
     recipe_id INT NOT NULL,
     quantity DECIMAL(10,2),
     unit VARCHAR(20),
