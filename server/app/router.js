@@ -8,6 +8,7 @@ const ingredientsRouter = require("./router/ingredientsRouter");
 const userRouter = require("./router/userRouter");
 const difficultyRouter = require("./router/difficultyRouter");
 const authRouter = require("./router/authRouter");
+const uploadRouter = require("./router/uploadRouter");
 
 // Define Your API Routes Here (/api)
 
@@ -16,6 +17,7 @@ router.use("/items", itemsRouter);
 router.use("/recipes", recipesRouter);
 router.use("/user", userRouter);
 router.use("/difficulty", difficultyRouter);
+router.use("/upload", uploadRouter);
 
 router.use("/auth", authRouter);
 

@@ -54,7 +54,7 @@ const createToken = async (req, res, next) => {
   try {
     const payload = req.user;
 
-    const token = await jwt.sign(payload, process.env.APP_SECRET, {
+    const token = jwt.sign(payload, process.env.APP_SECRET, {
       expiresIn: "1h",
     });
 
@@ -70,16 +70,12 @@ const createToken = async (req, res, next) => {
 const verifyToken = async (req, res, next) => {
   try {
     const { auth } = req.cookies;
-    jwt.verify(auth, process.env.APP_SECRET, (err, decoded) => {
-      if (err) {
-        return next(err);
-      }
-
-      console.info("Données décodées du token :", decoded);
-      req.params.id = decoded.id;
-
-      return next();
+    jwt.verify(auth, process.env.APP_SECRET, (err, decode) => {
+      if (err) console.error(err);
+      req.body.jwtUser = decode;
+      req.params.id = decode.id;
     });
+    next();
   } catch (error) {
     next(error);
   }
