@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -17,16 +17,16 @@ export default function RecipesInstruction() {
   const [recipe, setRecipe] = useState({});
   const stars = [1, 2, 3, 4, 5];
 
-  const fetchData = useCallback(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recipes/${id}`)
-      .then((response) => setRecipe(response.data))
-      .catch((error) => console.error(error));
-  }, [id]);
-
   useEffect(() => {
+    const fetchData = () => {
+      axios
+        .get(`${import.meta.env.VITE_API_URL}/api/recipes/${id}`)
+        .then((response) => setRecipe(response.data))
+        .catch((error) => console.error(error));
+    };
+
     fetchData();
-  }, [fetchData]);
+  }, [id]);
 
   return (
     <div className="card-recipe">
@@ -77,7 +77,7 @@ export default function RecipesInstruction() {
               </p>
             </div>
             <div className="four">
-              <img src={four} alt="logo de pour pour le temps de cuisson" />
+              <img src={four} alt="logo de four pour le temps de cuisson" />
               <p>
                 {recipe.cooking_time} minutes <br />
                 Cuisson
