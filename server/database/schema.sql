@@ -53,9 +53,9 @@ VALUES
 (2, 1, "Toast foie gras", "Le foie gras est un mets délicat français, préparé à partir du foie d'oie ou de canard engraissé. Il est apprécié pour sa texture fondante et son goût riche et subtil.", 2, 5);
 
 CREATE TABLE ingredient (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-   name VARCHAR(100) NOT NULL UNIQUE
- );
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE
+);
 
 INSERT INTO ingredient (name) VALUES 
 ('Ail'),
@@ -181,10 +181,13 @@ VALUES (2, 1, 'boite de', 106 ), (2, 2, "", 66 );
 
 CREATE TABLE comment (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    recipes_id INT NOT NULL,
+    recipe_id INT NOT NULL,
     user_id INT NOT NULL,
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (recipe_id) REFERENCES recipe(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
+
+INSERT INTO comment (recipe_id, user_id, content) 
+VALUES (1, 2, 'Super recette ! Merci beaucoup.');
