@@ -35,7 +35,7 @@ class RecipeRepository extends AbstractRepository {
       comment.id AS comment_id,
       comment.content AS comment_content,
       comment.created_at AS comment_created_at,
-      user.pseudo AS comment_user_pseudo
+      user.username AS comment_user_pseudo
       FROM ${this.table} 
       INNER JOIN difficulty 
       ON recipe.difficulty_id = difficulty.id
@@ -55,7 +55,7 @@ class RecipeRepository extends AbstractRepository {
     }
 
     const recipe = {
-      id: rows[0].recipe_id,
+      id: rows[0].id,
       title: rows[0].title,
       description: rows[0].description,
       cooking_time: rows[0].cooking_time,
@@ -110,6 +110,14 @@ class RecipeRepository extends AbstractRepository {
       [id]
     );
     return result.affectedRows;
+  }
+
+  async search(term) {
+    const [rows] = await this.database.query(
+      `SELECT id, title FROM ${this.table} WHERE title LIKE ?`,
+      [`%${term}%`]
+    );
+    return rows;
   }
 }
 

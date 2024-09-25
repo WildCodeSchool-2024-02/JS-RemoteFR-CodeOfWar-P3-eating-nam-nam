@@ -16,6 +16,7 @@ import Buffet from "./pages/leBuffet/Buffet";
 import TheRecipes from "./pages/TheRecipes";
 import RecipesInstruction from "./pages/RecipesInstruction";
 import createRecipeLoader from "./services/loader/createRecipeLoader";
+import recipeLoader from "./services/loader/recipeLoader";
 
 import "./styles/main.css";
 
@@ -65,8 +66,9 @@ const router = createBrowserRouter([
         element: <TheRecipes />,
       },
       {
-        path: "/recipes-instruction",
+        path: "/recipes-instruction/:id",
         element: <RecipesInstruction />,
+        loader: recipeLoader,
       },
     ],
   },

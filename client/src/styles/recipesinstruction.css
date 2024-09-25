@@ -92,10 +92,12 @@
 
 .Liste-Ingredients {
   display: grid;
-  grid-template-columns: repeat(2, 2fr);
-  gap: 10px;
-  max-width: 400px;
-  margin: 2rem auto;
+  grid-template-columns: repeat(2, 3fr);
+  gap: 20px;
+  max-width: 500px;
+  margin: 2rem -1rem 2rem 10rem;
+  justify-items: left;
+  text-align: left;
 }
 
 .Recette-green {
@@ -182,5 +184,11 @@
   .CommentForm button {
     width: 5rem;
     margin: 0 auto;
+  }
+  .Liste-Ingredients {
+    max-width: 50%;
+    margin: 2rem -1rem 3rem 32rem;
+    text-align: center;
+    align-items: center;
   }
 }

@@ -41,10 +41,10 @@ export default function Carrousel({ items }) {
       <div className="carrousel" ref={carrouselRef}>
         {items.map(({ id, image, name }) => (
           <div key={id} className="cards">
-            <Link to="/recipes-instruction">
+            <Link to={`/recipes-instruction/${id}`}>
               <img src={image} alt={name} />
             </Link>
-            <Link to="/recipes-instruction">
+            <Link to={`/recipes-instruction/${id}`}>
               <h3>{name}</h3>
             </Link>
           </div>

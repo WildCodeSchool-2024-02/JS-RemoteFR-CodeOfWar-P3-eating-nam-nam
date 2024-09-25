@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import axios from "axios";
 
 import "../styles/recipesinstruction.css";
@@ -12,22 +13,9 @@ import smileyLangue from "../assets/images/smiley_langue.svg";
 import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
-  const [recipe, setRecipe] = useState([]);
+  const recipe = useLoaderData();
   const [comment, setComment] = useState("");
   const stars = [1, 2, 3, 4, 5];
-
-  console.info(recipe.comments);
-
-  const fetchData = () => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recipes/2`)
-      .then((response) => setRecipe(response.data))
-      .catch((error) => console.error(error));
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleCommentChange = (e) => {
     setComment(e.target.value);
@@ -37,17 +25,20 @@ export default function RecipesInstruction() {
     e.preventDefault();
     console.info(import.meta.env.VITE_API_URL);
     axios
-      .post(`${import.meta.env.VITE_API_URL}/api/comments`, {
-        recipe_id: recipe.id,
-        content: comment,
-      })
+      .post(
+        `${import.meta.env.VITE_API_URL}/api/comments`,
+        {
+          recipe_id: recipe.id,
+          content: comment,
+        },
+        { withCredentials: true }
+      )
+
       .then(() => {
         setComment("");
       })
       .catch((error) => console.error(error));
   };
-
-  console.info(recipe);
 
   return (
     <div className="card-recipe">
@@ -98,7 +89,7 @@ export default function RecipesInstruction() {
               </p>
             </div>
             <div className="four">
-              <img src={four} alt="logo de pour pour le temps de cuisson" />
+              <img src={four} alt="logo de four pour le temps de cuisson" />
               <p>
                 {recipe.cooking_time} minutes <br />
                 Cuisson
