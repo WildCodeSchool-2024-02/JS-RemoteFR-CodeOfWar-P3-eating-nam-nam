@@ -31,14 +31,21 @@ class RecipeRepository extends AbstractRepository {
       difficulty.name AS difficulty_name, 
       recipe_ingredient.quantity,
       recipe_ingredient.unit,
-       ingredient.name AS ingredient_name
+      ingredient.name AS ingredient_name,
+      comment.id AS comment_id,
+      comment.content AS comment_content,
+      comment.created_at AS comment_created_at,
+      user.pseudo AS comment_user_pseudo
       FROM ${this.table} 
       INNER JOIN difficulty 
       ON recipe.difficulty_id = difficulty.id
-      INNER JOIN recipe_ingredient 
+      LEFT JOIN recipe_ingredient 
       ON recipe_ingredient.recipe_id = recipe.id
-      INNER JOIN ingredient
+      LEFT JOIN ingredient
       ON recipe_ingredient.ingredient_id = ingredient.id
+      LEFT JOIN comment
+      ON recipe.id = comment.recipe_id
+      LEFT JOIN user ON comment.user_id = user.id
       WHERE recipe.id = ?`,
       [id]
     );
@@ -55,12 +62,27 @@ class RecipeRepository extends AbstractRepository {
       preparation_time: rows[0].preparation_time,
       instruction: rows[0].instruction,
       difficulty: rows[0].difficulty_name,
-      ingredients: rows.map((row) => ({
-        unit: row.unit,
-        name: row.ingredient_name,
-        quantity: row.quantity,
-      })),
+      ingredients: [],
+      comments: [],
     };
+
+    rows.forEach((row) => {
+      if (row.ingredient_name) {
+        recipe.ingredients.push({
+          unit: row.unit,
+          name: row.ingredient_name,
+          quantity: row.quantity,
+        });
+      }
+      if (row.comment_id) {
+        recipe.comments.push({
+          id: row.comment_id,
+          content: row.comment_content,
+          create_at: row.comment_create_at,
+          user_pseudo: row.comment_user_pseudo,
+        });
+      }
+    });
 
     return recipe;
   }

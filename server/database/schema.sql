@@ -1,3 +1,4 @@
+-- SQLBook: Markup
 CREATE TABLE difficulty (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
@@ -190,4 +191,5 @@ CREATE TABLE comment (
 );
 
 INSERT INTO comment (recipe_id, user_id, content) 
-VALUES (1, 2, 'Super recette ! Merci beaucoup.');
+VALUES (1, 2, 'Super recette ! Merci beaucoup.'),
+(1, 3, 'Super recette ! J"adore.');

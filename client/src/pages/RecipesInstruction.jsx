@@ -13,7 +13,10 @@ import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
   const [recipe, setRecipe] = useState([]);
+  const [comment, setComment] = useState("");
   const stars = [1, 2, 3, 4, 5];
+
+  console.info(recipe.comments);
 
   const fetchData = () => {
     axios
@@ -25,6 +28,24 @@ export default function RecipesInstruction() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    console.info(import.meta.env.VITE_API_URL);
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/api/comments`, {
+        recipe_id: recipe.id,
+        content: comment,
+      })
+      .then(() => {
+        setComment("");
+      })
+      .catch((error) => console.error(error));
+  };
 
   console.info(recipe);
 
@@ -166,6 +187,17 @@ export default function RecipesInstruction() {
         <article className="Smiley-Langue">
           <h3>Bon Appétit</h3>
           <img src={smileyLangue} alt="Smiley qui tire la langue" />
+        </article>
+        <article className="CommentSection">
+          <h2>Commentaires</h2>
+          <form onSubmit={handleCommentSubmit} className="CommentForm">
+            <textarea
+              value={comment}
+              onChange={handleCommentChange}
+              placeholder="Écrivez votre commentaire ici"
+            />
+            <button type="submit">Poster</button>
+          </form>
         </article>
       </div>
     </div>
