@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import axios from "axios";
 
 import App from "./App";
 import Home from "./pages/Home";
@@ -62,6 +63,12 @@ const router = createBrowserRouter([
       {
         path: "/recipes-instruction/:id",
         element: <RecipesInstruction />,
+        loader: async ({ params }) => {
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/api/recipes/${params.id}`
+          );
+          return response.data;
+        },
       },
     ],
   },
