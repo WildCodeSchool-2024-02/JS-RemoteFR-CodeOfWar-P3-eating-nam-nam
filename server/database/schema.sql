@@ -8,8 +8,8 @@ INSERT INTO difficulty (name) VALUES ('Facile'), ('Intermédiaire'), ('Difficile
 
 CREATE TABLE user (
    id INT AUTO_INCREMENT PRIMARY KEY,
-   pseudo VARCHAR(50) NOT NULL,
-   username VARCHAR(50) NOT NULL UNIQUE,
+   username VARCHAR(50) NOT NULL,
+   fullname VARCHAR(50) NOT NULL UNIQUE,
    password VARCHAR(255) NOT NULL,
    email VARCHAR(100) NOT NULL UNIQUE,
    role VARCHAR(20) NOT NULL DEFAULT 0,
@@ -18,7 +18,7 @@ CREATE TABLE user (
    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO user (pseudo, username, password, email, role)
+INSERT INTO user (username, fullname, password, email, role)
 VALUES ('GastroGeek', 'Ewan', 'password', 'ewan@outlook.fr', 'admin'),
 ('Chef_Gourmand', 'Kevin', 'password','kevin@outlook.fr', 'user'),
 ('PatissierePoetique','Anais', 'password', 'anais@outlook.fr','user');
@@ -210,8 +210,6 @@ INSERT INTO ingredient (name) VALUES
 ('maizena'),
 ("blancs d'oeuf");
 
-
-
 CREATE TABLE Recipe_Ingredient (
     recipe_id INT NOT NULL,
     quantity DECIMAL(10,2),
@@ -221,6 +219,20 @@ CREATE TABLE Recipe_Ingredient (
     FOREIGN KEY (recipe_id) REFERENCES Recipe(id) ON DELETE CASCADE,
     FOREIGN KEY (ingredient_id) REFERENCES Ingredient(id) ON DELETE CASCADE
 ); 
+
+CREATE TABLE comment (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id INT NOT NULL,
+    user_id INT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (recipe_id) REFERENCES recipe(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+);
+
+INSERT INTO comment (recipe_id, user_id, content) 
+VALUES (1, 2, 'Super recette ! Merci beaucoup.'),
+(1, 3, 'Super recette ! J"adore.');
 
 -- Quiche thon tomates
 INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id ) 

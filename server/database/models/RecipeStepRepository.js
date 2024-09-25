@@ -8,7 +8,7 @@ class RecipeStepRepository extends AbstractRepository {
   async create(recipeId, step) {
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (recipe_id, step_number, description) VALUES (?, ?, ?)`,
-      [ recipeId, step.number, step.description ]
+      [recipeId, step.number, step.description]
     );
     return result.insertId;
   }
@@ -30,7 +30,7 @@ class RecipeStepRepository extends AbstractRepository {
   async update(recipeId, step) {
     const [result] = await this.database.query(
       `UPDATE ${this.table} SET description = ? WHERE recipe_id = ? AND step_number = ?`,
-      [ step.description, recipeId, step.number ]
+      [step.description, recipeId, step.number]
     );
     return result.affectedRows;
   }

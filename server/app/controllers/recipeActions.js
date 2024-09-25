@@ -2,7 +2,14 @@ const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
   try {
-    const recipes = await tables.recipe.readAll();
+    const searchTerm = req.query.q;
+    let recipes;
+
+    if (searchTerm) {
+      recipes = await tables.recipe.search(searchTerm);
+    } else {
+      recipes = await tables.recipe.readAll();
+    }
     res.json(recipes);
   } catch (err) {
     next(err);
@@ -11,12 +18,9 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const recipe = await tables.recipe.read(Number(req.params.id));
-    if (recipe == null) {
-      res.status(404).send("Aucun résultat");
-    } else {
-      res.json(recipe);
-    }
+    const recipes = await tables.recipe.read(req.params.id);
+
+    res.json(recipes);
   } catch (err) {
     next(err);
   }

@@ -10,11 +10,13 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import UserProfil from "./pages/UserProfile";
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
+import AdminRecipe from "./pages/userAdmin/PanelAdminRecipes";
 import User from "./pages/User";
 import Buffet from "./pages/leBuffet/Buffet";
 import TheRecipes from "./pages/TheRecipes";
 import RecipesInstruction from "./pages/RecipesInstruction";
 import createRecipeLoader from "./services/loader/createRecipeLoader";
+import recipeLoader from "./services/loader/recipeLoader";
 
 import "./styles/main.css";
 
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
         element: <PanelAdmin />,
       },
       {
+        path: "/admin-recipes",
+        element: <AdminRecipe />,
+      },
+      {
         path: "/user",
         element: <User />,
       },
@@ -60,8 +66,9 @@ const router = createBrowserRouter([
         element: <TheRecipes />,
       },
       {
-        path: "/recipes-instruction",
+        path: "/recipes-instruction/:id",
         element: <RecipesInstruction />,
+        loader: recipeLoader,
       },
     ],
   },
