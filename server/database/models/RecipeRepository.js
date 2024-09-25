@@ -7,16 +7,14 @@ class RecipeRepository extends AbstractRepository {
 
   async create(recipe) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (id, user_id, difficulty_id, title, description, cooking_time, preparation_time, instruction) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (user_id, difficulty_id, title, description, cooking_time, preparation_time) values (?, ?, ?, ?, ?, ?)`,
       [
-        recipe.id,
-        recipe.user_id,
-        recipe.difficulty_id,
+        recipe.userId,
+        recipe.difficultyId,
         recipe.title,
         recipe.description,
-        recipe.cokking_time,
-        recipe.preparation_time,
-        recipe.instruction,
+        recipe.cookingTime,
+        recipe.preparationTime,
       ]
     );
     return result.insertId;

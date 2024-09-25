@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useLoaderData } from "react-router-dom";
 
 import "../styles/recipesinstruction.css";
 import photoProfil from "../assets/images/user_picture.png";
@@ -12,21 +11,9 @@ import smileyLangue from "../assets/images/smiley_langue.svg";
 import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
-  const [recipe, setRecipe] = useState([]);
+  const recipe = useLoaderData();
+
   const stars = [1, 2, 3, 4, 5];
-
-  const fetchData = () => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recipes/2`)
-      .then((response) => setRecipe(response.data))
-      .catch((error) => console.error(error));
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  console.info(recipe);
 
   return (
     <div className="card-recipe">
@@ -77,7 +64,7 @@ export default function RecipesInstruction() {
               </p>
             </div>
             <div className="four">
-              <img src={four} alt="logo de pour pour le temps de cuisson" />
+              <img src={four} alt="logo de four pour le temps de cuisson" />
               <p>
                 {recipe.cooking_time} minutes <br />
                 Cuisson

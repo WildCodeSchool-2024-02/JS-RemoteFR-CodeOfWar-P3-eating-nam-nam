@@ -38,11 +38,21 @@ const edit = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const recipe = req.body;
-
   try {
-    const insertId = await tables.recipe.create(recipe);
-    res.status(201).json({ insertId });
+    const { title, description, steps, difficulty, jwtUser } = req.body;
+    const recipeId = await tables.recipe.create({
+      userId: jwtUser.id,
+      difficultyId: parseInt(difficulty, 10),
+      title,
+      description,
+      cookingTime: 10,
+      preparationTime: 10,
+    });
+    steps.forEach((step) => {
+      tables.recipeStep.create(recipeId, { number: step.id, ...step });
+    });
+    console.info("Recipe id: ", recipeId);
+    res.status(200).json({ success: true });
   } catch (err) {
     next(err);
   }
