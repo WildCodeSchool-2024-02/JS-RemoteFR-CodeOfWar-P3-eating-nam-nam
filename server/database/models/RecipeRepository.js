@@ -91,6 +91,14 @@ class RecipeRepository extends AbstractRepository {
     );
     return result.affectedRows;
   }
+
+  async search(term) {
+    const [rows] = await this.database.query(
+      `SELECT id, title FROM ${this.table} WHERE title LIKE ?`,
+      [`%${term}%`]
+    );
+    return rows;
+  }
 }
 
 module.exports = RecipeRepository;
