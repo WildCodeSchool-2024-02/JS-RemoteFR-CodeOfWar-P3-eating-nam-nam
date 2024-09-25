@@ -7,10 +7,11 @@ export default function RecipeCard() {
 
   const fetchData = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recipes/11`)
-      .then((response) => setRecipe(response.data))
+      .get(`${import.meta.env.VITE_API_URL}/api/recipes/random`)
+      .then((response) => setRecipe(response.data[0]))
       .catch((error) => console.error(error));
   };
+  console.info(recipe);
   useEffect(() => {
     fetchData();
   }, []);
@@ -24,7 +25,7 @@ export default function RecipeCard() {
       </section>
       <div className="card">
         <p>{recipe.description}</p>
-        <img src={recipe.image} alt={recipe.name} />
+        <img src={recipe.image} alt={recipe.title} />
       </div>
     </div>
   );

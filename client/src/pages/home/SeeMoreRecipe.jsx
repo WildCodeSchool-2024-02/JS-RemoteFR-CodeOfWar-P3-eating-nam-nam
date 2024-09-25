@@ -1,31 +1,36 @@
-import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "../../styles/home/seeMoreRecipe.css";
 
-export default function SeeMoreRecipe({ littleRecipes }) {
+export default function SeeMoreRecipe() {
+  const [littleRecipe, setLittleRecipe] = useState([]);
+
+  const fetchData = () => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/recipes/random?limit=2`)
+      .then((response) => setLittleRecipe(response.data))
+      .catch((error) => console.error(error));
+  };
+  console.info(littleRecipe);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="See_more">
       <h3>Voir aussi...</h3>
-      {littleRecipes.map((littleRecipe) => (
-        <article key={littleRecipe.id}>
-          <img src={littleRecipe.image} alt={littleRecipe.name} />
-          <section>
-            <h4>IDEE RECETTE</h4>
-            <h5>{littleRecipe.name}</h5>
-            <p>{littleRecipe.description}</p>
-          </section>
-        </article>
-      ))}
+      {littleRecipe.length &&
+        littleRecipe.map((little) => (
+          <article key={little.id}>
+            <img src={little.image} alt={little.title} />
+            <section>
+              <h4>IDEE RECETTE</h4>
+              <h5>{little.title}</h5>
+              <p>{little.description}</p>
+            </section>
+          </article>
+        ))}
     </div>
   );
 }
-
-SeeMoreRecipe.propTypes = {
-  littleRecipes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
