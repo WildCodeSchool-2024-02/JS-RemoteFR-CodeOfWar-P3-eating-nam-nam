@@ -6,7 +6,7 @@
 .card-recipe-orange {
   background-color: var(--secondary-brown);
   padding-bottom: 0.01rem;
-  box-shadow: 1px 1px 1px 1px #bababa;
+  box-shadow: 1px 5px 5px 0px #bababa;
 }
 
 .Pseudo-Avatar {
@@ -62,7 +62,7 @@
 .card-recipe-green {
   margin-top: 2rem;
   background-color: var(--secondary-green);
-  box-shadow: 1px 1px 1px 1px #bababa;
+  box-shadow: 1px 5px 5px 0px #bababa;
 }
 
 .Gant-Four {
@@ -101,7 +101,7 @@
 .Recette-green {
   background-color: var(--secondary-green);
   padding: 1rem;
-  box-shadow: 1px 1px 1px 1px #bababa;
+  box-shadow: 1px 5px 5px 0px #bababa;
 }
 
 .Recette > h2 {
@@ -130,7 +130,7 @@
   align-items: center;
   padding: 1rem;
   margin-top: 2rem;
-  box-shadow: 1px 1px 1px 1px #bababa;
+  box-shadow: 1px 5px 5px 0px #bababa;
 }
 
 .CommentSection {
@@ -138,8 +138,8 @@
   background-color: var(--secondary-brown);
   margin: 1rem;
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 1px 1px 1px 1px #bababa;
+  border-radius: 16px;
+  box-shadow: 1px 5px 5px 0px #bababa;
 }
 
 .CommentForm {
@@ -156,7 +156,7 @@
 .CommentForm button {
   padding: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: var(--primary-green);
   color: white;
   cursor: pointer;
