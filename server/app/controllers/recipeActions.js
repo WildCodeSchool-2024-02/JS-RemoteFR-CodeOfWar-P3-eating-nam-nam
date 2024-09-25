@@ -42,10 +42,10 @@ const add = async (req, res, next) => {
       title,
       description,
       cookingTime: 10,
-      preparationTime: 10
+      preparationTime: 10,
     });
     steps.forEach((step) => {
-      tables.recipeStep.create(recipeId, {number: step.id, ...step});
+      tables.recipeStep.create(recipeId, { number: step.id, ...step });
     });
     console.info("Recipe id: ", recipeId);
     res.status(200).json({ success: true });
