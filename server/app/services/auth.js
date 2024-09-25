@@ -67,17 +67,22 @@ const createToken = async (req, res, next) => {
 
 // ---
 
-const verifyToken = async (req, res, next) => {
+const verifyToken = (req, res, next) => {
   try {
     const { auth } = req.cookies;
-    jwt.verify(auth, process.env.APP_SECRET, (err, decode) => {
-      if (err) console.error(err);
-      req.body.jwtUser = decode;
-      req.params.id = decode.id;
-    });
-    next();
+
+    if (!auth) {
+      return res.status(401).json({ message: "Aucun token fourni." });
+    }
+
+    const decoded = jwt.verify(auth, process.env.APP_SECRET);
+    req.user = decoded;
+    return next();
   } catch (error) {
-    next(error);
+    if (error.name === "JsonWebTokenError") {
+      return res.status(403).json({ message: "Token invalide." });
+    }
+    return res.status(500).json({ message: "Erreur serveur." });
   }
 };
 

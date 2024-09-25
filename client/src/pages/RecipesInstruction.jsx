@@ -1,4 +1,5 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import "../styles/recipesinstruction.css";
 import photoProfil from "../assets/images/user_picture.png";
@@ -12,8 +13,21 @@ import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
   const recipe = useLoaderData();
-
+  const navigate = useNavigate();
   const stars = [1, 2, 3, 4, 5];
+
+  const handleDeleteRecipe = async () => {
+    try {
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/api/recipes/${recipe.id}`,
+        { withCredentials: true }
+      );
+
+      navigate("/");
+    } catch (error) {
+      console.error("Erreur lors de la suppression de la recette:", error);
+    }
+  };
 
   return (
     <div className="card-recipe">
@@ -49,6 +63,13 @@ export default function RecipesInstruction() {
             </div>
             <img src={heartRed} alt="coeur rouge" />
           </div>
+          <button
+            type="button"
+            className="delete-recipe-btn"
+            onClick={handleDeleteRecipe}
+          >
+            Supprimer la recette
+          </button>
         </article>
 
         <article className="card-recipe-green">

@@ -16,6 +16,6 @@ router.post("/", hashPassword, userActions.add); // Pour ajouter un nouvel utili
 
 router.put("/:id", verifyToken, userActions.edit); // Pour modifier un utilisateur existant
 
-router.delete("/:id", userActions.destroy); // Pour supprimer un utilisateur
+router.delete("/:id", verifyToken, userActions.destroy); // Pour supprimer un utilisateur
 
 module.exports = router;

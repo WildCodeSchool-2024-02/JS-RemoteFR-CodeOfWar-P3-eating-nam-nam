@@ -48,7 +48,7 @@ class RecipeRepository extends AbstractRepository {
     }
 
     const recipe = {
-      id: rows[0].recipe_id,
+      id: rows[0].id,
       title: rows[0].title,
       description: rows[0].description,
       cooking_time: rows[0].cooking_time,
