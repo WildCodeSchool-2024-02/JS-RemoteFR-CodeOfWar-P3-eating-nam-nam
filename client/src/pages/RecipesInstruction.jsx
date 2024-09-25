@@ -14,7 +14,7 @@ import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
   const { id } = useParams();
-  const [recipe, setRecipe] = useState({});
+  const [recipe, setRecipe] = useState([]);
   const stars = [1, 2, 3, 4, 5];
 
   useEffect(() => {
