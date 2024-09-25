@@ -1,6 +1,3 @@
-// import { useState, useEffect } from "react";
-// import axios from "axios";
-// import { useLoaderData, useParams } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 
 import "../styles/recipesinstruction.css";
@@ -16,20 +13,7 @@ import heartRed from "../assets/images/heart-red.svg";
 export default function RecipesInstruction() {
   const recipe = useLoaderData();
 
-  // const { id } = useParams();
-  // const [recipe, setRecipe] = useState([]);
   const stars = [1, 2, 3, 4, 5];
-
-  // useEffect(() => {
-  //   const fetchData = () => {
-  //     axios
-  //       .get(`${import.meta.env.VITE_API_URL}/api/recipes/${id}`)
-  //       .then((response) => setRecipe(response.data))
-  //       .catch((error) => console.error(error));
-  //   };
-
-  //   fetchData();
-  // }, [id]);
 
   return (
     <div className="card-recipe">

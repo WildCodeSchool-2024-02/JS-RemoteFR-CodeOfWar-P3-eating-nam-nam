@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import axios from "axios";
 
 import App from "./App";
 import Home from "./pages/Home";
@@ -16,6 +15,7 @@ import Buffet from "./pages/leBuffet/Buffet";
 import TheRecipes from "./pages/TheRecipes";
 import RecipesInstruction from "./pages/RecipesInstruction";
 import createRecipeLoader from "./services/loader/createRecipeLoader";
+import recipeLoader from "./services/loader/recipeLoader";
 
 import "./styles/main.css";
 
@@ -63,12 +63,7 @@ const router = createBrowserRouter([
       {
         path: "/recipes-instruction/:id",
         element: <RecipesInstruction />,
-        loader: async ({ params }) => {
-          const response = await axios.get(
-            `${import.meta.env.VITE_API_URL}/api/recipes/${params.id}`
-          );
-          return response.data;
-        },
+        loader: recipeLoader,
       },
     ],
   },
