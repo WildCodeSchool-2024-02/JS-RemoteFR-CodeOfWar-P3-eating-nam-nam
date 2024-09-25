@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import UserProfil from "./pages/UserProfile";
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
+import AdminRecipe from "./pages/userAdmin/PanelAdminRecipes";
 import User from "./pages/User";
 import Buffet from "./pages/leBuffet/Buffet";
 import TheRecipes from "./pages/TheRecipes";
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/panel-admin",
         element: <PanelAdmin />,
+      },
+      {
+        path: "/admin-recipes",
+        element: <AdminRecipe />,
       },
       {
         path: "/user",
