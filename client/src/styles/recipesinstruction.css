@@ -168,6 +168,35 @@
   transform: scale(1.03);
 }
 
+.CommentList {
+  margin-top: 20px;
+}
+
+.CommentItem {
+  border-radius: 8px;
+  box-shadow: 1px 5px 5px 0px #bababa;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.CommentItem p {
+  margin: 0;
+  text-align: center;
+}
+
+.CommentItem h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.CommentItem small {
+  display: block;
+  color: #777;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
 @media (min-width: 768px) {
   .card-recipe-orange,
   .card-recipe-green,
