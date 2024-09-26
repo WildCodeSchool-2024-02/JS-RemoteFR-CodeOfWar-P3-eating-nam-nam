@@ -25,6 +25,14 @@ class RecipeRepository extends AbstractRepository {
     return rows;
   }
 
+  async readRandom(limit = 1) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} ORDER BY RAND() LIMIT ? `,
+      [parseInt(limit, 10)]
+    );
+    return rows;
+  }
+
   async read(id) {
     const [rows] = await this.database.query(
       `SELECT recipe.*, 

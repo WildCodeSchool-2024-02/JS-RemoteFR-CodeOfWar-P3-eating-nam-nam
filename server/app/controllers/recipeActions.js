@@ -26,6 +26,16 @@ const read = async (req, res, next) => {
   }
 };
 
+const readRandom = async (req, res, next) => {
+  const { limit } = req.query;
+  try {
+    const recipeRandom = await tables.recipe.readRandom(limit || 1);
+    res.json(recipeRandom);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const edit = async (req, res, next) => {
   const recipe = { ...req.body, id: req.params.id };
 
@@ -73,4 +83,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  readRandom,
 };
