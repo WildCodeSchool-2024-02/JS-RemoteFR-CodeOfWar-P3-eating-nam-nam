@@ -17,6 +17,7 @@ export default function RecipesInstruction() {
   const recipe = useLoaderData();
   const navigate = useNavigate();
   const [comment, setComment] = useState("");
+
   const stars = [1, 2, 3, 4, 5];
 
   const handleCommentChange = (e) => {
