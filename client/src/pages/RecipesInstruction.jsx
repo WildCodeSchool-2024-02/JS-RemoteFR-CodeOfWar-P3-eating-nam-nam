@@ -18,14 +18,26 @@ export default function RecipesInstruction() {
 
   const handleDeleteRecipe = async () => {
     try {
-      await axios.delete(
+      const response = await axios.delete(
         `${import.meta.env.VITE_API_URL}/api/recipes/${recipe.id}`,
-        { withCredentials: true }
+        {
+          withCredentials: true,
+        }
       );
-
+      console.info("Suppression réussie :", response.data);
       navigate("/");
     } catch (error) {
-      console.error("Erreur lors de la suppression de la recette:", error);
+      if (error.response) {
+        console.error(
+          "Erreur lors de la suppression de la recette:",
+          error.response.data
+        );
+      } else {
+        console.error(
+          "Erreur lors de la suppression de la recette:",
+          error.message
+        );
+      }
     }
   };
 
