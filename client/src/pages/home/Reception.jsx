@@ -11,7 +11,7 @@ import searchRecipes from "../../services/requestSearchbar";
 
 export default function Reception() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [, setResults] = useState([]);
+  const [results, setResults] = useState([]);
 
   const handleChangeSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -46,6 +46,21 @@ export default function Reception() {
             Rechercher
           </button>
         </div>
+
+        {results.length > 0 && (
+          <div className="search_results">
+            <h2>Résultats de la recherche :</h2>
+            <ul>
+              {results.map((recipe) => (
+                <li key={recipe.id}>
+                  <img src={recipe.image} alt={recipe.title} />
+                  <span>{recipe.title}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <article className="welcome">
           Bienvenue sur Miam ! Votre destination ultime pour découvrir et
           partager des recettes gourmandes et variées ! Que vous soyez un
