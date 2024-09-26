@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import saladeCésar from "../../assets/images/salade_césar.svg";
 import pommeDeTerreFarcies from "../../assets/images/pomme_de_terre_farcies.svg";
 import risotto from "../../assets/images/risotto.svg";
@@ -12,23 +13,45 @@ import searchRecipes from "../../services/requestSearchbar";
 export default function Reception() {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
+  const [ModalOpen, setModalOpen] = useState(false);
 
   const handleChangeSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearchClick = async () => {
-    console.info(searchTerm);
+  const handleSearchClick = useCallback(async () => {
     if (searchTerm) {
       try {
         const response = await searchRecipes(searchTerm);
-        console.info(response);
         setResults(response);
+        setModalOpen(true);
       } catch (error) {
         console.error("Erreur lors de la recherche :", error);
       }
     }
-  };
+  }, [searchTerm]);
+
+  const closeModal = useCallback(() => {
+    setModalOpen(false);
+  }, []);
+
+  const handleKeyUp = useCallback(
+    (event) => {
+      if (event.key === "Enter") {
+        handleSearchClick();
+      } else if (event.key === "Escape") {
+        closeModal();
+      }
+    },
+    [handleSearchClick, closeModal]
+  );
+
+  useEffect(() => {
+    window.addEventListener("keyup", handleKeyUp);
+    return () => {
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [handleKeyUp]);
 
   return (
     <div className="reception">
@@ -41,23 +64,35 @@ export default function Reception() {
             placeholder="Votre recettes..."
             value={searchTerm}
             onChange={handleChangeSearch}
+            onKeyUp={handleKeyUp}
           />
           <button type="button" onClick={handleSearchClick}>
             Rechercher
           </button>
         </div>
 
-        {results.length > 0 && (
-          <div className="search_results">
-            <h2>Résultats de la recherche :</h2>
-            <ul>
-              {results.map((recipe) => (
-                <li key={recipe.id}>
-                  <img src={recipe.image} alt={recipe.title} />
-                  <span>{recipe.title}</span>
-                </li>
-              ))}
-            </ul>
+        {ModalOpen && (
+          <div className="modal">
+            <div className="modal_content">
+              <button className="close" type="button" onClick={closeModal}>
+                &times;
+              </button>
+              <h2>Résultats de la recherche :</h2>
+              {results.length > 0 ? (
+                <ul>
+                  {results.map((recipe) => (
+                    <li key={recipe.id}>
+                      <Link to={`/recipes-instruction/${recipe.id}`}>
+                        <img src={recipe.image} alt={recipe.title} />
+                        <span>{recipe.title}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>Aucun résultat trouvé</p>
+              )}
+            </div>
           </div>
         )}
 
