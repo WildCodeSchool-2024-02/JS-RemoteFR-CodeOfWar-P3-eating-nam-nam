@@ -1,4 +1,22 @@
+const jwt = require("jsonwebtoken");
 const tables = require("../../database/tables");
+require("dotenv").config();
+
+const checkAuth = (req, res, next) => {
+  try {
+    const { auth } = req.cookies;
+
+    if (!auth) {
+      res.sendStatus(401);
+    } else {
+      const decode = jwt.verify(auth, process.env.APP_SECRET);
+      if (!decode) res.sendStatus(401);
+      else res.sendStatus(200);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
 
 const login = async (req, res, next) => {
   try {
@@ -38,6 +56,7 @@ const register = async (req, res, next) => {
 };
 
 module.exports = {
+  checkAuth,
   login,
   register,
 };
