@@ -30,6 +30,7 @@ const read = async (req, res, next) => {
 
 const edit = async (req, res, next) => {
   const user = req.body;
+  console.info(req.body);
 
   try {
     const affectedRows = await tables.user.update(req.params.id, user);
