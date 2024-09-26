@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
+import handleDeleteRecipe from "../services/handleDeleteRecipe";
 
 import "../styles/recipesinstruction.css";
 import photoProfil from "../assets/images/user_picture.png";
@@ -14,23 +15,9 @@ import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
   const recipe = useLoaderData();
+  const navigate = useNavigate();
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState([]);
-  console.info(comments);
   const stars = [1, 2, 3, 4, 5];
-
-  const fetchComments = useCallback(() => {
-    axios
-      .get(
-        `${import.meta.env.VITE_API_URL}/api/comments?recipe_id=${recipe.id}`
-      )
-      .then((response) => setComments(response.data))
-      .catch((error) => console.error(error));
-  }, [recipe.id]);
-
-  useEffect(() => {
-    fetchComments();
-  }, [recipe.id, fetchComments]);
 
   const handleCommentChange = (e) => {
     setComment(e.target.value);
@@ -51,7 +38,6 @@ export default function RecipesInstruction() {
 
       .then(() => {
         setComment("");
-        fetchComments();
       })
       .catch((error) => console.error(error));
   };
@@ -90,6 +76,13 @@ export default function RecipesInstruction() {
             </div>
             <img src={heartRed} alt="coeur rouge" />
           </div>
+          <button
+            type="button"
+            className="delete-recipe-btn"
+            onClick={() => handleDeleteRecipe(recipe.id, navigate)}
+          >
+            Supprimer la recette
+          </button>
         </article>
 
         <article className="card-recipe-green">
@@ -197,21 +190,6 @@ export default function RecipesInstruction() {
         </article>
         <article className="CommentSection">
           <h2>Commentaires</h2>
-          <div className="CommentList">
-            {comments.length > 0 ? (
-              comments.map((commentary) => (
-                <div key={commentary.id} className="CommentItem">
-                  <h2>{commentary.username}</h2>
-                  <p>{commentary.content}</p>
-                  <small>
-                    {new Date(commentary.created_at).toLocaleString()}
-                  </small>
-                </div>
-              ))
-            ) : (
-              <p>Aucun commentaire pour cette recette.</p>
-            )}
-          </div>
           <form onSubmit={handleCommentSubmit} className="CommentForm">
             <textarea
               value={comment}

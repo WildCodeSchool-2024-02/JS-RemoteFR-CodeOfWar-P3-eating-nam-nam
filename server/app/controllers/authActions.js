@@ -22,6 +22,7 @@ const register = async (req, res, next) => {
       civility,
       role = 0,
     } = req.body;
+    console.info(hashedPassword);
     await tables.user.create({
       username,
       fullname,
