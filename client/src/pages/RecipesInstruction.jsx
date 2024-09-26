@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
+import handleDeleteRecipe from "../services/handleDeleteRecipe";
 
 import "../styles/recipesinstruction.css";
 import photoProfil from "../assets/images/user_picture.png";
@@ -17,24 +18,6 @@ export default function RecipesInstruction() {
   const navigate = useNavigate();
   const [comment, setComment] = useState("");
   const stars = [1, 2, 3, 4, 5];
-
-  const handleDeleteRecipe = async () => {
-    try {
-      const response = await axios.delete(
-        `${import.meta.env.VITE_API_URL}/api/recipes/${recipe.id}`,
-        { withCredentials: true }
-      );
-      console.info("Suppression réussie:", response.data);
-      navigate("/");
-    } catch (error) {
-      if (error.response) {
-        console.error(
-          "Erreur lors de la suppression de la recette:",
-          error.response.data
-        );
-      }
-    }
-  };
 
   const handleCommentChange = (e) => {
     setComment(e.target.value);
@@ -96,7 +79,7 @@ export default function RecipesInstruction() {
           <button
             type="button"
             className="delete-recipe-btn"
-            onClick={handleDeleteRecipe}
+            onClick={() => handleDeleteRecipe(recipe.id, navigate)}
           >
             Supprimer la recette
           </button>
