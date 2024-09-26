@@ -58,8 +58,6 @@ h5,
 h6 {
   margin: 0;
 }
-input,
-input:focus {
+input {
   border: 0;
-  outline: none;
 }

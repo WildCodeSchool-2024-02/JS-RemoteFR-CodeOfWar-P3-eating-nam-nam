@@ -1,117 +1,20 @@
-.personal_info {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  margin-bottom: 3rem;
-}
-
-.personal_info h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: var(--primary-green);
-}
-
-.personal_info form {
+.personal-info {
   display: flex;
+  padding: 0.6rem;
   flex-direction: column;
-}
-
-.personal_info .user_info {
-  margin-bottom: 15px;
-}
-
-.personal_info .user_info label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-family: var(--lorem-font);
-}
-
-.personal_info .user_info input,
-.personal_info .user_info select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.personal_info .password_field {
-  display: flex;
   align-items: center;
+  gap: 0.3rem;
 }
 
-.personal_info .settings-password-block label {
-  font-weight: bold;
-}
-
-.personal_info .password_field input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.personal_info .toggle_password_button {
-  margin-left: 10px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  background-color: #d6d1d1;
-  color: var(--primary-black);
-  cursor: pointer;
-}
-
-.personal_info .modify_button {
-  margin-left: 10px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  background-color: var(--primary-green);
-  color: white;
-  cursor: pointer;
-}
-
-.personal_info .modify_button:active {
-  transform: scale(1.03);
-}
-
-.personal_info .submit_button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: var(--primary-green);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.personal_info .submit_button:active {
-  transform: scale(1.01);
-}
-
-.personal_info .notification {
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.personal_info .notification.success {
+.personal-info > h2 {
   color: var(--primary-green);
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
 }
 
-.personal_info .notification.error {
-  color: red;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
+.personal-info > .form-info {
+  display: flex;
+  height: 1.9rem;
+  padding: 0rem 0.6rem;
+  align-items: center;
+  gap: 0.6rem;
+  align-self: stretch;
 }

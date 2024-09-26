@@ -4,9 +4,7 @@ const router = express.Router();
 
 const userActions = require("../controllers/userActions");
 
-const { hashPassword, verifyToken } = require("../services/auth");
-
-router.get("/profile", verifyToken, userActions.read);
+const { hashPassword } = require("../services/auth");
 
 router.get("/", userActions.browse); // Pour lister tous les utilisateurs.
 
@@ -14,8 +12,8 @@ router.get("/:id", userActions.read); // Pour afficher un utilisateur spécifiqu
 
 router.post("/", hashPassword, userActions.add); // Pour ajouter un nouvel utilisateur
 
-router.put("/:id", verifyToken, userActions.edit); // Pour modifier un utilisateur existant
+router.put("/:id", userActions.edit); // Pour modifier un utilisateur existant
 
-router.delete("/:id", verifyToken, userActions.destroy); // Pour supprimer un utilisateur
+router.delete("/:id", userActions.destroy); // Pour supprimer un utilisateur
 
 module.exports = router;

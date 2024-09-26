@@ -1,10 +1,9 @@
 import { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/authContext";
 import "../styles/Auth.css";
 
 export default function Login() {
-  const { login } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -23,7 +22,11 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await login(formData);
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        formData,
+        { withCredentials: true }
+      );
       setError("");
       navigate("/");
     } catch (err) {

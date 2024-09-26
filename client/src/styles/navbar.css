@@ -4,7 +4,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  z-index: 100;
 }
 
 nav + hr {
@@ -12,7 +11,7 @@ nav + hr {
   margin: auto;
 }
 
-nav img {
+nav > img {
   width: 2.5rem;
 }
 
@@ -78,21 +77,12 @@ nav button:has(:not(img)) {
   color: red;
 }
 
-nav > section > span {
-  display: none;
-}
-
-.user-avatar {
-  width: 3rem;
-  border-radius: 50%;
-}
-
 @media (min-width: 768px) {
   nav {
     padding: 0.625rem 2rem;
   }
 
-  nav > a > img {
+  nav > img {
     width: 4.0625rem;
     position: absolute;
     top: 50%;

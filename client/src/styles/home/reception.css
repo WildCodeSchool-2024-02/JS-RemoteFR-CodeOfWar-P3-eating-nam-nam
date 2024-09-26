@@ -1,4 +1,4 @@
-div.reception > .left {
+.reception > .left {
   display: flex;
   width: 22rem;
   height: fit-content;
@@ -10,7 +10,7 @@ div.reception > .left {
   flex-shrink: 0;
   margin: auto;
 }
-div.reception > .left > h1 {
+.reception > .left > h1 {
   color: var(--primary-green);
   text-align: center;
   font-family: var(--title-font);
@@ -50,11 +50,11 @@ div.reception > .left > h1 {
   background-color: transparent;
 }
 
-div.reception > .left {
+.reception > .left {
   margin: auto;
 }
 
-div.reception > .left > article {
+.reception > .left > article {
   display: flex;
   height: fit-content;
   max-width: 31.25rem;
@@ -88,7 +88,7 @@ div.reception > .left > article {
     gap: 10rem;
   }
 
-  div.reception > .left {
+  .reception > .left {
     display: flex;
     margin: 0;
     max-width: 43.75rem;
@@ -99,7 +99,7 @@ div.reception > .left > article {
     gap: 1.5rem;
   }
 
-  div.reception > .left > h1 {
+  .reception > .left > h1 {
     width: 43.0625rem;
     color: var(--primary-green, #2f5b12);
     font-family: var(--title-font);
@@ -109,13 +109,13 @@ div.reception > .left > article {
     line-height: 3.0625rem;
     text-align: left;
   }
-  div.reception > .left > article {
+  .reception > .left > article {
     align-self: stretch;
     display: flex;
     width: 28.25rem;
     text-align: left;
   }
-  div.reception > .right {
+  .reception > .right {
     display: flex;
     width: 36rem;
     justify-content: center;

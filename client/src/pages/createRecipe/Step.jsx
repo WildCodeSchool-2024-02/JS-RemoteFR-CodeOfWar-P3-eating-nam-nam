@@ -1,18 +1,24 @@
-import PropTypes from "prop-types";
+import { useState } from "react";
 import { motion, Reorder } from "framer-motion";
 import "../../styles/create/recipeSteps.css";
 
-export default function RecipeSteps({ steps, updateSteps }) {
+function RecipeSteps() {
+  const [steps, setSteps] = useState([
+    { id: "1", content: "Préchauffez le four à 180°C" },
+    { id: "2", content: "Mélangez les ingrédients dans un bol" },
+    { id: "3", content: "Versez la pâte dans le moule" },
+  ]);
+
   const addStep = () => {
     const newStep = {
       id: String(Date.now()),
       content: `Nouvelle étape ${steps.length + 1}`,
     };
-    updateSteps([...steps, newStep]);
+    setSteps([...steps, newStep]);
   };
 
   const updateStep = (id, newContent) => {
-    updateSteps(
+    setSteps(
       steps.map((step) =>
         step.id === id ? { ...step, content: newContent } : step
       )
@@ -20,13 +26,13 @@ export default function RecipeSteps({ steps, updateSteps }) {
   };
 
   const deleteStep = (id) => {
-    updateSteps(steps.filter((step) => step.id !== id));
+    setSteps(steps.filter((step) => step.id !== id));
   };
 
   return (
     <div className="recipe-steps">
       <h2>Étapes de la Recette</h2>
-      <Reorder.Group axis="y" values={steps} onReorder={updateSteps}>
+      <Reorder.Group axis="y" values={steps} onReorder={setSteps}>
         {steps.map((step, index) => (
           <Reorder.Item key={step.id} value={step}>
             <motion.div
@@ -65,12 +71,4 @@ export default function RecipeSteps({ steps, updateSteps }) {
   );
 }
 
-RecipeSteps.propTypes = {
-  steps: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  updateSteps: PropTypes.func.isRequired,
-};
+export default RecipeSteps;

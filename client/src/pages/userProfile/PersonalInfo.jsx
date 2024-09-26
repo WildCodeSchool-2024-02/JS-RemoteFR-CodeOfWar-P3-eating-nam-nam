@@ -1,104 +1,33 @@
 import "../../styles/userProfile/personalInfo.css";
-import PropTypes from "prop-types";
 import { useState } from "react";
-import { updateUserProfil } from "../../services/requestUserProfile";
 
-export default function PersonalInfo({ userData, setUserData }) {
+export default function PersonalInfo() {
   const [showPassword, setShowPassword] = useState(false);
-  const [notification, setNotification] = useState({ type: "", message: "" });
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await updateUserProfil(userData);
-      setNotification({
-        type: "success",
-        message: "Profil mis à jour avec succès !",
-      });
-    } catch (error) {
-      setNotification({
-        type: "error",
-        message: "Échec de la mise à jour du profil.",
-      });
-    } finally {
-      setTimeout(() => {
-        setNotification({ type: "", message: "" });
-      }, 10000);
-    }
-  };
-
   return (
     <div className="personal_info">
       <h2>MES INFOS PERSO</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="user_info">
-          <label htmlFor="civility">Civilité</label>
-          <select
-            name="civility"
-            id="civility"
-            value={userData.civility}
-            onChange={handleInputChange}
-          >
-            <option value="0">Monsieur</option>
-            <option value="1">Madame</option>
-            <option value="2">Autre</option>
-          </select>
-        </div>
+      <form>
+        {["Nom d'utilisateur", "Civilité", "Prenom", "Nom", "E-mail"].map(
+          (label) => (
+            <div key={label} className="user_info">
+              <label htmlFor={label.toLowerCase()}>{label}</label>
+              <input
+                id={label.toLowerCase()}
+                type={label === "E-mail" ? "email" : "text"}
+              />
+            </div>
+          )
+        )}
 
-        <div className="user_info">
-          <label htmlFor="username">Nom d'utilisateur</label>
-          <input
-            name="username"
-            id="username"
-            type="text"
-            value={userData.username}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className="user_info">
-          <label htmlFor="fullname">Nom et prénom</label>
-          <input
-            name="fullname"
-            id="fullname"
-            type="text"
-            value={userData.fullname}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className="user_info">
-          <label htmlFor="email">E-mail</label>
-          <input
-            name="email"
-            id="email"
-            type="email"
-            value={userData.email}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className="settings-password-block">
+        <div className="">
           <label htmlFor="password">Mot de passe</label>
           <div className="password_field">
-            <input
-              name="password"
-              id="password"
-              type={showPassword ? "text" : "password"}
-              onChange={handleInputChange}
-            />
+            <input id="password" type={showPassword ? "text" : "password"} />
             <button
               type="button"
               className="toggle_password_button"
@@ -116,19 +45,6 @@ export default function PersonalInfo({ userData, setUserData }) {
           Enregistrer
         </button>
       </form>
-      {notification.message && (
-        <div className={`notification ${notification.type}`}>
-          {notification.message}
-        </div>
-      )}
     </div>
   );
 }
-
-PersonalInfo.propTypes = {
-  id: PropTypes.number.isRequired,
-  username: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string,
-}.isRequired;

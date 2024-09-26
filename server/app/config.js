@@ -83,9 +83,6 @@ app.use(cookieParser());
 /* ************************************************************************* */
 
 // Import the API router
-
-const path = require("path");
-
 const router = require("./router");
 
 // Mount the API router under the "/api" endpoint
@@ -108,12 +105,15 @@ app.use("/api", router);
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your client's build artifacts are located.
 
-// const reactBuildPath = path.join(__dirname, "/../../client/dist");
+/*
+const path = require("path");
+
+const reactBuildPath = path.join(__dirname, "/../../client/dist");
 const publicFolderPath = path.join(__dirname, "/../public");
 
 // Serve react resources
 
-// app.use(express.static(reactBuildPath));
+app.use(express.static(reactBuildPath));
 
 // Serve server resources
 
@@ -121,9 +121,10 @@ app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 
 // Redirect unhandled requests to the react index file
 
-// app.get("*", (_, res) => {
-//   res.sendFile(path.join(reactBuildPath, "/index.html"));
-// });
+app.get("*", (_, res) => {
+  res.sendFile(path.join(reactBuildPath, "/index.html"));
+});
+*/
 
 /* ************************************************************************* */
 

@@ -4,36 +4,26 @@
   align-items: center;
   gap: 0.6rem;
   align-self: stretch;
-  justify-content: center;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
 }
 
 .UserReception .Left {
   display: flex;
   width: 7rem;
-  height: auto;
+  height: 7rem;
   padding: 0.6rem;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
 }
-
 .UserReception .Left img {
-  width: 100%;
-}
-
-.UserReception .Left img:hover {
-  transform: scale(1.05);
-  cursor: pointer;
+  width: 6rem;
 }
 
 .UserReception .Right {
   display: flex;
   height: 6rem;
-  width: 15rem;
-  border-radius: 8px;
-  justify-content: space-around;
+  width: 10rem;
+  justify-content: space-between;
   text-align: center;
   flex-direction: column;
   align-items: center;
@@ -63,24 +53,4 @@
   font-size: 0.6rem;
   font-weight: 300;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.UserReception .bold-text {
-  font-weight: bold;
-}
-
-@media (min-width: 1280px) {
-  .UserReception .Left {
-    width: 10rem;
-  }
-  .UserReception .Right {
-    height: 8rem;
-    width: 20rem;
-  }
-  .UserReception > .Right > .bottom > p {
-    font-size: 0.9rem;
-  }
 }

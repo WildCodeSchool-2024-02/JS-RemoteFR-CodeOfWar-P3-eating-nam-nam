@@ -38,7 +38,6 @@ const verifyPassword = async (req, res, next) => {
     req.user = {
       id: user.id,
       email: user.email,
-      fullname: user.fullname,
     };
     const verified = await argon2.verify(user.password, password);
     if (!verified) {
@@ -55,7 +54,7 @@ const createToken = async (req, res, next) => {
   try {
     const payload = req.user;
 
-    const token = jwt.sign(payload, process.env.APP_SECRET, {
+    const token = await jwt.sign(payload, process.env.APP_SECRET, {
       expiresIn: "1h",
     });
 
@@ -68,22 +67,14 @@ const createToken = async (req, res, next) => {
 
 // ---
 
-const verifyToken = (req, res, next) => {
+const verifyToken = async (req, res, next) => {
   try {
     const { auth } = req.cookies;
-
-    if (!auth) {
-      return res.status(401).json({ message: "Aucun token fourni." });
-    }
-
-    const verified = jwt.verify(auth, process.env.APP_SECRET);
-    req.user = verified;
-    return next();
+    const result = await jwt.verify(auth, process.env.APP_SECRET);
+    console.info(result);
+    next();
   } catch (error) {
-    if (error.name === "JsonWebTokenError") {
-      return res.status(403).json({ message: "Token invalide." });
-    }
-    return res.status(500).json({ message: "Erreur serveur." });
+    next(error);
   }
 };
 

@@ -1,4 +1,4 @@
-import Carrousel from "../components/Carrousel";
+import Carrousel from "../components/navbar/Carrousel";
 import "../styles/therecipes.css";
 
 import gazpachoTomate from "../assets/images/gazpacho_tomate.svg";
@@ -30,10 +30,10 @@ import pancakesSiropErable from "../assets/images/pancakes_sirop_erable.svg";
 import saladeDeFruits from "../assets/images/salade_de_fruits.svg";
 
 const entreeData = [
-  { id: 1, name: "Gazpacho de tomate", image: gazpachoTomate },
-  { id: 2, name: "Foie gras", image: foieGras },
-  { id: 3, name: "Salade de pate", image: saladeDePate },
-  { id: 4, name: "Bruschetta", image: bruschetta },
+  { name: "Gazpacho de tomate", image: gazpachoTomate },
+  { name: "Foie gras", image: foieGras },
+  { name: "Salade de pate", image: saladeDePate },
+  { name: "Bruschetta", image: bruschetta },
   { name: "Carpaccio de boeuf", image: carpaccioDeBoeuf },
   { name: "Salade lyonnaise", image: saladeLyonnaise },
   { name: "Soupe potimarron", image: soupePotimarron },
@@ -43,7 +43,7 @@ const platData = [
   { name: "Cheeseburger", image: cheeseburger },
   { name: "Galette complète", image: galetteComplete },
   { name: "Makis", image: makis },
-  { name: "Boulettes bolognaise", image: pateBolognaise },
+  { name: "Pate bolognaise", image: pateBolognaise },
   { name: "Poisson haricots purée", image: poissonHaricotsPuree },
   { name: "Porc au caramel", image: porcAuCaramel },
   { name: "Poulet au curry", image: pouletAuCurry },
