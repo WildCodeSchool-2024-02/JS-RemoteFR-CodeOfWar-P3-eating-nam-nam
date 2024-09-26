@@ -72,10 +72,26 @@ const add = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    await tables.recipe.delete(req.params.id);
-    res.sendStatus(204);
+    const recipeId = req.params.id;
+    const userId = req.user.id;
+
+    const recipe = await tables.recipe.read(recipeId);
+
+    if (!recipe) {
+      return res.status(404).json({ message: "Recette non trouvée." });
+    }
+
+    if (recipe.user_id !== parseInt(userId, 10)) {
+      return res.status(403).json({
+        message: "Vous n'êtes pas autorisé à supprimer cette recette.",
+      });
+    }
+
+    await tables.recipe.delete(recipeId);
+
+    return res.sendStatus(204);
   } catch (err) {
-    next(err);
+    return next(err);
   }
 };
 

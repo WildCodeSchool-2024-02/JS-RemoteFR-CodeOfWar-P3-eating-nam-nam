@@ -16,6 +16,6 @@ router.post("/", verifyToken, recipesActions.add); // Créer une nouvelle recett
 
 router.put("/:id", recipesActions.edit); // Modifier une recette
 
-router.delete("/:id", recipesActions.destroy); // Supprimer une recette
+router.delete("/:id", verifyToken, recipesActions.destroy); // Supprimer une recette
 
 module.exports = router;

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
+import handleDeleteRecipe from "../services/handleDeleteRecipe";
 
 import "../styles/recipesinstruction.css";
 import photoProfil from "../assets/images/user_picture.png";
@@ -14,6 +15,7 @@ import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
   const recipe = useLoaderData();
+  const navigate = useNavigate();
   const [comment, setComment] = useState("");
   const stars = [1, 2, 3, 4, 5];
 
@@ -74,6 +76,13 @@ export default function RecipesInstruction() {
             </div>
             <img src={heartRed} alt="coeur rouge" />
           </div>
+          <button
+            type="button"
+            className="delete-recipe-btn"
+            onClick={() => handleDeleteRecipe(recipe.id, navigate)}
+          >
+            Supprimer la recette
+          </button>
         </article>
 
         <article className="card-recipe-green">
