@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import axios from "axios";
 
 import "../styles/recipesinstruction.css";
@@ -12,21 +13,32 @@ import smileyLangue from "../assets/images/smiley_langue.svg";
 import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
-  const [recipe, setRecipe] = useState([]);
+  const recipe = useLoaderData();
+  const [comment, setComment] = useState("");
   const stars = [1, 2, 3, 4, 5];
 
-  const fetchData = () => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recipes/2`)
-      .then((response) => setRecipe(response.data))
-      .catch((error) => console.error(error));
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    console.info(import.meta.env.VITE_API_URL);
+    axios
+      .post(
+        `${import.meta.env.VITE_API_URL}/api/comments`,
+        {
+          recipe_id: recipe.id,
+          content: comment,
+        },
+        { withCredentials: true }
+      )
 
-  console.info(recipe);
+      .then(() => {
+        setComment("");
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div className="card-recipe">
@@ -77,7 +89,7 @@ export default function RecipesInstruction() {
               </p>
             </div>
             <div className="four">
-              <img src={four} alt="logo de pour pour le temps de cuisson" />
+              <img src={four} alt="logo de four pour le temps de cuisson" />
               <p>
                 {recipe.cooking_time} minutes <br />
                 Cuisson
@@ -166,6 +178,17 @@ export default function RecipesInstruction() {
         <article className="Smiley-Langue">
           <h3>Bon Appétit</h3>
           <img src={smileyLangue} alt="Smiley qui tire la langue" />
+        </article>
+        <article className="CommentSection">
+          <h2>Commentaires</h2>
+          <form onSubmit={handleCommentSubmit} className="CommentForm">
+            <textarea
+              value={comment}
+              onChange={handleCommentChange}
+              placeholder="Écrivez votre commentaire ici"
+            />
+            <button type="submit">Poster</button>
+          </form>
         </article>
       </div>
     </div>

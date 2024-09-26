@@ -30,10 +30,10 @@ import pancakesSiropErable from "../assets/images/pancakes_sirop_erable.svg";
 import saladeDeFruits from "../assets/images/salade_de_fruits.svg";
 
 const entreeData = [
-  { name: "Gazpacho de tomate", image: gazpachoTomate },
-  { name: "Foie gras", image: foieGras },
-  { name: "Salade de pate", image: saladeDePate },
-  { name: "Bruschetta", image: bruschetta },
+  { id: 1, name: "Gazpacho de tomate", image: gazpachoTomate },
+  { id: 2, name: "Foie gras", image: foieGras },
+  { id: 3, name: "Salade de pate", image: saladeDePate },
+  { id: 4, name: "Bruschetta", image: bruschetta },
   { name: "Carpaccio de boeuf", image: carpaccioDeBoeuf },
   { name: "Salade lyonnaise", image: saladeLyonnaise },
   { name: "Soupe potimarron", image: soupePotimarron },

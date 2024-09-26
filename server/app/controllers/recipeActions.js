@@ -26,6 +26,16 @@ const read = async (req, res, next) => {
   }
 };
 
+const readRandom = async (req, res, next) => {
+  const { limit } = req.query;
+  try {
+    const recipeRandom = await tables.recipe.readRandom(limit || 1);
+    res.json(recipeRandom);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const edit = async (req, res, next) => {
   const recipe = { ...req.body, id: req.params.id };
 
@@ -38,11 +48,23 @@ const edit = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const recipe = req.body;
-
   try {
-    const insertId = await tables.recipe.create(recipe);
-    res.status(201).json({ insertId });
+    const { title, description, steps, difficulty, categorie, jwtUser } =
+      req.body;
+    const recipeId = await tables.recipe.create({
+      userId: jwtUser.id,
+      difficultyId: parseInt(difficulty, 10),
+      categorieId: parseInt(categorie, 10),
+      title,
+      description,
+      cookingTime: 10,
+      preparationTime: 10,
+    });
+    steps.forEach((step) => {
+      tables.recipeStep.create(recipeId, { number: step.id, ...step });
+    });
+    console.info("Recipe id: ", recipeId);
+    res.status(200).json({ success: true });
   } catch (err) {
     next(err);
   }
@@ -63,4 +85,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  readRandom,
 };
