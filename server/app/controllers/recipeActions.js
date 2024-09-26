@@ -69,9 +69,6 @@ const destroy = async (req, res, next) => {
       return res.status(404).json({ message: "Recette non trouvée." });
     }
 
-    console.info(recipe);
-    console.info(userId);
-
     if (recipe.user_id !== parseInt(userId, 10)) {
       return res.status(403).json({
         message: "Vous n'êtes pas autorisé à supprimer cette recette.",
