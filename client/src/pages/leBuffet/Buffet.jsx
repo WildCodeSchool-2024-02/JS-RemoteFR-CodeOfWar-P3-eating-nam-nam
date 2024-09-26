@@ -4,15 +4,16 @@ import "../../styles/leBuffet/DishCard.css";
 import EntreeBanner from "../../assets/images/Entrée-buffet.png";
 import PlatBanner from "../../assets/images/Plat-buffet.png";
 import DessertBanner from "../../assets/images/Dessert-buffet.png";
-import entree1 from "../../assets/images/entree1.jpg";
-import entree2 from "../../assets/images/entree2.jpg";
-import entree3 from "../../assets/images/entree3.jpg";
-import plat1 from "../../assets/images/plat1.jpg";
-import plat2 from "../../assets/images/plat2.jpg";
-import plat3 from "../../assets/images/plat3.jpg";
-import dessert1 from "../../assets/images/dessert1.jpg";
-import dessert2 from "../../assets/images/dessert2.jpg";
-import dessert3 from "../../assets/images/dessert3.jpg";
+
+const entree1 = "http://localhost:3310/upload/entree1.jpg";
+const entree2 = "http://localhost:3310/upload/entree2.jpg";
+const entree3 = "http://localhost:3310/upload/entree3.jpg";
+const plat1 = "http://localhost:3310/upload/plat1.jpg";
+const plat2 = "http://localhost:3310/upload/plat2.jpg";
+const plat3 = "http://localhost:3310/upload/plat3.jpg";
+const dessert1 = "http://localhost:3310/upload/dessert1.jpg";
+const dessert2 = "http://localhost:3310/upload/dessert2.jpg";
+const dessert3 = "http://localhost:3310/upload/dessert3.jpg";
 
 export default function LeBuffet() {
   const entrees = [
