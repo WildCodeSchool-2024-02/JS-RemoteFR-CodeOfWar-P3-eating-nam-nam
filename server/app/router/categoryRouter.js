@@ -2,11 +2,14 @@ const express = require("express");
 
 const router = express.Router();
 
-const categoryRouter = require("../controllers/difficultyActions");
+const categoryActions = require("../controllers/categoryActions");
 
-router.get("/", categoryRouter.browse); // Récupérer toutes les difficultés
-router.get("/:id", categoryRouter.read); // Récupérer une difficulté par ID
-router.post("/", categoryRouter.add); // Ajouter une nouvel difficulté
-router.put("/:id", categoryRouter.edit); // Modifier une difficulté
+router.get("/", categoryActions.browse);
+router.get("/:id", categoryActions.read);
+
+// router.get("/random/:id", categoryActions.readRandomByCategory);
+
+router.post("/", categoryActions.add); // Ajouter une nouvel difficulté
+router.put("/:id", categoryActions.edit); // Modifier une difficulté
 
 module.exports = router;

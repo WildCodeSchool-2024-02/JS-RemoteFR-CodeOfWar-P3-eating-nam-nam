@@ -20,6 +20,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import createRecipeLoader from "./services/loader/createRecipeLoader";
 import recipeLoader from "./services/loader/recipeLoader";
+import CategoryLoader from "./services/loader/categoryLoader";
 
 import "./styles/main.css";
 
@@ -72,6 +73,7 @@ const router = createBrowserRouter([
       {
         path: "/recipes",
         element: <TheRecipes />,
+        loader: CategoryLoader,
       },
       {
         path: "/recipes-instruction/:id",
