@@ -13,7 +13,7 @@ const checkAuth = async (req, res, next) => {
       if (!decode) res.sendStatus(401);
       else {
         const user = await tables.user.read(decode.id);
-        res.status(200).json({ fullname: user.fullname });
+        res.status(200).json({ id: user.id, fullname: user.fullname });
       }
     }
   } catch (err) {

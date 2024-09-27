@@ -1,4 +1,4 @@
--- SQLBook: Code
+
 CREATE TABLE difficulty (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
@@ -290,30 +290,3 @@ VALUES (14, 1, 'cas de', 154), (14, 3, '', 111), (14, 200, 'g de', 100),
 -- Curry de légumes
 INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
 VALUES (15, 1, '', 4), (15, 1, '', 30), (15, 1, '', 44), (15, 1, 'cas de', 149), (15, 200, 'ml de', 147), (15, 1, 'pincée de', 132), (15, 1, 'pincée de', 133);
-
--- Pancakes 
-INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
-VALUES (16, 200, 'g', 110), (16, 2, '', 111), (16, 30, 'g', 108), (16, 300, 'ml', 112), (16, 1, 'sachet de', 113), (16, 50, 'g', 109), (16, 1, 'pincée de', 133);
-
--- Gratin dauphinois
-INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
-VALUES (17, 1, '', 110), (17, 800, 'g', 44), (17, 300, 'ml', 118), (17, 50, 'g', 119), (17, 2, '', 111), (17, 2, 'gousses', 1), (17, 1, 'brin', 64), (17, 50, 'g', 108), (17, 1, 'pincée de', 133), (17, 1, 'pincée de', 132); 
-
--- Salade niçoise
-INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
-VALUES (18, 1, '', 158), (18, 200, 'g', 106), (18, 150, 'g', 157), (18, 4, '', 111), (18, 200, 'g', 66), (18, 1, '', 50), (18, 1, '', 46), (18, 1, '', 39), (18, 50, 'g', 152), (18, 1, 'càs', 125), (18, 1, 'càs', 120), (18, 1, 'càs', 143), (18, 1, 'pincée de', 133), (18, 1, 'pincée de', 132);
-
--- Baba au rhum
-INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
-VALUES (19, 250, 'g de', 110), (20, 3, '', 111), (19, 100, 'g de', 108), (19, 1, 'pincée de', 133), (19, 250, 'ml de', 135), (19, 100, 'g de', 109), (19, 100, 'ml de', 156), (19, 250, 'ml de', 114), (19, 30, 'g de', 115); 
-
--- Spaghetti aglio e olio
-INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
-VALUES (20, 400, 'g de', 126), (20, 4, 'gousses d', 1), (20, 100, 'ml de', 125), (20, 1, 'pincée de', 132), (20, 1, 'pincée de', 133), (20, 1, 'pincée de', 136), (20, 1, '', 64); 
--- Coq au vin
-INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
-VALUES (21, 1.5, 'kg de', 148), (21, 200, 'g de', 145), (21, 1, 'bouteille de', 124), (21, 200, "g d'", 42), (21, 2, "gousses d'", 1),(21, 200, 'g de', 10), (21, 200, 'g de', 13), (21, 1, 'branche de', 39), (21, 1, 'branche de', 12), (21, 50, 'g de', 108), (21, 50, 'ml de', 135), (21, 1, 'pincée de', 133), (21, 1, 'pincée de', 132); 
-
--- Crème brûlée
-INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
-VALUES (22, 500, 'ml de', 112), (22, 5, '', 111), (22, 100, 'g de', 109), (22, 1, 'gousse de', 116), (22, 50, 'g de', 115); 

@@ -39,18 +39,25 @@ const readByRecipe = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   const comment = req.body;
-  console.info(req.body);
 
   const userId = req.user.id;
   comment.user_id = userId;
 
   try {
-    const insertId = await tables.comment.create({
+    const { username } = await tables.user.read(userId);
+    const { insertId } = await tables.comment.create({
       recipe_id: comment.recipe_id,
-      content: comment.content.comment,
+      content: comment.content,
       user_id: userId,
     });
-    res.status(201).json({ insertId });
+    res.status(201).json({
+      id: insertId,
+      user_id: userId,
+      recipe_id: comment.recipe_id,
+      content: comment.content,
+      created_at: new Date(),
+      username,
+    });
   } catch (err) {
     next(err);
   }
@@ -70,8 +77,17 @@ const edit = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    await tables.comment.delete(req.params.id);
-    res.sendStatus(204);
+    const commentId = parseInt(req.params.id, 10);
+    const comment = await tables.comment.read(commentId);
+
+    if (!comment) res.sendStatus(404);
+
+    if (parseInt(req.user.id, 10) !== parseInt(comment.user_id, 10)) {
+      res.sendStatus(401);
+    } else {
+      await tables.comment.delete(commentId);
+      res.sendStatus(204);
+    }
   } catch (err) {
     next(err);
   }
