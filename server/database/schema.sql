@@ -27,6 +27,7 @@ INSERT INTO categorie (name) VALUES ('ENTREES'), ('PLATS'), ('DESSERTS');
 
 CREATE TABLE recipe (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    image_url VARCHAR(255) NOT NULL DEFAULT "omelette.jpg",
     user_id INT NOT NULL,
     categorie_id INT NOT NULL,
     difficulty_id INT NOT NULL,
