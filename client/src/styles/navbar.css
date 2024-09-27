@@ -78,12 +78,21 @@ nav button:has(:not(img)) {
   color: red;
 }
 
+nav > section > span {
+  display: none;
+}
+
+.user-avatar {
+  width: 3rem;
+  border-radius: 50%;
+}
+
 @media (min-width: 768px) {
   nav {
     padding: 0.625rem 2rem;
   }
 
-  nav img {
+  nav > a > img {
     width: 4.0625rem;
     position: absolute;
     top: 50%;
