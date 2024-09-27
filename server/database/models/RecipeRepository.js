@@ -41,7 +41,7 @@ class RecipeRepository extends AbstractRepository {
       recipe_ingredient.quantity,
       recipe_ingredient.unit,
       ingredient.name AS ingredient_name,
-      categorie.name AS categorie_name,
+      category.name AS category_name,
       comment.id AS comment_id,
       comment.content AS comment_content,
       comment.created_at AS comment_created_at,
