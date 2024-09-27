@@ -110,3 +110,8 @@ header > section.right > label > img,
 header > section.right > label > span {
   opacity: 0.5;
 }
+
+header > section.right > label > img.preview {
+  opacity: 1;
+  height: 15rem;
+}

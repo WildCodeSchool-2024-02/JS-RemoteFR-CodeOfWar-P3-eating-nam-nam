@@ -23,17 +23,46 @@ const read = async (req, res, next) => {
   }
 };
 
-const add = async (req, res, next) => {
-  const comment = req.body;
-  const userId = req.body.jwtUser.id;
-  comment.user_id = userId;
-
+const readByRecipe = async (req, res, next) => {
   try {
-    const insertId = await tables.comment.create(comment);
-    res.status(201).json({ insertId });
+    const comments = await tables.comment.readByRecipeId(Number(req.params.id));
+
+    if (comments != null) {
+      res.json(comments);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (err) {
     next(err);
   }
+};
+
+const add = async (req, res, next) => {
+  const comment = req.body;
+
+  const userId = req.user.id;
+  comment.user_id = userId;
+
+  try {
+    const { username } = await tables.user.read(userId);
+    const { insertId } = await tables.comment.create({
+      recipe_id: comment.recipe_id,
+      content: comment.content,
+      user_id: userId,
+    });
+    res.status(201).json({
+      id: insertId,
+      user_id: userId,
+      recipe_id: comment.recipe_id,
+      content: comment.content,
+      created_at: new Date(),
+      username,
+    });
+  } catch (err) {
+    next(err);
+  }
+
+  return null;
 };
 
 const edit = async (req, res, next) => {
@@ -48,8 +77,17 @@ const edit = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    await tables.comment.delete(req.params.id);
-    res.sendStatus(204);
+    const commentId = parseInt(req.params.id, 10);
+    const comment = await tables.comment.read(commentId);
+
+    if (!comment) res.sendStatus(404);
+
+    if (parseInt(req.user.id, 10) !== parseInt(comment.user_id, 10)) {
+      res.sendStatus(401);
+    } else {
+      await tables.comment.delete(commentId);
+      res.sendStatus(204);
+    }
   } catch (err) {
     next(err);
   }
@@ -58,6 +96,7 @@ const destroy = async (req, res, next) => {
 module.exports = {
   browse,
   read,
+  readByRecipe,
   add,
   edit,
   destroy,

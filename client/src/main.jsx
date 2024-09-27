@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { AuthProvider } from "./context/authContext";
 import App from "./App";
 import Home from "./pages/Home";
 import CreateRecipe from "./pages/CreateRecipe";
@@ -15,9 +16,12 @@ import User from "./pages/User";
 import Buffet from "./pages/leBuffet/Buffet";
 import TheRecipes from "./pages/TheRecipes";
 import RecipesInstruction from "./pages/RecipesInstruction";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import createRecipeLoader from "./services/loader/createRecipeLoader";
 import recipeLoader from "./services/loader/recipeLoader";
 import recipesLoader from "./services/loader/recipesLoader";
+import CategoryLoader from "./services/loader/categoryLoader";
 
 import "./styles/main.css";
 
@@ -38,9 +42,14 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: "/create-recipe",
-        element: <CreateRecipe />,
-        loader: createRecipeLoader,
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "/create-recipe",
+            element: <CreateRecipe />,
+            loader: createRecipeLoader,
+          },
+        ],
       },
       {
         path: "/user-profil",
@@ -66,6 +75,7 @@ const router = createBrowserRouter([
       {
         path: "/recipes",
         element: <TheRecipes />,
+        loader: CategoryLoader,
       },
       {
         path: "/recipes-instruction/:id",
@@ -80,6 +90,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

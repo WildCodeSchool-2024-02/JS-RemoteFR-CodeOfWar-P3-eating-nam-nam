@@ -17,6 +17,7 @@ export default function CreateRecipe() {
       { id: "3", content: "Versez la pâte dans le moule" },
     ],
     difficulty: "0",
+    category: "0",
   });
 
   const updateRecipeData = (field, value) => {
@@ -28,13 +29,33 @@ export default function CreateRecipe() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.info(
-      await axios.post(
+
+    const formData = new FormData();
+
+    formData.append("title", recipeData.title);
+    formData.append("description", recipeData.description);
+    formData.append("difficulty", recipeData.difficulty);
+    formData.append("category", recipeData.category);
+    if (recipeData.photo) {
+      formData.append("file", recipeData.photo);
+    }
+    formData.append("ingredients", JSON.stringify(recipeData.ingredients));
+    formData.append("steps", JSON.stringify(recipeData.steps));
+    try {
+      const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/recipes/`,
-        recipeData,
-        { withCredentials: true }
-      )
-    );
+        formData,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.info("Response request submit recipe: ", response);
+    } catch (error) {
+      console.error("Erreur lors de l'envoi de la recette:", error);
+    }
   };
 
   return (

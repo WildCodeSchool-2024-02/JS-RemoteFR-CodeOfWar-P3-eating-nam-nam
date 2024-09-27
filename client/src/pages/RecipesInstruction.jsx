@@ -12,34 +12,40 @@ import gantDeCuisson from "../assets/images/gant_de_cuisson.svg";
 import four from "../assets/images/four.svg";
 import smileyLangue from "../assets/images/smiley_langue.svg";
 import heartRed from "../assets/images/heart-red.svg";
+import Comment from "../components/Comment";
 
 export default function RecipesInstruction() {
-  const recipe = useLoaderData();
+  const { recipe, comments: initialComments } = useLoaderData();
   const navigate = useNavigate();
-  const [comment, setComment] = useState("");
+  const [commentData, setCommentData] = useState("");
+  const [comments, setComments] = useState(initialComments);
+
+  console.info(comments);
+
   const stars = [1, 2, 3, 4, 5];
 
-  const handleCommentChange = (e) => {
-    setComment(e.target.value);
+  const handleCommentChange = (event) => {
+    setCommentData(event.currentTarget.value);
   };
 
-  const handleCommentSubmit = (e) => {
+  const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    console.info(import.meta.env.VITE_API_URL);
-    axios
-      .post(
+    try {
+      const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/comments`,
         {
           recipe_id: recipe.id,
-          content: comment,
+          content: commentData,
         },
         { withCredentials: true }
-      )
-
-      .then(() => {
-        setComment("");
-      })
-      .catch((error) => console.error(error));
+      );
+      setComments((prevData) => [...prevData, response.data]);
+    } catch (err) {
+      console.error(
+        "Une erreur est survenue lors de la création d'un commentaire: ",
+        err
+      );
+    }
   };
 
   return (
@@ -190,9 +196,19 @@ export default function RecipesInstruction() {
         </article>
         <article className="CommentSection">
           <h2>Commentaires</h2>
+          <div className="CommentList">
+            {comments.length > 0 ? (
+              comments.map((commentary) => (
+                <Comment key={commentary.id} commentary={commentary} />
+              ))
+            ) : (
+              <p>Aucun commentaire pour cette recette.</p>
+            )}
+          </div>
           <form onSubmit={handleCommentSubmit} className="CommentForm">
             <textarea
-              value={comment}
+              name="comment"
+              value={commentData.comment}
               onChange={handleCommentChange}
               placeholder="Écrivez votre commentaire ici"
             />
