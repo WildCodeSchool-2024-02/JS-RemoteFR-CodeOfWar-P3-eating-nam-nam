@@ -12,6 +12,7 @@ import gantDeCuisson from "../assets/images/gant_de_cuisson.svg";
 import four from "../assets/images/four.svg";
 import smileyLangue from "../assets/images/smiley_langue.svg";
 import heartRed from "../assets/images/heart-red.svg";
+import Comment from "../components/Comment";
 
 export default function RecipesInstruction() {
   const { recipe, comments: initialComments } = useLoaderData();
@@ -208,13 +209,7 @@ export default function RecipesInstruction() {
           <div className="CommentList">
             {comments.length > 0 ? (
               comments.map((commentary) => (
-                <div key={commentary.id} className="CommentItem">
-                  <h2>{commentary.username}</h2>
-                  <p>{commentary.content}</p>
-                  <small>
-                    {new Date(commentary.created_at).toLocaleString()}
-                  </small>
-                </div>
+                <Comment key={commentary.id} commentary={commentary} />
               ))
             ) : (
               <p>Aucun commentaire pour cette recette.</p>
