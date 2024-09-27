@@ -7,11 +7,14 @@ class RecipeRepository extends AbstractRepository {
 
   async create(recipe) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (user_id, difficulty_id, categorie_id, image_url, title, description, cooking_time, preparation_time) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+
+   
+      `insert into ${this.table} (user_id, category_id, difficulty_id, image_url, title, description, cooking_time, preparation_time) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+
       [
         recipe.userId,
-        recipe.difficultyId,
         recipe.categoryId,
+        recipe.difficultyId,
         recipe.image_url,
         recipe.title,
         recipe.description,
@@ -42,7 +45,7 @@ class RecipeRepository extends AbstractRepository {
       recipe_ingredient.quantity,
       recipe_ingredient.unit,
       ingredient.name AS ingredient_name,
-      categorie.name AS categorie_name,
+      category.name AS category_name,
       comment.id AS comment_id,
       comment.content AS comment_content,
       comment.created_at AS comment_created_at,
@@ -50,8 +53,8 @@ class RecipeRepository extends AbstractRepository {
       FROM ${this.table} 
       INNER JOIN difficulty 
       ON recipe.difficulty_id = difficulty.id
-      INNER JOIN categorie
-      ON recipe.categorie_id = categorie.id
+      INNER JOIN category
+      ON recipe.category_id = category.id
       LEFT JOIN recipe_ingredient 
       ON recipe_ingredient.recipe_id = recipe.id
       LEFT JOIN ingredient
@@ -76,7 +79,7 @@ class RecipeRepository extends AbstractRepository {
       preparation_time: rows[0].preparation_time,
       instruction: rows[0].instruction,
       difficulty: rows[0].difficulty_name,
-      categorie: rows[0].categorie_name,
+      category: rows[0].category_name,
       ingredients: [],
       comments: [],
     };
@@ -110,11 +113,11 @@ class RecipeRepository extends AbstractRepository {
 
   async update(recipe) {
     const [result] = await this.database.query(
-      `update ${this.table} set user_id = ?, difficulty_id = ?, title = ?, description = ?, cooking_time = , preparation_time = ?,instruction = ? where id = ?`,
+      `update ${this.table} set user_id = ?, category_id = ?, difficulty_id = ?, title = ?, description = ?, cooking_time = , preparation_time = ?,instruction = ? where id = ?`,
       [
         recipe.user_id,
+        recipe.category_id,
         recipe.difficulty_id,
-        recipe.categorie_id,
         recipe.title,
         recipe.description,
         recipe.cooking_time,
