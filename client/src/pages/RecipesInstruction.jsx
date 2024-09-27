@@ -17,7 +17,7 @@ import Comment from "../components/Comment";
 export default function RecipesInstruction() {
   const { recipe, comments: initialComments } = useLoaderData();
   const navigate = useNavigate();
-  const [commentData, setCommentData] = useState({ comment: "" });
+  const [commentData, setCommentData] = useState("");
   const [comments, setComments] = useState(initialComments);
 
   console.info(comments);
@@ -25,37 +25,27 @@ export default function RecipesInstruction() {
   const stars = [1, 2, 3, 4, 5];
 
   const handleCommentChange = (event) => {
-    const { name, value } = event.target;
-    setCommentData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setCommentData(event.currentTarget.value);
   };
 
-  const handleCommentSubmit = (e) => {
+  const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    console.info(import.meta.env.VITE_API_URL);
-    axios
-      .post(
+    try {
+      const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/comments`,
         {
           recipe_id: recipe.id,
           content: commentData,
         },
         { withCredentials: true }
-      )
-
-      .then(() => {
-        setCommentData({ comment: "" });
-
-        axios
-          .get(
-            `${import.meta.env.VITE_API_URL}/api/comments/recipes/${recipe.id}`
-          )
-          .then((response) => setComments(response.data))
-          .catch((error) => console.error(error));
-      })
-      .catch((error) => console.error(error));
+      );
+      setComments((prevData) => [...prevData, response.data]);
+    } catch (err) {
+      console.error(
+        "Une erreur est survenue lors de la création d'un commentaire: ",
+        err
+      );
+    }
   };
 
   return (
