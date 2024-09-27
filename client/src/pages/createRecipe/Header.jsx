@@ -50,11 +50,37 @@ export default function Header({ recipeData, updateRecipeData }) {
                   ))
               : null}
           </select>
+          <select
+            className="difficulty-select"
+            value={recipeData.category}
+            onChange={(e) => updateRecipeData("category", e.target.value)}
+          >
+            <option value="">Choisir la categorie</option>
+            {difficulties
+              ? difficulties
+                  .sort((a, b) => a.id - b.id)
+                  .map((difficulty) => (
+                    <option value={difficulty.id} key={difficulty.id}>
+                      {difficulty.name}
+                    </option>
+                  ))
+              : null}
+          </select>
           <button type="submit">Enregister</button>
         </section>
         <label htmlFor="input-file">
-          <img src={photo} alt="" />
-          <span>Importer une photo</span>
+          {recipeData.photo ? (
+            <img
+              src={URL.createObjectURL(recipeData.photo)}
+              alt="Recipe"
+              className="preview"
+            />
+          ) : (
+            <>
+              <img src={photo} alt="" />
+              <span>Importer une photo</span>
+            </>
+          )}
         </label>
         <input type="file" id="input-file" onChange={handlePhotoChange} />
       </section>
@@ -67,6 +93,7 @@ Header.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     difficulty: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
     photo: PropTypes.oneOfType([
       PropTypes.instanceOf(File),
       PropTypes.oneOf([null]),
