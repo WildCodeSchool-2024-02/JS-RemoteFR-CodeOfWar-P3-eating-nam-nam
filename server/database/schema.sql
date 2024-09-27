@@ -1,3 +1,4 @@
+-- SQLBook: Code
 
 CREATE TABLE difficulty (
     id INT AUTO_INCREMENT PRIMARY KEY,
