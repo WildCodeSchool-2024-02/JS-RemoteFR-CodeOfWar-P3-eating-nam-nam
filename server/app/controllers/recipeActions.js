@@ -49,19 +49,24 @@ const edit = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   try {
-    const { title, description, steps, difficulty, categorie, jwtUser } =
+    const { title, description, steps, difficulty, category, filename } =
       req.body;
+    const { id } = req.user;
     const recipeId = await tables.recipe.create({
-      userId: jwtUser.id,
+      userId: id,
       difficultyId: parseInt(difficulty, 10),
-      categorieId: parseInt(categorie, 10),
+      categoryId: parseInt(category, 10),
+      image_url: filename,
       title,
       description,
       cookingTime: 10,
       preparationTime: 10,
     });
-    steps.forEach((step) => {
-      tables.recipeStep.create(recipeId, { number: step.id, ...step });
+    (await JSON.parse(steps)).forEach((step) => {
+      tables.recipeStep.create(recipeId, {
+        number: step.id,
+        description: step.content,
+      });
     });
     console.info("Recipe id: ", recipeId);
     res.status(200).json({ success: true });
