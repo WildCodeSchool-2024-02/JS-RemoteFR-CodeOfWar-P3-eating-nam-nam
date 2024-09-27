@@ -22,7 +22,20 @@ class CommentRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
+    const [rows] = await this.database.query(
+      `SELECT ${this.table}.*, user.username AS username FROM ${this.table} INNER JOIN user ON comment.user_id = user.id`
+    );
+    return rows;
+  }
+
+  async readByRecipeId(recipeId) {
+    const [rows] = await this.database.query(
+      `SELECT ${this.table}.*, user.username AS username 
+       FROM ${this.table} 
+       INNER JOIN user ON ${this.table}.user_id = user.id 
+       WHERE recipe_id = ?`,
+      [recipeId]
+    );
     return rows;
   }
 

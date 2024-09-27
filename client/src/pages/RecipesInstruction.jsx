@@ -14,13 +14,21 @@ import smileyLangue from "../assets/images/smiley_langue.svg";
 import heartRed from "../assets/images/heart-red.svg";
 
 export default function RecipesInstruction() {
-  const recipe = useLoaderData();
+  const { recipe, comments: initialComments } = useLoaderData();
   const navigate = useNavigate();
-  const [comment, setComment] = useState("");
+  const [commentData, setCommentData] = useState({ comment: "" });
+  const [comments, setComments] = useState(initialComments);
+
+  console.info(comments);
+
   const stars = [1, 2, 3, 4, 5];
 
-  const handleCommentChange = (e) => {
-    setComment(e.target.value);
+  const handleCommentChange = (event) => {
+    const { name, value } = event.target;
+    setCommentData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleCommentSubmit = (e) => {
@@ -31,13 +39,20 @@ export default function RecipesInstruction() {
         `${import.meta.env.VITE_API_URL}/api/comments`,
         {
           recipe_id: recipe.id,
-          content: comment,
+          content: commentData,
         },
         { withCredentials: true }
       )
 
       .then(() => {
-        setComment("");
+        setCommentData({ comment: "" });
+
+        axios
+          .get(
+            `${import.meta.env.VITE_API_URL}/api/comments/recipes/${recipe.id}`
+          )
+          .then((response) => setComments(response.data))
+          .catch((error) => console.error(error));
       })
       .catch((error) => console.error(error));
   };
@@ -190,9 +205,25 @@ export default function RecipesInstruction() {
         </article>
         <article className="CommentSection">
           <h2>Commentaires</h2>
+          <div className="CommentList">
+            {comments.length > 0 ? (
+              comments.map((commentary) => (
+                <div key={commentary.id} className="CommentItem">
+                  <h2>{commentary.username}</h2>
+                  <p>{commentary.content}</p>
+                  <small>
+                    {new Date(commentary.created_at).toLocaleString()}
+                  </small>
+                </div>
+              ))
+            ) : (
+              <p>Aucun commentaire pour cette recette.</p>
+            )}
+          </div>
           <form onSubmit={handleCommentSubmit} className="CommentForm">
             <textarea
-              value={comment}
+              name="comment"
+              value={commentData.comment}
               onChange={handleCommentChange}
               placeholder="Écrivez votre commentaire ici"
             />

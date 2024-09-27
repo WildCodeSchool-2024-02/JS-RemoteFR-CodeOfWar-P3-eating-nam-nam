@@ -7,11 +7,15 @@ class RecipeRepository extends AbstractRepository {
 
   async create(recipe) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (user_id, category_id, difficulty_id, title, description, cooking_time, preparation_time) values (?, ?, ?, ?, ?, ?, ?)`,
+
+   
+      `insert into ${this.table} (user_id, category_id, difficulty_id, image_url, title, description, cooking_time, preparation_time) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+
       [
         recipe.userId,
         recipe.categoryId,
         recipe.difficultyId,
+        recipe.image_url,
         recipe.title,
         recipe.description,
         recipe.cookingTime,
@@ -80,19 +84,25 @@ class RecipeRepository extends AbstractRepository {
       comments: [],
     };
 
+    const ingredientSet = new Set();
+
     rows.forEach((row) => {
       if (row.ingredient_name) {
-        recipe.ingredients.push({
-          unit: row.unit,
-          name: row.ingredient_name,
-          quantity: row.quantity,
-        });
+        const ingredient = `${row.quantity} ${row.unit} ${row.ingredient_name}`;
+        if (!ingredientSet.has(ingredient)) {
+          ingredientSet.add(ingredient);
+          recipe.ingredients.push({
+            unit: row.unit,
+            name: row.ingredient_name,
+            quantity: row.quantity,
+          });
+        }
       }
       if (row.comment_id) {
         recipe.comments.push({
           id: row.comment_id,
           content: row.comment_content,
-          create_at: row.comment_create_at,
+          create_at: row.comment_created_at,
           user_pseudo: row.comment_user_pseudo,
         });
       }
