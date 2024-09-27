@@ -2,7 +2,7 @@ const AbstractRepository = require("./AbstractRepository");
 
 class CategoryRepository extends AbstractRepository {
   constructor() {
-    super({ table: "Category" });
+    super({ table: "category" });
   }
 
   async create(category) {
@@ -20,6 +20,29 @@ class CategoryRepository extends AbstractRepository {
       [id]
     );
     return rows[0];
+  }
+
+  async readWithRecipe(id, limit = 5) {
+    const [rows] = await this.database.query(
+      `
+      SELECT ${this.table}.*, recipe.id AS recipeId, recipe.title AS recipeTitle from ${this.table}
+      INNER JOIN recipe ON ${this.table}.id = recipe.category_id
+      WHERE ${this.table}.id = ? ORDER BY RAND() LIMIT ?
+      `,
+
+      [id, limit, 10]
+    );
+
+    const response = {
+      id: rows[0].id,
+      name: rows[0].name,
+      recipes: [],
+    };
+
+    rows.forEach((row) => {
+      response.recipes.push({ id: row.recipeId, title: row.recipeTitle });
+    });
+    return response;
   }
 
   async readAll() {

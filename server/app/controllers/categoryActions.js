@@ -11,10 +11,13 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const category = await tables.category.read(Number(req.params.id));
+    const category = await tables.category.readWithRecipe(
+      Number(req.params.id)
+    );
 
+    console.info(category);
     if (category != null) {
-      res.json(category);
+      res.status(200).json(category);
     } else {
       res.sendStatus(404);
     }

@@ -1,10 +1,11 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
+import PropTypes from "prop-types";
 import "../styles/carrousel.css";
 
-export default function Carrousel() {
+export default function Carrousel({ category }) {
   const carrouselRef = useRef(null);
+  console.info("Category: ", category);
 
   const scroll = (direction) => {
     if (!carrouselRef.current) return;
@@ -28,19 +29,6 @@ export default function Carrousel() {
     });
   };
 
-  const [carrouselRecipe, setCarrouselRecipe] = useState([]);
-
-  const fetchData = () => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recipes/random?limit=5`)
-      .then((response) => setCarrouselRecipe(response.data))
-      .catch((error) => console.error(error));
-  };
-  console.info(carrouselRecipe);
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <div className="carrousel-container">
       <button
@@ -51,8 +39,8 @@ export default function Carrousel() {
         &#10094;
       </button>
       <div className="carrousel" ref={carrouselRef}>
-        {carrouselRecipe.length &&
-          carrouselRecipe.map((recipe) => (
+        {category.recipes.length > 0 &&
+          category.recipes.map((recipe) => (
             <div key={recipe.id} className="cards">
               <Link to={`/recipes-instruction/${recipe.id}`}>
                 <img src={recipe.image} alt={recipe.title} />
@@ -73,3 +61,17 @@ export default function Carrousel() {
     </div>
   );
 }
+
+Carrousel.propTypes = {
+  category: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    recipes: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  }).isRequired,
+};
