@@ -47,13 +47,6 @@ export default function AdminRecipe() {
           </div>
         ))}
       </div>
-      <button
-        className="back-button"
-        type="button"
-        onClick={() => navigate(-1)}
-      >
-        Retour
-      </button>
     </div>
   );
 }

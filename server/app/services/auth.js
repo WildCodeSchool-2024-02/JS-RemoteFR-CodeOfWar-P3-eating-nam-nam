@@ -31,7 +31,6 @@ const verifyPassword = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await tables.user.readByEmail(email);
-    console.info(user);
     if (!user) {
       res.sendStatus(401);
       return;

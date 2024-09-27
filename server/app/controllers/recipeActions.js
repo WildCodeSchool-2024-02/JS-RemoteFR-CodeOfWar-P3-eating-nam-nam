@@ -75,8 +75,6 @@ const destroy = async (req, res, next) => {
     const recipeId = req.params.id;
     const userId = req.user.id;
     const userRole = req.user.role;
-    console.info(`User ID from token: ${userId}`);
-    console.info(`User role: ${userRole}`);
 
     const recipe = await tables.recipe.read(recipeId);
 
