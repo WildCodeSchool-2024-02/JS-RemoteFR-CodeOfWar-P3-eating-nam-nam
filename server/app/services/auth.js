@@ -77,6 +77,7 @@ const verifyToken = (req, res, next) => {
 
     const verified = jwt.verify(auth, process.env.APP_SECRET);
     req.user = verified;
+    req.params.id = verified.id;
     return next();
   } catch (error) {
     if (error.name === "JsonWebTokenError") {

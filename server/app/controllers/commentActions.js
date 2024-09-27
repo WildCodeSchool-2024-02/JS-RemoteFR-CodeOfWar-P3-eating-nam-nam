@@ -23,17 +23,39 @@ const read = async (req, res, next) => {
   }
 };
 
+const readByRecipe = async (req, res, next) => {
+  try {
+    const comments = await tables.comment.readByRecipeId(Number(req.params.id));
+
+    if (comments != null) {
+      res.json(comments);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const add = async (req, res, next) => {
   const comment = req.body;
-  const userId = req.body.jwtUser.id;
+  console.info(req.body);
+
+  const userId = req.user.id;
   comment.user_id = userId;
 
   try {
-    const insertId = await tables.comment.create(comment);
+    const insertId = await tables.comment.create({
+      recipe_id: comment.recipe_id,
+      content: comment.content.comment,
+      user_id: userId,
+    });
     res.status(201).json({ insertId });
   } catch (err) {
     next(err);
   }
+
+  return null;
 };
 
 const edit = async (req, res, next) => {
@@ -58,6 +80,7 @@ const destroy = async (req, res, next) => {
 module.exports = {
   browse,
   read,
+  readByRecipe,
   add,
   edit,
   destroy,
