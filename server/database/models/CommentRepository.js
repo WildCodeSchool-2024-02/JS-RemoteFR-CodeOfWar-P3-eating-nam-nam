@@ -10,7 +10,7 @@ class CommentRepository extends AbstractRepository {
       `INSERT INTO ${this.table} (recipe_id, user_id, content) VALUES (?, ?, ?)`,
       [comment.recipe_id, comment.user_id, comment.content]
     );
-    return result.insertId;
+    return { insertId: result.insertId, createdAt: result.created_at };
   }
 
   async read(id) {
