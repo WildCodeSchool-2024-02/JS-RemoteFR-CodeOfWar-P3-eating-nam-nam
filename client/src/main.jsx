@@ -17,6 +17,7 @@ import TheRecipes from "./pages/TheRecipes";
 import RecipesInstruction from "./pages/RecipesInstruction";
 import createRecipeLoader from "./services/loader/createRecipeLoader";
 import recipeLoader from "./services/loader/recipeLoader";
+import recipesLoader from "./services/loader/recipesLoader";
 
 import "./styles/main.css";
 
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
       {
         path: "/admin-recipes",
         element: <AdminRecipe />,
+        loader: recipesLoader,
       },
       {
         path: "/user",

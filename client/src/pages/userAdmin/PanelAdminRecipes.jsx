@@ -1,25 +1,26 @@
-import { useState, useEffect } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../../styles/panelAdmin/AdminRecipes.css";
 
 export default function AdminRecipe() {
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3310/api/recipes")
-      .then((response) => response.json())
-      .then((data) =>
-        setRecipes(
-          data.map((recipe) => ({
-            ...recipe,
-            image: `http://localhost:3310${recipe.image}`,
-          }))
-        )
-      )
-      .catch((error) => console.error("Error fetching recipes:", error));
-  }, []);
+  const recipes = useLoaderData();
+  const navigate = useNavigate();
 
   const handleDelete = (id) => {
-    setRecipes(recipes.filter((recipe) => recipe.id !== id));
+    axios
+      .delete(`http://localhost:3310/api/recipes/${id}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          navigate("/admin-recipes", { replace: true });
+        } else {
+          console.error("Erreur lors de la suppression de la recette.");
+        }
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la requête DELETE:", error);
+      });
   };
 
   return (
@@ -46,7 +47,11 @@ export default function AdminRecipe() {
           </div>
         ))}
       </div>
-      <button className="back-button" type="button">
+      <button
+        className="back-button"
+        type="button"
+        onClick={() => navigate(-1)}
+      >
         Retour
       </button>
     </div>

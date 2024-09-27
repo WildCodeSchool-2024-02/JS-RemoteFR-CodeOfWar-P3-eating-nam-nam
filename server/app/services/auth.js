@@ -31,6 +31,7 @@ const verifyPassword = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await tables.user.readByEmail(email);
+    console.info(user);
     if (!user) {
       res.sendStatus(401);
       return;
@@ -38,6 +39,7 @@ const verifyPassword = async (req, res, next) => {
     req.user = {
       id: user.id,
       email: user.email,
+      role: user.role,
     };
     const verified = await argon2.verify(user.password, password);
     if (!verified) {

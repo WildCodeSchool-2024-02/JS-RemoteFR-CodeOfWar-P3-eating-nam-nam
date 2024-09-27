@@ -74,6 +74,9 @@ const destroy = async (req, res, next) => {
   try {
     const recipeId = req.params.id;
     const userId = req.user.id;
+    const userRole = req.user.role;
+    console.info(`User ID from token: ${userId}`);
+    console.info(`User role: ${userRole}`);
 
     const recipe = await tables.recipe.read(recipeId);
 
@@ -81,7 +84,12 @@ const destroy = async (req, res, next) => {
       return res.status(404).json({ message: "Recette non trouvée." });
     }
 
-    if (recipe.user_id !== parseInt(userId, 10)) {
+    console.info(`Recipe owner ID: ${recipe.user_id}`);
+
+    if (
+      parseInt(recipe.user_id, 10) !== parseInt(userId, 10) &&
+      userRole !== "admin"
+    ) {
       return res.status(403).json({
         message: "Vous n'êtes pas autorisé à supprimer cette recette.",
       });
