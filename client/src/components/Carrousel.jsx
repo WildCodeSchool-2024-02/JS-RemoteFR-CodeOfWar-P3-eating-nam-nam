@@ -1,10 +1,11 @@
-import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import PropTypes from "prop-types";
 import "../styles/carrousel.css";
 
-export default function Carrousel({ items }) {
+export default function Carrousel({ category }) {
   const carrouselRef = useRef(null);
+  console.info("Category: ", category);
 
   const scroll = (direction) => {
     if (!carrouselRef.current) return;
@@ -22,7 +23,6 @@ export default function Carrousel({ items }) {
       newScrollLeft =
         scrollLeft >= maxScrollLeft ? 0 : scrollLeft + scrollAmount;
     }
-
     carrouselRef.current.scrollTo({
       left: newScrollLeft,
       behavior: "smooth",
@@ -39,16 +39,17 @@ export default function Carrousel({ items }) {
         &#10094;
       </button>
       <div className="carrousel" ref={carrouselRef}>
-        {items.map(({ id, image, name }) => (
-          <div key={id} className="cards">
-            <Link to={`/recipes-instruction/${id}`}>
-              <img src={image} alt={name} />
-            </Link>
-            <Link to={`/recipes-instruction/${id}`}>
-              <h3>{name}</h3>
-            </Link>
-          </div>
-        ))}
+        {category.recipes.length > 0 &&
+          category.recipes.map((recipe) => (
+            <div key={recipe.id} className="cards">
+              <Link to={`/recipes-instruction/${recipe.id}`}>
+                <img src={recipe.image} alt={recipe.title} />
+              </Link>
+              <Link to={`/recipes-instruction/${recipe.id}`}>
+                <h3>{recipe.title}</h3>
+              </Link>
+            </div>
+          ))}
       </div>
       <button
         className="carrousel-bouton right"
@@ -62,11 +63,15 @@ export default function Carrousel({ items }) {
 }
 
 Carrousel.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  category: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    recipes: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  }).isRequired,
 };

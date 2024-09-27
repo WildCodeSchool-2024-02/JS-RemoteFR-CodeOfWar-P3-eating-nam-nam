@@ -49,6 +49,8 @@ const edit = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   try {
+
+
     const { title, description, steps, difficulty, category, filename } =
       req.body;
     const { id } = req.user;
