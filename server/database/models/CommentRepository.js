@@ -28,6 +28,17 @@ class CommentRepository extends AbstractRepository {
     return rows;
   }
 
+  async readByRecipeId(recipeId) {
+    const [rows] = await this.database.query(
+      `SELECT ${this.table}.*, user.username AS username 
+       FROM ${this.table} 
+       INNER JOIN user ON ${this.table}.user_id = user.id 
+       WHERE recipe_id = ?`,
+      [recipeId]
+    );
+    return rows;
+  }
+
   async update(comment) {
     const [result] = await this.database.query(
       `UPDATE ${this.table} SET content = ? WHERE id = ?`,
