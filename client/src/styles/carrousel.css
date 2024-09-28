@@ -12,11 +12,31 @@
 
 .cards {
   min-width: 318px;
-  margin: 0.5rem;
+  margin: 1rem;
   border-radius: 1rem;
   overflow: hidden;
   background-color: #d3e4cd;
   text-align: center;
+}
+
+.dishes4 {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  border-radius: 100%;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.imageCarrousel {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .cards img {
@@ -30,6 +50,7 @@
 }
 
 .cards h3 {
+  margin-top: 3rem;
   font-size: 1.2rem;
   margin-top: -1rem;
   color: #010101;

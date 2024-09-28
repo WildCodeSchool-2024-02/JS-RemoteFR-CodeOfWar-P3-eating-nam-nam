@@ -12,6 +12,9 @@ export default function RecipeCard() {
       .catch((error) => console.error(error));
   };
   console.info(recipe);
+  console.info(
+    `${import.meta.env.VITE_API_URL}/public/upload/${recipe.image_url}`
+  );
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,7 +28,13 @@ export default function RecipeCard() {
       </section>
       <div className="card">
         <p>{recipe.description}</p>
-        <img src={recipe.image} alt={recipe.title} />
+        <div className="dishes3">
+          <img
+            src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
+            alt={recipe.title}
+            className="imageRecipeCard"
+          />
+        </div>
       </div>
     </div>
   );
