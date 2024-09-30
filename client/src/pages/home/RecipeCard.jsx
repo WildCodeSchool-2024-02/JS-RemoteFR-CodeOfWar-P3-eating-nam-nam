@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/home/recipeCard.css";
+import { Link } from "react-router-dom";
 
 export default function RecipeCard() {
   const [recipe, setRecipe] = useState([]);
@@ -29,11 +30,13 @@ export default function RecipeCard() {
       <div className="card">
         <p>{recipe.description}</p>
         <div className="dishes3">
-          <img
-            src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
-            alt={recipe.title}
-            className="imageRecipeCard"
-          />
+          <Link to={`/recipes-instruction/${recipe.id}`}>
+            <img
+              src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
+              alt={recipe.title}
+              className="imageRecipeCard"
+            />
+          </Link>
         </div>
       </div>
     </div>

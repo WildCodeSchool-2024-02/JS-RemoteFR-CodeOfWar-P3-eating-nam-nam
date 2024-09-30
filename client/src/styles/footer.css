@@ -224,4 +224,7 @@ section > button {
     padding: 8px 32px;
     gap: 10px;
   }
+  section > button:active {
+    transform: scale(1.03);
+  }
 }
