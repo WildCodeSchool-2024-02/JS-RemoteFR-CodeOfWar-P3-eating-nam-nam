@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../styles/home/seeMoreRecipe.css";
 
@@ -24,11 +25,13 @@ export default function SeeMoreRecipe() {
         littleRecipe.map((little) => (
           <article key={little.id}>
             <div className="dishes1">
-              <img
-                src={`${import.meta.env.VITE_API_URL}/${little.image_url}`}
-                alt={little.title}
-                className="imageSeeMore"
-              />
+              <Link to={`/recipes-instruction/${little.id}`}>
+                <img
+                  src={`${import.meta.env.VITE_API_URL}/${little.image_url}`}
+                  alt={little.title}
+                  className="imageSeeMore"
+                />
+              </Link>
             </div>
             <section>
               <h4>IDEE RECETTE</h4>

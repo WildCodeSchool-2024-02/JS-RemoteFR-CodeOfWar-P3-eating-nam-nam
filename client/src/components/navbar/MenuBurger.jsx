@@ -21,9 +21,11 @@ export default function MenuNavbar() {
             <img src={Close} alt="Close" />
           </button>
           <Link to="/passer-en-cuisine">Passer en cuisine</Link>
-          <Link to="/recettes">Recettes</Link>
-          <Link to="/inscription">Inscription</Link>
-          <button type="button">Connexion</button>
+          <Link to="/recipes">Recettes</Link>
+          <Link to="/register">Inscription</Link>
+          <Link to="/login">
+            <button type="button">Connexion</button>
+          </Link>
         </section>
       ) : null}
     </div>

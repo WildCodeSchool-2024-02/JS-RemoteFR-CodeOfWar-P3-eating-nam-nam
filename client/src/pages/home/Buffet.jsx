@@ -15,7 +15,7 @@ export default function Buffet() {
           conçu pour vous proposer différents plats équilibrés en fonctions de
           vos critères
         </p>
-        <Link to="/">
+        <Link to="/buffet">
           <button type="button">Cliquez ici</button>
         </Link>
       </section>

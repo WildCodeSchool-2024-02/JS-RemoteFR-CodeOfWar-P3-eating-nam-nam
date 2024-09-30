@@ -39,11 +39,13 @@ export default function Navbar() {
               >
                 Déconnexion
               </button>
-              <img
-                src={`https://api.dicebear.com/6.x/initials/svg?seed=${user.fullname}`}
-                alt={user.fullname}
-                className="user-avatar"
-              />
+              <Link to="/user">
+                <img
+                  src={`https://api.dicebear.com/6.x/initials/svg?seed=${user.fullname}`}
+                  alt={user.fullname}
+                  className="user-avatar"
+                />
+              </Link>
             </>
           ) : (
             <>
