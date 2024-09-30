@@ -48,6 +48,7 @@ header > section.right {
 }
 
 header > section.right > section.top {
+  gap: 1rem;
   display: flex;
   justify-content: space-between;
   margin-bottom: 1.5rem;
