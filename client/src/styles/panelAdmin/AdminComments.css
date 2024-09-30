@@ -1,0 +1,109 @@
+.comments-AdminList {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.comments-AdminTitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.comments-AdminCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comments-AdminCard {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: var(--secondary-green);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 300px;
+  height: auto;
+  overflow: hidden;
+}
+
+.comment-details {
+  flex: 1;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.back-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .comments-AdminCards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .comments-AdminCard {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    height: auto;
+  }
+
+  .comments-AdminCard:hover {
+    transform: scale(1.03);
+  }
+
+  .comment-details {
+    align-items: center;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .delete-button {
+    top: auto;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .back-button {
+    width: 12rem;
+    padding: 1rem;
+  }
+
+  .back-button:active {
+    transform: scale(1.03);
+  }
+}
