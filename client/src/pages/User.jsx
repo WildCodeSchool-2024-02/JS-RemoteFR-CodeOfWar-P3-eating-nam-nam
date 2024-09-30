@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 import RecipeSection from "./user/RecipeSection";
 import "../styles/user.css";
 
@@ -9,11 +11,16 @@ export default function User({
   latestRecipes = [],
   favoriteRecipes = [],
 }) {
+  const { user } = useAuth();
+  const isAdmin = user && user.role === "admin";
+
   return (
     <div className="user-page">
       <header className="profile-header">
         <div className="profile-info">
-          <img src={profileImage} alt="Profile" className="profile-image" />
+          <Link to="/user-profil">
+            <img src={profileImage} alt="Profile" className="profile-image" />
+          </Link>
           <div className="profile-details">
             <h1>{username}</h1>
             <p className="profile-description">{description}</p>
@@ -28,12 +35,22 @@ export default function User({
       <RecipeSection title="Mes recettes favorites" recipes={favoriteRecipes} />
 
       <div className="action-buttons">
-        <button type="button" className="add-recipe-button">
-          Ajouter une nouvelle recette
-        </button>
+        <Link to="/create-recipe">
+          <button type="button" className="add-recipe-button">
+            Ajouter une nouvelle recette
+          </button>
+        </Link>
         <button type="button" className="edit-recipe-button">
           Modifier une recette
         </button>
+
+        {isAdmin && (
+          <Link to="/panel-admin">
+            <button type="button" className="admin-panel-button">
+              Panel Admin
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );

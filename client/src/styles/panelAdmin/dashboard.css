@@ -29,9 +29,11 @@
   background-color: var(--secondary-brown);
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  color: var(--primary-black);
+  text-decoration: none;
 }
 
-.card-Admin > p {
+.card-Admin > a > p {
   font-weight: bold;
   font-family: var(--lorem-font);
 }

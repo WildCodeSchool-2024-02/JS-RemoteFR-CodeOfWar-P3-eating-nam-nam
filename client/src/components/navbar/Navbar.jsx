@@ -21,7 +21,7 @@ export default function Navbar() {
     <>
       <nav>
         <section>
-          <Link to="/passer-en-cuisine">Passer en cuisine</Link>
+          { user ? <Link to="/create-recipe">Créer une recette</Link> : null }
           <Link to="/recipes">Recettes</Link>
         </section>
         <Link to="/">
@@ -38,11 +38,13 @@ export default function Navbar() {
               >
                 Déconnexion
               </button>
-              <img
-                src={`https://api.dicebear.com/6.x/initials/svg?seed=${user.fullname}`}
-                alt={user.fullname}
-                className="user-avatar"
-              />
+              <Link to="/user">
+                <img
+                  src={`https://api.dicebear.com/6.x/initials/svg?seed=${user.fullname}`}
+                  alt={user.fullname}
+                  className="user-avatar"
+                />
+              </Link>
             </>
           ) : (
             <>

@@ -1,4 +1,3 @@
-
 CREATE TABLE difficulty (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
@@ -24,7 +23,7 @@ CREATE TABLE category (
 id INT AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(50)
 );
-INSERT INTO category (name) VALUES ('entrees'), ('plats'), ('desserts');
+INSERT INTO category (name) VALUES ('ENTREES'), ('PLATS'), ('DESSERTS');
 
 CREATE TABLE recipe (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,31 +41,9 @@ CREATE TABLE recipe (
     FOREIGN KEY (difficulty_id) REFERENCES Difficulty(id),
     FOREIGN KEY (category_id) REFERENCES Category(id)
 );
-CREATE TABLE recipe_step (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    recipe_id INT NOT NULL,
-    step_number INT NOT NULL,
-    description TEXT NOT NULL,
-    FOREIGN KEY (recipe_id) REFERENCES recipe(id) ON DELETE CASCADE,
-    UNIQUE KEY unique_recipe_step (recipe_id, step_number)
-);
 
-CREATE TABLE recipe (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    image_url VARCHAR(255) NOT NULL DEFAULT "omelette.jpg",
-    user_id INT NOT NULL,
-    category_id INT NOT NULL,
-    difficulty_id INT NOT NULL,
-    title VARCHAR(100) NOT NULL,
-    description TEXT NOT NULL,
-    cooking_time INT NOT NULL,
-    preparation_time INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
-    FOREIGN KEY (difficulty_id) REFERENCES Difficulty(id),
-    FOREIGN KEY (category_id) REFERENCES Category(id)
-);
+
+INSERT INTO recipe (image_url, user_id, category_id, difficulty_id, title, description, cooking_time, preparation_time) VALUES ("quiche-thon-tomates.jpg", 1, 2, 1, "Quiche Thon et tomates","Une quiche savoureuse et facile à réaliser, à base de thon et de tomates fraîches, parfaite pour un repas léger ou un pique-nique.", 60, 20), ("lasagne-bolognaise.jpg",2, 2, 2, "Lasagnes bolognaise","Des lasagnes à la bolognaise classiques, avec une sauce riche en viande hachée, sauce tomate et une béchamel crémeuse. Un plat italien incontournable et généreux." , 60, 60), ("foie-gras.jpg", 2, 1, 1, "Toast foie gras", "Le foie gras est un mets délicat français, préparé à partir du foie d'oie ou de canard engraissé. Il est apprécié pour sa texture fondante et son goût riche et subtil.", 2, 5), ("tarte-tatin.jpg", 2, 3, 2, "Tarte Tatin", "La Tarte Tatin est une célèbre tarte aux pommes caramélisées à l'envers, cuite au four. Elle est croquante et fondante à la fois.", 45, 30), ("salad-caesar.jpg", 3, 1, 1, "Salade César", "La salade César est une salade classique composée de laitue romaine, de croûtons, de parmesan et d'une sauce à base de mayonnaise et d'anchois.", 0, 15), ("Boeuf-bourguignon.jpg", 2, 2, 2, "Bœuf Bourguignon", "Un plat traditionnel français à base de bœuf mijoté dans une sauce au vin rouge, agrémenté de légumes comme les carottes, champignons et oignons.", 180, 45), ("soufflés-au-fromage.jpg", 2, 1, 3, "Soufflé au fromage", "Un soufflé au fromage est un plat aérien à base de fromage râpé et d'œufs battus en neige. Il gonfle à la cuisson pour un résultat léger et moelleux.", 25, 20), ("poulet-curry.jpg", 3, 2, 2, "Poulet au curry", "Un plat épicé à base de morceaux de poulet mijotés dans une sauce au curry crémeuse. Parfait pour un repas savoureux et rapide.", 40, 15), ("omelette.jpg", 3, 2, 1, "Omelette aux champignons", "Une omelette simple et savoureuse aux champignons sautés. Idéale pour un repas léger et rapide.", 5, 10),("pates-carbonara.jpg", 2, 2, 2, "Pâtes carbonara", "Un classique italien, les pâtes carbonara sont préparées avec des œufs, du parmesan, du lard et beaucoup de poivre.", 20, 10), ("canard-orange.jpg", 3, 2, 3, "Canard à l'orange", "Un plat sophistiqué où le canard est cuit avec une sauce à base d'orange pour un goût sucré-salé exquis.", 60, 30), ("crepes.jpg", 1, 3, 1, "Crêpes", "Les crêpes françaises sont fines et délicates, parfaites pour être servies avec du sucre, de la confiture ou du chocolat.", 10, 5), ("ratatouille.jpg", 3, 2, 2, "Ratatouille", "Un ragoût de légumes du sud de la France, composé principalement d'aubergines, de courgettes, de poivrons et de tomates.", 60, 30), ("tarte-au-citron-meringuée.jpg", 2, 3, 1, "Tarte au citron meringuée", "Un dessert classique, une tarte au citron acidulée recouverte d'une meringue légère et dorée.", 30, 20), ("curry-de-légumes.jpg", 2, 2, 2, "Curry de légumes", "Un plat végétarien épicé et parfumé à base de légumes variés et de lait de coco.", 45, 20), ("pancakes.jpg", 3, 3, 1, "Pancakes", "Des pancakes moelleux parfaits pour un petit-déjeuner gourmand.", 10, 15), ("gratin-dauphinois.jpg", 3, 2, 2, "Gratin dauphinois", "Un gratin à base de pommes de terre, de crème et de fromage, fondant à souhait.", 60, 15), ("salade-nicoise.jpg", 2, 1, 1, "Salade niçoise", "Une salade composée fraîche avec du thon, des olives, des œufs, et des légumes méditerranéens.", 0, 20), ("baba-au-rhum.jpg", 3, 3, 3, "Baba au rhum", "Un dessert gourmand imbibé de rhum et garni de crème fouettée.", 40, 60), ("spaghetti-aglio-e-olio.jpg", 2, 2, 1, "Spaghetti aglio e olio", "Un plat simple et rapide de pâtes avec de l'ail, de l'huile d'olive et du piment.", 10, 5), ("coq-au-vin.png", 2, 2, 2, "Coq au vin", "Un classique de la cuisine française où le poulet est mijoté dans du vin rouge avec des légumes.", 150, 30), ("crème-brûlée.jpg", 3, 3, 2, "Crème brûlée", "Un dessert crémeux avec une fine croûte caramélisée au sucre.", 60, 15), ("tomate-garnie.png", 2, 1, 1, "Tomate garnie", "La tomate garnie est une entrée fraîche et savoureuse. Une tomate creusée est remplie d'un mélange d'oignons, de maïs croquant et de pousses germées. Cette préparation légère et colorée est parfaite pour débuter un repas d'été ou un dîner léger.", 0, 10), ("verrine-saumon-avocat-skyr.jpg", 3, 1, 1, "Verrine saumon avocat et skr", "La verrine de saumon, avocat, skyr et œufs de lump est une entrée raffinée et colorée. Elle combine des couches de saumon frais ou fumé, de l'avocat écrasé, du skyr onctueux et des œufs de lump délicats. Ce mariage de saveurs et de textures en fait un choix parfait pour vos repas festifs ou dîners élégants.", 0, 20);
 
 CREATE TABLE recipe_step (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -77,39 +54,17 @@ CREATE TABLE recipe_step (
     UNIQUE KEY unique_recipe_step (recipe_id, step_number)
 );
 
--- Correction de l'insertion de données
-INSERT INTO recipe (user_id, image_url, category_id, difficulty_id, title, description, cooking_time, preparation_time) 
-VALUES 
-(1, "quiche-thon-tomates.jpg", 2, 1, "Quiche Thon et tomates", "Une quiche savoureuse et facile à réaliser, à base de thon et de tomates fraîches, parfaite pour un repas léger ou un pique-nique.", 60, 20),
-(2, "lasagne-bolognaise.jpg", 2, 2, "Lasagnes bolognaise", "Des lasagnes à la bolognaise classiques, avec une sauce riche en viande hachée, sauce tomate et une béchamel crémeuse. Un plat italien incontournable et généreux.", 60, 60),
-(2, "foie-gras.jpg", 1, 1, "Toast foie gras", "Le foie gras est un mets délicat français, préparé à partir du foie d'oie ou de canard engraissé. Il est apprécié pour sa texture fondante et son goût riche et subtil.", 2, 5),
-(2, "tarte-tatin.jpg", 3, 2, "Tarte Tatin", "La Tarte Tatin est une célèbre tarte aux pommes caramélisées à l'envers, cuite au four. Elle est croquante et fondante à la fois.", 45, 30),
-(3, "salade-cesar.jpg", 1, 1, "Salade César", "La salade César est une salade classique composée de laitue romaine, de croûtons, de parmesan et d'une sauce à base de mayonnaise et d'anchois.", 0, 15),
-(2, "boeuf-bourguignon.jpg", 2, 2, "Bœuf Bourguignon", "Un plat traditionnel français à base de bœuf mijoté dans une sauce au vin rouge, agrémenté de légumes comme les carottes, champignons et oignons.", 180, 45),
-(2, "souffle-fromage.jpg", 1, 3, "Soufflé au fromage", "Un soufflé au fromage est un plat aérien à base de fromage râpé et d'œufs battus en neige. Il gonfle à la cuisson pour un résultat léger et moelleux.", 25, 20),
-(3, "poulet-curry.jpg", 2, 2, "Poulet au curry", "Un plat épicé à base de morceaux de poulet mijotés dans une sauce au curry crémeuse. Parfait pour un repas savoureux et rapide.", 40, 15),
-(3, "omelette-champignons.jpg", 2, 1, "Omelette aux champignons", "Une omelette simple et savoureuse aux champignons sautés. Idéale pour un repas léger et rapide.", 5, 10), -- Correction : ajout de la virgule manquante ici
-(2, "pates-carbonara.jpg", 2, 2, "Pâtes carbonara", "Un classique italien, les pâtes carbonara sont préparées avec des œufs, du parmesan, du lard et beaucoup de poivre.", 20, 10),
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(1, 1, "Préchauffer le four à 180°C."), (1, 2, "Étaler la pâte dans un moule."), (1, 3, "Mélanger les œufs, la crème, le thon émietté et les tomates coupées en morceaux."), (1, 4, "Assaisonner avec du sel, du poivre et des herbes de Provence."), (1, 5, "Verser le mélange sur la pâte."), (1, 6, "Cuire au four pendant environ 40-45 minutes.");
 
-(3, "canard-orange.jpg", 2, 3, "Canard à l'orange", "Un plat sophistiqué où le canard est cuit avec une sauce à base d'orange pour un goût sucré-salé exquis.", 60, 30),
-(1, "crepes.jpg", 3, 1, "Crêpes", "Les crêpes françaises sont fines et délicates, parfaites pour être servies avec du sucre, de la confiture ou du chocolat.", 10, 5),
-(3, "ratatouille.jpg", 2, 2, "Ratatouille", "Un ragoût de légumes du sud de la France, composé principalement d'aubergines, de courgettes, de poivrons et de tomates.", 60, 30),
-(2, "tarte-citron-meringuee.jpg", 3, 1, "Tarte au citron meringuée", "Un dessert classique, une tarte au citron acidulée recouverte d'une meringue légère et dorée.", 30, 20),
-(2, "curry-legumes.jpg", 2, 2, "Curry de légumes", "Un plat végétarien épicé et parfumé à base de légumes variés et de lait de coco.", 45, 20),
-(3, "pancakes.jpg", 3, 1, "Pancakes", "Des pancakes moelleux parfaits pour un petit-déjeuner gourmand.", 10, 15),
-(3, "gratin-dauphinois.jpg", 2, 2, "Gratin dauphinois", "Un gratin à base de pommes de terre, de crème et de fromage, fondant à souhait.", 60, 15),
-(2, "salade-nicoise.jpg", 1, 1, "Salade niçoise", "Une salade composée fraîche avec du thon, des olives, des œufs, et des légumes méditerranéens.", 0, 20),
-(3, "baba-rhum.jpg", 3, 3, "Baba au rhum", "Un dessert gourmand imbibé de rhum et garni de crème fouettée.", 40, 60),
-(2, "spaghetti-aglio-olio.jpg", 2, 1, "Spaghetti aglio e olio", "Un plat simple et rapide de pâtes avec de l'ail, de l'huile d'olive et du piment.", 10, 5),
-(2, "coq-vin.jpg", 2, 2, "Coq au vin", "Un classique de la cuisine française où le poulet est mijoté dans du vin rouge avec des légumes.", 150, 30),
-(3, "creme-brulee.jpg", 3, 2, "Crème brûlée", "Un dessert crémeux avec une fine croûte caramélisée au sucre.", 60, 15);
- 
 
 CREATE TABLE ingredient (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL UNIQUE
-);
-INSERT INTO ingredient (name) VALUES 
+  );
+
+INSERT INTO ingredient (name)
+ VALUES 
 ('ail'),
 ('artichaut'),
 ('asperge'),
@@ -264,16 +219,19 @@ INSERT INTO ingredient (name) VALUES
 ('croûtons'),
 ('anchois'),
 ('maizena'),
-("blancs d'oeuf");
-CREATE TABLE Recipe_Ingredient (
-    recipe_id INT NOT NULL,
-    quantity DECIMAL(10,2),
-    unit VARCHAR(20),
-    ingredient_id INT NOT NULL,
-    PRIMARY KEY (recipe_id, ingredient_id),
-    FOREIGN KEY (recipe_id) REFERENCES Recipe(id) ON DELETE CASCADE,
-    FOREIGN KEY (ingredient_id) REFERENCES Ingredient(id) ON DELETE CASCADE
-); 
+("blancs d'oeuf"),
+('rhum'),
+('olives'),
+('oignons rouges'),
+('pousses germées'),
+('vinaigrette'),
+('skyr'),
+('saumon fumée'),
+('oeuf de lump'),
+('sauce teriyaki'),
+('maïs'),
+('jus de citron vert');
+
 
 CREATE TABLE comment (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -288,6 +246,17 @@ CREATE TABLE comment (
 INSERT INTO comment (recipe_id, user_id, content) 
 VALUES (1, 2, 'Super recette ! Merci beaucoup.'),
 (1, 3, 'Super recette ! J"adore.');
+
+
+CREATE TABLE Recipe_Ingredient (
+    recipe_id INT NOT NULL,
+    quantity DECIMAL(10,2),
+    unit VARCHAR(20),
+    ingredient_id INT NOT NULL,
+    PRIMARY KEY (recipe_id, ingredient_id),
+    FOREIGN KEY (recipe_id) REFERENCES Recipe(id) ON DELETE CASCADE,
+    FOREIGN KEY (ingredient_id) REFERENCES Ingredient(id) ON DELETE CASCADE
+); 
 
 -- Quiche thon tomates
 INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id ) 
@@ -332,6 +301,46 @@ VALUES (13, 2, '', 4), (13, 2, '', 30), (13, 2, '', 10), (13, 2, '', 66), (13, 1
 INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
 VALUES (14, 1, 'cas de', 154), (14, 3, '', 111), (14, 200, 'g de', 100), 
 (14, 3, 'zeste de', 142), (14, 1, 'pincée de', 133), (14, 1, 'pâte', 117), (14, 2, "", 155), (14, 100, 'g de', 115);
+
 -- Curry de légumes
 INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
 VALUES (15, 1, '', 4), (15, 1, '', 30), (15, 1, '', 44), (15, 1, 'cas de', 149), (15, 200, 'ml de', 147), (15, 1, 'pincée de', 132), (15, 1, 'pincée de', 133);
+
+-- Pancakes 
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
+VALUES (16, 200, 'g', 110),(16, 2, '', 111), (16, 30, 'g', 108), (16, 300, 'ml', 112), (16, 1, 'sachet de', 113), (16, 50, 'g', 109), (16, 1, 'pincée de', 133);
+
+-- Gratin dauphinois
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
+VALUES (17, 1, '', 110), (17, 800, 'g', 44), (17, 300, 'ml', 118), (17, 50, 'g', 119), (17, 2, '', 111), (17, 2, 'gousses', 1), (17, 1, 'brin', 64), (17, 50, 'g', 108), (17, 1, 'pincée de', 133),(17, 1, 'pincée de', 132); 
+
+-- Salade niçoise
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
+VALUES (18, 1, '', 158), (18, 200, 'g', 106), (18, 150, 'g', 157), (18, 4, '', 111), (18, 200, 'g', 66), (18, 1, '', 50), (18, 1, '', 46), (18, 1, '', 39), (18, 50, 'g', 152), (18, 1, 'càs', 125), (18, 1, 'càs', 120), (18, 1, 'càs', 143), (18, 1, 'pincée de', 133), (18, 1, 'pincée de', 132);
+
+
+-- Baba au rhum
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
+VALUES (19, 250, 'g de', 110), (20, 3, '', 111), (19, 20, 'g de', 109), (19, 100, 'g de', 108), (19, 1, 'pincée de', 133), (19, 250, 'ml de', 135), (19, 100, 'ml de', 156), (19, 250, 'ml de', 114), (19, 30, 'g de', 115); 
+
+
+-- Spaghetti aglio e olio
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
+VALUES (20, 400, 'g de', 126), (20, 4, 'gousses d', 1), (20, 100, 'ml de', 125), (20, 1, 'pincée de', 132), (20, 1, 'pincée de', 133), (20, 1, 'pincée de', 136), (20, 1, '', 64); 
+
+-- Coq au vin
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
+VALUES (21, 1.5, 'kg de', 148), (21, 200, 'g de', 145), (21, 1, 'bouteille de', 124), (21, 200, "g d'", 42), (21, 2, "gousses d'", 1),(21, 200, 'g de', 10), (21, 200, 'g de', 13), (21, 1, 'branche de', 39), (21, 1, 'branche de', 12), (21, 50, 'g de', 108), (21, 50, 'ml de', 135), (21, 1, 'pincée de', 133), (21, 1, 'pincée de', 132); 
+
+-- Crème brûlée
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id) 
+VALUES (22, 500, 'ml de', 112), (22, 5, '', 111), (22, 100, 'g de', 109), (22, 1, 'gousse de', 116), (22, 50, 'g de', 115); 
+
+-- Tomate garnie
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
+VALUES (23, 1, "", 66), (23, 1, "poignée de", 159), (23, 1, "bonne cas de", 106), (23, 1, "demi", 158), (23, 1, "pincée de", 165), (23, 2-3, "branche de", 24), (23, 2, "cas de", 160);
+
+-- Verrine saumon avocat et skyr
+INSERT INTO recipe_ingredient (recipe_id, quantity, unit, ingredient_id)
+VALUES (24, 200, "g de", 161), (24, 2, "cas de", 166),
+(24, 100, "g d'émincés de", 162), (24, 1, "cas d'", 163), (24, 1, "", 69), (24, 1, "poignée de", 24);

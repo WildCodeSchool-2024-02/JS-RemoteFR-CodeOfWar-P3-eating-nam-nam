@@ -39,3 +39,15 @@
   font-size: 1rem;
   font-weight: 300;
 }
+.dishes1 {
+  display: flex;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.imageSeeMore {
+  width: 160px;
+  height: 160px;
+  border-radius: 16px;
+  object-fit: cover;
+}
