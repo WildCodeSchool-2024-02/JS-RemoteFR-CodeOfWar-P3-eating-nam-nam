@@ -8,7 +8,7 @@ export default function AdminRecipe() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3310/api/recipes/${id}`, {
+      .delete(`${import.meta.env.VITE_API_URL}/api/recipes/${id}`, {
         withCredentials: true,
       })
       .then((response) => {

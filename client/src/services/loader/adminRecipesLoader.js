@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const recipesLoader = async () => {
+const adminRecipesLoader = async () => {
   try {
     const response = await axios.get(
       `${import.meta.env.VITE_API_URL}/api/recipes`,
@@ -26,4 +26,4 @@ const recipesLoader = async () => {
   }
 };
 
-export default recipesLoader;
+export default adminRecipesLoader;
