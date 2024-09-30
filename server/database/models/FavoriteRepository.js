@@ -25,7 +25,7 @@ class FavoriteRepository extends AbstractRepository {
       params = [userId, recipeId]
     } else if (userId) {
       query = `SELECT * FROM ${this.table} WHERE user_id = ?`;
-      params = [parseInt(userId, 10)];
+      params = [userId];
     } else if (recipeId) {
       query = `SELECT * FROM ${this.table} WHERE recipe_id = ?`;
       params = [recipeId];
