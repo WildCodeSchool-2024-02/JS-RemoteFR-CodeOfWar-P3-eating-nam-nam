@@ -42,17 +42,12 @@
 .dishes1 {
   display: flex;
   justify-content: center;
-  width: 300px;
-  height: 100px;
-  overflow: hidden;
-  position: relative;
-  margin: auto;
   border-radius: 16px;
 }
 
 .imageSeeMore {
-  width: 100%;
-  height: 100%;
+  width: 160px;
+  height: 160px;
+  border-radius: 16px;
   object-fit: cover;
-  object-position: center;
 }
