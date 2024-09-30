@@ -27,8 +27,8 @@ const add = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    await tables.favorite.destroy(req.body);
-    res.sendStatus(204);
+    if (!(await tables.favorite.delete(req.body))) res.sendStatus(404);
+    else res.sendStatus(204);
   } catch (err) {
     next(err);
   }

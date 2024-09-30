@@ -6,6 +6,6 @@ const favoriteActions = require("../controllers/favoriteActions");
 
 router.get("/", favoriteActions.browse);
 router.post("/", favoriteActions.add);
-router.delete("/:id", favoriteActions.destroy);
+router.delete("/", favoriteActions.destroy);
 
 module.exports = router;
