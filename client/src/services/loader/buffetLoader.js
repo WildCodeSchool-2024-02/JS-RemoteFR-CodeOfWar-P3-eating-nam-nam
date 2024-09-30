@@ -10,24 +10,41 @@ const buffetLoader = async () => {
     );
 
     const recipes = response.data;
+    console.info("Recettes reçues du backend:", recipes);
 
     const entrees = recipes.filter((recipe) => recipe.category_id === 1);
     const plats = recipes.filter((recipe) => recipe.category_id === 2);
     const desserts = recipes.filter((recipe) => recipe.category_id === 3);
 
+    console.info("Entrées:", entrees);
+    console.info("Plats:", plats);
+    console.info("Desserts:", desserts);
+
     return {
-      entrees: entrees.map((recipe) => ({
-        ...recipe,
-        image: `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`,
-      })),
-      plats: plats.map((recipe) => ({
-        ...recipe,
-        image: `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`,
-      })),
-      desserts: desserts.map((recipe) => ({
-        ...recipe,
-        image: `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`,
-      })),
+      entrees: entrees.map((recipe) => {
+        const imageUrl = `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`;
+        console.info(`Image URL pour entrée ${recipe.title}:`, imageUrl);
+        return {
+          ...recipe,
+          image_url: `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`,
+        };
+      }),
+      plats: plats.map((recipe) => {
+        const imageUrl = `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`;
+        console.info(`Image URL pour plat ${recipe.title}:`, imageUrl);
+        return {
+          ...recipe,
+          image_url: `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`,
+        };
+      }),
+      desserts: desserts.map((recipe) => {
+        const imageUrl = `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`;
+        console.info(`Image URL pour dessert ${recipe.title}:`, imageUrl);
+        return {
+          ...recipe,
+          image_url: `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`,
+        };
+      }),
     };
   } catch (error) {
     if (error.response) {
