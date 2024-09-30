@@ -22,7 +22,7 @@ export default function Navbar() {
     <>
       <nav>
         <section>
-          <Link to="/passer-en-cuisine">Passer en cuisine</Link>
+          { user ? <Link to="/create-recipe">Créer une recette</Link> : null }
           <Link to="/recipes">Recettes</Link>
         </section>
         <Link to="/">
