@@ -5,18 +5,18 @@ import handleDeleteRecipe from "../services/handleDeleteRecipe";
 
 import "../styles/recipesinstruction.css";
 import photoProfil from "../assets/images/user_picture.png";
-import boulettesBolognaise from "../assets/images/boulettes_bolognaise.svg";
 import difficulty from "../assets/images/difficulty.svg";
 import star from "../assets/images/étoile.png";
 import gantDeCuisson from "../assets/images/gant_de_cuisson.svg";
 import four from "../assets/images/four.svg";
 import smileyLangue from "../assets/images/smiley_langue.svg";
 import heartRed from "../assets/images/heart-red.svg";
+import Comment from "../components/Comment";
 
 export default function RecipesInstruction() {
   const { recipe, comments: initialComments } = useLoaderData();
   const navigate = useNavigate();
-  const [commentData, setCommentData] = useState({ comment: "" });
+  const [commentData, setCommentData] = useState("");
   const [comments, setComments] = useState(initialComments);
 
   console.info(comments);
@@ -24,37 +24,27 @@ export default function RecipesInstruction() {
   const stars = [1, 2, 3, 4, 5];
 
   const handleCommentChange = (event) => {
-    const { name, value } = event.target;
-    setCommentData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setCommentData(event.currentTarget.value);
   };
 
-  const handleCommentSubmit = (e) => {
+  const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    console.info(import.meta.env.VITE_API_URL);
-    axios
-      .post(
+    try {
+      const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/comments`,
         {
           recipe_id: recipe.id,
           content: commentData,
         },
         { withCredentials: true }
-      )
-
-      .then(() => {
-        setCommentData({ comment: "" });
-
-        axios
-          .get(
-            `${import.meta.env.VITE_API_URL}/api/comments/recipes/${recipe.id}`
-          )
-          .then((response) => setComments(response.data))
-          .catch((error) => console.error(error));
-      })
-      .catch((error) => console.error(error));
+      );
+      setComments((prevData) => [...prevData, response.data]);
+    } catch (err) {
+      console.error(
+        "Une erreur est survenue lors de la création d'un commentaire: ",
+        err
+      );
+    }
   };
 
   return (
@@ -67,7 +57,11 @@ export default function RecipesInstruction() {
               <p>CookDiary_anais</p>
             </div>
             <div className="dishes">
-              <img src={boulettesBolognaise} alt={`plat de ${recipe.title}`} />
+              <img
+                src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
+                alt={`plat de ${recipe.title}`}
+                className="imageRecipeInstruction"
+              />
             </div>
 
             <section className="Boulettes-Ratings">
@@ -208,13 +202,7 @@ export default function RecipesInstruction() {
           <div className="CommentList">
             {comments.length > 0 ? (
               comments.map((commentary) => (
-                <div key={commentary.id} className="CommentItem">
-                  <h2>{commentary.username}</h2>
-                  <p>{commentary.content}</p>
-                  <small>
-                    {new Date(commentary.created_at).toLocaleString()}
-                  </small>
-                </div>
+                <Comment key={commentary.id} commentary={commentary} />
               ))
             ) : (
               <p>Aucun commentaire pour cette recette.</p>

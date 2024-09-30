@@ -24,6 +24,19 @@
 .dishes {
   display: flex;
   justify-content: center;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  border-radius: 16px;
+}
+
+.imageRecipeInstruction {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .Difficulty-Heart {
@@ -108,7 +121,7 @@
   grid-template-columns: repeat(2, 3fr);
   gap: 20px;
   max-width: 500px;
-  margin: 2rem -1rem 2rem 10rem;
+  margin: auto;
   justify-items: left;
   text-align: left;
 }
@@ -219,6 +232,9 @@
     margin: 2rem auto;
     border-radius: 24px;
   }
+  .dishes {
+    max-width: 50%;
+  }
   .CommentSection {
     width: 50%;
     margin: 0 auto;
@@ -229,8 +245,9 @@
   }
   .Liste-Ingredients {
     max-width: 50%;
-    margin: 2rem -1rem 3rem 32rem;
     text-align: center;
+    padding: 1rem;
     align-items: center;
+    margin: auto;
   }
 }

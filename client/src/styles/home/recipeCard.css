@@ -8,6 +8,23 @@
   background: #ffff;
   border-radius: 0.5rem;
 }
+.dishes3 {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.imageRecipeCard {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
 .Recipe-card > h2 {
   margin: 0;

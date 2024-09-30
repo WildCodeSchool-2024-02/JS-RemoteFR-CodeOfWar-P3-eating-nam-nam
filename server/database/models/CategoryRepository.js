@@ -25,7 +25,7 @@ class CategoryRepository extends AbstractRepository {
   async readWithRecipe(id, limit = 5) {
     const [rows] = await this.database.query(
       `
-      SELECT ${this.table}.*, recipe.id AS recipeId, recipe.title AS recipeTitle from ${this.table}
+      SELECT ${this.table}.*, recipe.id AS recipeId, recipe.title AS recipeTitle, recipe.image_url AS recipeImage_url from ${this.table}
       INNER JOIN recipe ON ${this.table}.id = recipe.category_id
       WHERE ${this.table}.id = ? ORDER BY RAND() LIMIT ?
       `,
@@ -40,7 +40,11 @@ class CategoryRepository extends AbstractRepository {
     };
 
     rows.forEach((row) => {
-      response.recipes.push({ id: row.recipeId, title: row.recipeTitle });
+      response.recipes.push({
+        id: row.recipeId,
+        title: row.recipeTitle,
+        image_url: row.recipeImage_url,
+      });
     });
     return response;
   }

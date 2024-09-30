@@ -43,7 +43,13 @@ export default function Carrousel({ category }) {
           category.recipes.map((recipe) => (
             <div key={recipe.id} className="cards">
               <Link to={`/recipes-instruction/${recipe.id}`}>
-                <img src={recipe.image} alt={recipe.title} />
+                <div className="dishes4">
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
+                    alt={recipe.title}
+                    className="imageCarrousel"
+                  />
+                </div>
               </Link>
               <Link to={`/recipes-instruction/${recipe.id}`}>
                 <h3>{recipe.title}</h3>
