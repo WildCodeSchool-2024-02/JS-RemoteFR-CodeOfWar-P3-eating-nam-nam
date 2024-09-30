@@ -7,8 +7,6 @@ class RecipeRepository extends AbstractRepository {
 
   async create(recipe) {
     const [result] = await this.database.query(
-
-   
       `insert into ${this.table} (user_id, category_id, difficulty_id, image_url, title, description, cooking_time, preparation_time) values (?, ?, ?, ?, ?, ?, ?, ?)`,
 
       [
@@ -72,6 +70,7 @@ class RecipeRepository extends AbstractRepository {
 
     const recipe = {
       id: rows[0].id,
+      image_url: rows[0].image_url,
       user_id: rows[0].user_id,
       title: rows[0].title,
       description: rows[0].description,
@@ -113,9 +112,11 @@ class RecipeRepository extends AbstractRepository {
 
   async update(recipe) {
     const [result] = await this.database.query(
-      `update ${this.table} set user_id = ?, category_id = ?, difficulty_id = ?, title = ?, description = ?, cooking_time = , preparation_time = ?,instruction = ? where id = ?`,
+      `update ${this.table} set user_id = ?,
+      image_url = ?, category_id = ?, difficulty_id = ?, title = ?, description = ?, cooking_time = , preparation_time = ?,instruction = ? where id = ?`,
       [
         recipe.user_id,
+        recipe.image_url,
         recipe.category_id,
         recipe.difficulty_id,
         recipe.title,

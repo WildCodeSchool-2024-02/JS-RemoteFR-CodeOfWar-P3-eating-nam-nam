@@ -5,7 +5,6 @@ import handleDeleteRecipe from "../services/handleDeleteRecipe";
 
 import "../styles/recipesinstruction.css";
 import photoProfil from "../assets/images/user_picture.png";
-import boulettesBolognaise from "../assets/images/boulettes_bolognaise.svg";
 import difficulty from "../assets/images/difficulty.svg";
 import star from "../assets/images/étoile.png";
 import gantDeCuisson from "../assets/images/gant_de_cuisson.svg";
@@ -58,7 +57,11 @@ export default function RecipesInstruction() {
               <p>CookDiary_anais</p>
             </div>
             <div className="dishes">
-              <img src={boulettesBolognaise} alt={`plat de ${recipe.title}`} />
+              <img
+                src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
+                alt={`plat de ${recipe.title}`}
+                className="imageRecipeInstruction"
+              />
             </div>
 
             <section className="Boulettes-Ratings">
