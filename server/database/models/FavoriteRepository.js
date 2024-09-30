@@ -14,7 +14,10 @@ class FavoriteRepository extends AbstractRepository {
     return result.insertId;
   }
 
-  async read({ userId = null, recipeId = null }) {
+  async read(options) {
+    const userId = options.userId || null;
+    const recipeId = options.recipeId || null;
+
     if (!userId && !recipeId) throw new Error("Either the userId or the recipeid must be specified");
 
     let query;
