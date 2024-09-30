@@ -250,4 +250,7 @@
     align-items: center;
     margin: auto;
   }
+  .Smiley-Langue:hover img {
+    transform: scale(1.13);
+  }
 }

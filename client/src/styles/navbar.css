@@ -7,6 +7,10 @@ nav {
   z-index: 100;
 }
 
+nav a:hover {
+  text-decoration: underline;
+}
+
 nav + hr {
   width: 50%;
   margin: auto;
@@ -70,6 +74,10 @@ nav button:not(:has(img)) {
   font-family: Poppins;
   font-size: 1.25rem;
   font-weight: 400;
+}
+
+nav button:not(:has(img)):active {
+  transform: scale(1.03);
 }
 
 nav button:has(:not(img)) {
