@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import { useLoaderData } from "react-router-dom";
+import capitalize from "../../utils/capitalize";
 import photo from "../../assets/images/photo.svg";
 import "../../styles/create/header.css";
 
 export default function Header({ recipeData, updateRecipeData }) {
-  const { difficulties } = useLoaderData();
+  const { difficulties, categories } = useLoaderData();
   const handlePhotoChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       updateRecipeData("photo", e.target.files[0]);
@@ -56,12 +57,12 @@ export default function Header({ recipeData, updateRecipeData }) {
             onChange={(e) => updateRecipeData("category", e.target.value)}
           >
             <option value="">Choisir la categorie</option>
-            {difficulties
-              ? difficulties
+            {categories
+              ? categories
                   .sort((a, b) => a.id - b.id)
                   .map((difficulty) => (
                     <option value={difficulty.id} key={difficulty.id}>
-                      {difficulty.name}
+                      {capitalize(difficulty.name)}
                     </option>
                   ))
               : null}

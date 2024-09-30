@@ -16,6 +16,25 @@ const browse = async (req, res, next) => {
   }
 };
 
+const browseFilteredRecipes = async (req, res, next) => {
+  try {
+    const { search, category, difficulty, page = 1, pageSize = 15 } = req.query;
+    const offset = (page - 1) * pageSize;
+
+    const recipes = await tables.recipe.readFilteredRecipes({
+      searchTerm: search,
+      category,
+      difficulty,
+      limit: parseInt(pageSize, 10),
+      offset: parseInt(offset, 10)
+    });
+
+    res.json(recipes);
+  } catch (error) {
+    next(error);
+  }
+}
+
 const read = async (req, res, next) => {
   try {
     const recipes = await tables.recipe.read(req.params.id);
@@ -66,12 +85,11 @@ const add = async (req, res, next) => {
     });
     (await JSON.parse(steps)).forEach((step) => {
       tables.recipeStep.create(recipeId, {
-        number: step.id,
+        number: step.step_number,
         description: step.content,
       });
     });
-    console.info("Recipe id: ", recipeId);
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, recipeId });
   } catch (err) {
     next(err);
   }
@@ -104,6 +122,7 @@ const destroy = async (req, res, next) => {
 
 module.exports = {
   browse,
+  browseFilteredRecipes,
   read,
   edit,
   add,

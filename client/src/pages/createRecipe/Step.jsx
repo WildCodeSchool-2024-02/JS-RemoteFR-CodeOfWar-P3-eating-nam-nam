@@ -3,12 +3,18 @@ import { motion, Reorder } from "framer-motion";
 import "../../styles/create/recipeSteps.css";
 
 export default function RecipeSteps({ steps, updateSteps }) {
+  const updateStepNumbers = (stepsArray) => stepsArray.map((step, index) => ({
+      ...step,
+      step_number: index + 1
+    }));
+
   const addStep = () => {
     const newStep = {
       id: String(Date.now()),
       content: `Nouvelle étape ${steps.length + 1}`,
+      step_number: steps.length + 1
     };
-    updateSteps([...steps, newStep]);
+    updateSteps(updateStepNumbers([...steps, newStep]));
   };
 
   const updateStep = (id, newContent) => {
@@ -20,14 +26,18 @@ export default function RecipeSteps({ steps, updateSteps }) {
   };
 
   const deleteStep = (id) => {
-    updateSteps(steps.filter((step) => step.id !== id));
+    updateSteps(updateStepNumbers(steps.filter((step) => step.id !== id)));
+  };
+
+  const handleReorder = (newOrder) => {
+    updateSteps(updateStepNumbers(newOrder));
   };
 
   return (
     <div className="recipe-steps">
       <h2>Étapes de la Recette</h2>
-      <Reorder.Group axis="y" values={steps} onReorder={updateSteps}>
-        {steps.map((step, index) => (
+      <Reorder.Group axis="y" values={steps} onReorder={handleReorder}>
+        {steps.map((step) => (
           <Reorder.Item key={step.id} value={step}>
             <motion.div
               className="step-card"
@@ -38,7 +48,7 @@ export default function RecipeSteps({ steps, updateSteps }) {
             >
               <div className="step-content">
                 <span className="drag-handle">&#8942;</span>
-                <div className="step-number">{index + 1}</div>
+                <div className="step-number">{step.step_number}</div>
                 <input
                   type="text"
                   value={step.content}
@@ -70,6 +80,7 @@ RecipeSteps.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
+      step_number: PropTypes.number.isRequired,
     })
   ).isRequired,
   updateSteps: PropTypes.func.isRequired,
