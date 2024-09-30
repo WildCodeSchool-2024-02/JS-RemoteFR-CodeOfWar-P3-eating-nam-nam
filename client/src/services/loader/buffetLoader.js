@@ -16,33 +16,29 @@ const buffetLoader = async () => {
     const plats = recipes.filter((recipe) => recipe.category_id === 2);
     const desserts = recipes.filter((recipe) => recipe.category_id === 3);
 
-    console.info("Entrées:", entrees);
-    console.info("Plats:", plats);
-    console.info("Desserts:", desserts);
-
     return {
       entrees: entrees.map((recipe) => {
-        const imageUrl = `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`;
+        const imageUrl = `${import.meta.env.VITE_API_URL}/${recipe.image_url}`;
         console.info(`Image URL pour entrée ${recipe.title}:`, imageUrl);
         return {
           ...recipe,
-          image_url: `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`,
+          image_url: imageUrl,
         };
       }),
       plats: plats.map((recipe) => {
-        const imageUrl = `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`;
+        const imageUrl = `${import.meta.env.VITE_API_URL}/${recipe.image_url}`;
         console.info(`Image URL pour plat ${recipe.title}:`, imageUrl);
         return {
           ...recipe,
-          image_url: `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`,
+          image_url: imageUrl,
         };
       }),
       desserts: desserts.map((recipe) => {
-        const imageUrl = `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`;
+        const imageUrl = `${import.meta.env.VITE_API_URL}/${recipe.image_url}`;
         console.info(`Image URL pour dessert ${recipe.title}:`, imageUrl);
         return {
           ...recipe,
-          image_url: `${import.meta.env.VITE_API_URL}/uploads/${recipe.image_url}`,
+          image_url: imageUrl,
         };
       }),
     };

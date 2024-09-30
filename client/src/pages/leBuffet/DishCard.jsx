@@ -10,10 +10,10 @@ export default function DishCard({ dish }) {
     <div className="dish-card">
       <img
         src={dish.image_url || "default-image.jpg"}
-        alt={dish.name || "Plat"}
+        alt={dish.title || "Plat"}
         className="dish-image"
       />
-      <h3>{dish.name || "Nom indisponible"}</h3>
+      <h3>{dish.title || "Nom indisponible"}</h3>
       <p>
         {dishWords.length > maxWord
           ? `${dishWords.slice(0, maxWord).join(" ")}...`
@@ -28,7 +28,7 @@ export default function DishCard({ dish }) {
 
 DishCard.propTypes = {
   dish: PropTypes.shape({
-    name: PropTypes.string,
+    title: PropTypes.string,
     description: PropTypes.string.isRequired,
     image_url: PropTypes.string,
   }).isRequired,
