@@ -43,6 +43,17 @@ CREATE TABLE recipe (
     FOREIGN KEY (difficulty_id) REFERENCES Difficulty(id),
     FOREIGN KEY (category_id) REFERENCES Category(id)
 );
+
+CREATE TABLE favorite (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    recipe_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+    FOREIGN KEY (recipe_id) REFERENCES recipe(id) ON DELETE CASCADE,
+    UNIQUE KEY user_recipe (user_id, recipe_id)
+);
+
 CREATE TABLE recipe_step (
     id INT AUTO_INCREMENT PRIMARY KEY,
     recipe_id INT NOT NULL,
