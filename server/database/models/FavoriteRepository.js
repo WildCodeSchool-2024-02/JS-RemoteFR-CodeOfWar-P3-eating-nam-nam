@@ -18,7 +18,7 @@ class FavoriteRepository extends AbstractRepository {
     const userId = options.userId || null;
     const recipeId = options.recipeId || null;
 
-    if (!userId && !recipeId) throw new Error("Either the userId or the recipeid must be specified");
+    if (!userId && !recipeId) throw new Error("Either the userId or the recipeId must be specified");
 
     let query;
     let params;
