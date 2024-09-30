@@ -30,7 +30,7 @@ export default function AdminRecipe() {
         {recipes.map((recipe) => (
           <div className="recipe-AdminCard" key={recipe.id}>
             <img
-              src={recipe.image}
+              src={recipe.image_url}
               alt={recipe.title}
               className="recipe-AdminImage"
             />

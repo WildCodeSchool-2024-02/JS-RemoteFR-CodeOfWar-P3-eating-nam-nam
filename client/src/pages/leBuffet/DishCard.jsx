@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 
 export default function DishCard({ dish }) {
-  console.info("Plat affiché dans DishCard:", dish);
-
   const dishWords = dish.description.split(" ");
   const maxWord = 40;
 

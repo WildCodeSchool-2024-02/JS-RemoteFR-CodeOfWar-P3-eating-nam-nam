@@ -1,5 +1,14 @@
 import axios from "axios";
 
+const randomBuffet = (array) =>
+  array.sort(() => Math.random() - 0.5).slice(0, 6);
+
+const mapRecipes = (recipes, imageApi) =>
+  recipes.map((recipe) => ({
+    ...recipe,
+    image_url: `${imageApi}/${recipe.image_url}`,
+  }));
+
 const buffetLoader = async () => {
   try {
     const response = await axios.get(
@@ -10,37 +19,21 @@ const buffetLoader = async () => {
     );
 
     const recipes = response.data;
-    console.info("Recettes reçues du backend:", recipes);
-
-    const entrees = recipes.filter((recipe) => recipe.category_id === 1);
-    const plats = recipes.filter((recipe) => recipe.category_id === 2);
-    const desserts = recipes.filter((recipe) => recipe.category_id === 3);
+    const imageApi = import.meta.env.VITE_API_URL;
 
     return {
-      entrees: entrees.map((recipe) => {
-        const imageUrl = `${import.meta.env.VITE_API_URL}/${recipe.image_url}`;
-        console.info(`Image URL pour entrée ${recipe.title}:`, imageUrl);
-        return {
-          ...recipe,
-          image_url: imageUrl,
-        };
-      }),
-      plats: plats.map((recipe) => {
-        const imageUrl = `${import.meta.env.VITE_API_URL}/${recipe.image_url}`;
-        console.info(`Image URL pour plat ${recipe.title}:`, imageUrl);
-        return {
-          ...recipe,
-          image_url: imageUrl,
-        };
-      }),
-      desserts: desserts.map((recipe) => {
-        const imageUrl = `${import.meta.env.VITE_API_URL}/${recipe.image_url}`;
-        console.info(`Image URL pour dessert ${recipe.title}:`, imageUrl);
-        return {
-          ...recipe,
-          image_url: imageUrl,
-        };
-      }),
+      entrees: mapRecipes(
+        randomBuffet(recipes.filter((recipe) => recipe.category_id === 1)),
+        imageApi
+      ),
+      plats: mapRecipes(
+        randomBuffet(recipes.filter((recipe) => recipe.category_id === 2)),
+        imageApi
+      ),
+      desserts: mapRecipes(
+        randomBuffet(recipes.filter((recipe) => recipe.category_id === 3)),
+        imageApi
+      ),
     };
   } catch (error) {
     if (error.response) {
