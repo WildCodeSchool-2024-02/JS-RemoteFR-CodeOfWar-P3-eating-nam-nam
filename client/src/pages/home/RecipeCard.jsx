@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/home/recipeCard.css";
+import { Link } from "react-router-dom";
 
 export default function RecipeCard() {
   const [recipe, setRecipe] = useState([]);
@@ -25,7 +26,9 @@ export default function RecipeCard() {
       </section>
       <div className="card">
         <p>{recipe.description}</p>
-        <img src={recipe.image} alt={recipe.title} />
+        <Link to={`/recipes-instruction/${recipe.id}`}>
+          <img src={recipe.image} alt={recipe.title} />
+        </Link>
       </div>
     </div>
   );
