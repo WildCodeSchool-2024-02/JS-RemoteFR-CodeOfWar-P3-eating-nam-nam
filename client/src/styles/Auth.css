@@ -21,6 +21,7 @@ form.auth select {
 form.auth > h1 {
   margin: 0;
   font-size: 2rem;
+  color: var(--primary-green);
   font-weight: 400;
   text-decoration-line: underline;
 }
@@ -41,6 +42,7 @@ form.auth > div > section {
 form.auth label {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  color: var(--primary-green);
 }
 
 form.auth input {
@@ -70,6 +72,15 @@ form.auth > button {
   font-family: Poppins;
   font-size: 1.25rem;
   font-weight: 400;
+}
+
+form.auth > button:hover {
+  background-color: var(--primary-green);
+  color: #fff;
+}
+
+form.auth > button:active {
+  transform: scale(1.03);
 }
 
 form.auth > a {
