@@ -1,8 +1,24 @@
 import PropTypes from "prop-types";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function DishCard({ dish }) {
   const dishWords = dish.description.split(" ");
   const maxWord = 40;
+  const navigate = useNavigate();
+
+  const handleScrollToTop = () => {
+    sessionStorage.setItem("scrollPosition", window.scrollY);
+    window.scrollTo(0, 0);
+  };
+
+  useEffect(() => {
+    const savedScrollPosition = sessionStorage.getItem("scrollPosition");
+    if (savedScrollPosition) {
+      window.scrollTo(0, parseInt(savedScrollPosition, 10));
+      sessionStorage.removeItem("scrollPosition");
+    }
+  }, [navigate]);
 
   return (
     <div className="dish-card">
@@ -17,15 +33,20 @@ export default function DishCard({ dish }) {
           ? `${dishWords.slice(0, maxWord).join(" ")}...`
           : dish.description}
       </p>
-      <button className="Dish-button" type="button">
+      <Link
+        to={`/recipes-instruction/${dish.id}`}
+        className="Dish-button"
+        onClick={handleScrollToTop}
+      >
         En cuisine!
-      </button>
+      </Link>
     </div>
   );
 }
 
 DishCard.propTypes = {
   dish: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string,
     description: PropTypes.string.isRequired,
     image_url: PropTypes.string,
