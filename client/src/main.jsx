@@ -22,6 +22,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import createRecipeLoader from "./services/loader/createRecipeLoader";
 import recipeLoader from "./services/loader/recipeLoader";
 import adminRecipesLoader from "./services/loader/adminRecipesLoader";
+import adminCommentsLoader from "./services/loader/adminCommentsLoader";
 import CategoryLoader from "./services/loader/categoryLoader";
 import buffetLoader from "./services/loader/buffetLoader";
 
@@ -69,6 +70,7 @@ const router = createBrowserRouter([
       {
         path: "/admin-comments",
         element: <AdminComments />,
+        loader: adminCommentsLoader,
       },
       {
         path: "/user",

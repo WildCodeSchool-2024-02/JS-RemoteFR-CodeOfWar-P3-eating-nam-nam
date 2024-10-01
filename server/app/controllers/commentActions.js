@@ -79,10 +79,14 @@ const destroy = async (req, res, next) => {
   try {
     const commentId = parseInt(req.params.id, 10);
     const comment = await tables.comment.read(commentId);
+    const { role } = await tables.user.read(req.user.id);
 
     if (!comment) res.sendStatus(404);
 
-    if (parseInt(req.user.id, 10) !== parseInt(comment.user_id, 10)) {
+    if (
+      role !== "admin" &&
+      parseInt(req.user.id, 10) !== parseInt(comment.user_id, 10)
+    ) {
       res.sendStatus(401);
     } else {
       await tables.comment.delete(commentId);
