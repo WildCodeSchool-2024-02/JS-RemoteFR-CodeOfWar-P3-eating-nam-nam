@@ -15,6 +15,20 @@ import { useAuth } from "../context/authContext";
 import { addFavorite, deleteFavorite, getFavorite } from "../services/fetchFavorite";
 
 export default function RecipesInstruction() {
+  const [recipeStep, setRecipeStep] = useState([]);
+
+  const fetchData = () => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/recipe_step`)
+      .then((response) => setRecipeStep(response.data))
+      .catch((error) => console.error(error));
+  };
+  console.info(recipeStep);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const { recipe, comments: initialComments } = useLoaderData();
   const { user } = useAuth();
   const navigate = useNavigate();

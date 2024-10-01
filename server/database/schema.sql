@@ -63,8 +63,105 @@ CREATE TABLE recipe_step (
     UNIQUE KEY unique_recipe_step (recipe_id, step_number)
 );
 
+-- Step recipe quiche
 INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
 (1, 1, "Préchauffer le four à 180°C."), (1, 2, "Étaler la pâte dans un moule."), (1, 3, "Mélanger les œufs, la crème, le thon émietté et les tomates coupées en morceaux."), (1, 4, "Assaisonner avec du sel, du poivre et des herbes de Provence."), (1, 5, "Verser le mélange sur la pâte."), (1, 6, "Cuire au four pendant environ 40-45 minutes.");
+
+-- Step recipe lasagnes
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(2, 1, "Faire revenir la viande hachée avec des oignons, de l'ail et des carottes."), (2, 2, "Ajouter la sauce tomate et laisser mijoter."), (2, 3, "Préparer une béchamel: beurre, farine, lait, sel, poivre, muscade"), (2, 4, "Alterner les couches de lasagnes, de sauce bolognaise et de béchamel dans un plat."), (2, 5, "Terminer avec une couche de béchamel et du fromage râpé."), (2, 6, "Cuire au four à 180°C pendant environ 45-60 minutes.");
+
+-- Step recipe foie gras
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(3, 1, "Couper des tranches de pain et les griller légèrement."), (3, 2, "Ajouter des tranches de foie gras sur chaque toast."), (3, 3, "Servir avec une pincée de fleur de sel et du poivre.");
+
+-- Step recipe Tarte tatin
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(4, 1, "Préchauffer le four à 180°C."), (4, 2, "Caraméliser du sucre avec du beurre dans une poêle."), (4, 3, "Ajouter des pommes coupées en quartiers dans le caramel."), (4, 4, "Recouvrir avec une pâte feuilletée et enfourner pour 30-40 minutes."), (4, 5, "Retourner la tarte pour la servir.");
+
+-- Step recipe Salade caesar 
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(5, 1, "Préparer des croûtons de pain grillé."), (5, 2, "Mélanger de la laitue romaine avec du parmesan râpé."), (5, 3, "Ajouter les croûtons."),
+(5, 4, "Préparer une sauce à base de mayonnaise, ail, anchois, et citron."), (5, 5, "Mélanger le tout et servir.");
+
+-- Step recipe Boeuf bourguignon
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(6, 1, "Faire revenir les morceaux de bœuf dans une cocotte."), (6, 2, "Ajouter des carottes, des oignons, de l'ail et des champignons."), (6, 3, "Ajouter du vin rouge et laisser mijoter à feu doux pendant environ 3 heures."), (6, 4, "Servir avec des pommes de terre ou des pâtes.");
+
+-- Step recipe soufflé fromage 
+ INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(7, 1, "Préchauffer le four à 180°C."), (7, 2, "Préparer une béchamel, y ajouter du fromage râpé."), (7, 3, "Incorporer des jaunes d'œufs, puis les blancs montés en neige."), (7, 4, "Verser dans des ramequins beurrés et enfourner pendant 20-25 minutes.");
+
+-- Step recipe Poulet curry
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(8, 1, "Faire revenir des morceaux de poulet dans une poêle avec de l'huile."), (8, 2, "Ajouter des oignons et de l'ail haché, puis faire revenir."),(8, 3, "Incorporer une pâte de curry et mélanger."),
+(8, 4, "Ajouter du lait de coco et laisser mijoter pendant 20-30 minutes."), (8, 5, "Servir avec du riz.");
+
+-- Step recipe omelette
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(9, 1, "Faire revenir les champignons dans une poêle avec du beurre."), (9, 2, "Battre les œufs dans un bol, saler et poivrer."), (9, 3, "Ajouter les champignons aux œufs battus."), (9, 4, "Verser le mélange dans une poêle chaude et cuire jusqu'à consistance désirée."), (9, 5, "Servir chaud.");
+
+-- Step recipe pate carbo
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(10, 1, "Cuire les pâtes dans une grande casserole d'eau salée."), (10, 2, "Faire revenir des lardons dans une poêle."), (10, 3, "Battre les œufs avec du parmesan râpé dans un bol."), (10, 4, "Égoutter les pâtes et les ajouter aux lardons."), (10, 5, "Retirer du feu et incorporer le mélange œufs-parmesan."), (10, 6, "Mélanger et servir immédiatement avec du poivre noir.");
+
+-- Step recipe Canard a l'orange
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(11, 1, "Préchauffer le four à 180°C."), (11, 2, "Faire cuire les cuisses de canard dans une poêle pour les dorer."), (11, 3, "Préparer une sauce à l'orange avec du jus d'orange, du miel, et un peu de vinaigre."), (11, 4, "Enfourner les cuisses de canard et arroser régulièrement de la sauce à l'orange."), (11, 5, "Cuire pendant environ 45-60 minutes.");
+
+-- Step recipe Crepes
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(12, 1, "Dans un bol, mélanger la farine, les œufs, le lait et une pincée de sel."), (12, 2, "Fouetter jusqu'à obtenir une pâte lisse."), (12, 3, "Laisser reposer la pâte pendant 30 minutes."), (12, 4, "Faire chauffer une poêle avec un peu de beurre, puis verser une louche de pâte."), (12, 5, "Cuire chaque crêpe 1 à 2 minutes de chaque côté.");
+
+-- Step recipe Ratatouille 
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(13, 1, "Couper en dés les légumes : aubergines, courgettes, poivrons et tomates."), (13, 2, "Faire revenir chaque légume séparément dans de l'huile d'olive."), (13, 3, "Mélanger les légumes dans une cocotte, ajouter de l'ail et des herbes de Provence."), (13, 4, "Laisser mijoter à feu doux pendant environ 45 minutes.");
+
+-- Step recipe tarte au citron
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(14, 1, "Préparer une pâte sablée et la cuire à blanc."), (14, 2, "Préparer une crème au citron avec des jaunes d'œufs, du sucre, du jus de citron et du beurre."), (14, 3, "Garnir la pâte cuite avec la crème au citron."), (14, 4, "Monter les blancs d'œufs en neige avec du sucre pour faire la meringue."), (14, 5, "Recouvrir la tarte avec la meringue et enfourner à 180°C pour la dorer.");
+
+-- Step recipe Curry de légumes
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(15, 1, "Faire revenir des oignons, de l'ail et du gingembre dans une poêle."), (15, 2, "Ajouter des légumes coupés en morceaux (carottes, courgettes, pommes de terre, etc.)."), (15, 3, "Incorporer une pâte de curry et mélanger."), (15, 4, "Ajouter du lait de coco et laisser mijoter pendant environ 30-40 minutes."), (15, 5, "Servir avec du riz.");
+
+-- Step recipe Pancakes
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(16, 1, "Dans un bol, mélanger la farine, le sucre, la levure et une pincée de sel."), (16, 2, "Ajouter le lait et les œufs, puis mélanger jusqu'à obtenir une pâte homogène."), (16, 3, "Faire chauffer une poêle avec un peu de beurre."), (16, 4, "Verser une petite louche de pâte dans la poêle et cuire 1 à 2 minutes de chaque côté."), (16, 5, "Servir avec du sirop d'érable, du beurre ou des fruits.");
+
+-- Step recipe Gratin dauphinois
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(17, 1, "Préchauffer le four à 180°C."), (17, 2, "Éplucher et couper les pommes de terre en rondelles."), (17, 3, "Frotter un plat à gratin avec une gousse d'ail."), (17, 4, "Disposer les pommes de terre en couches dans le plat."), (17, 5, "Verser de la crème et du lait par-dessus, saler, poivrer et ajouter de la muscade."), (17, 6, "Parsemer de fromage râpé et enfourner pendant 1 heure.");
+
+-- Step recipe salade niçoise 
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(18, 1, "Laver et couper des tomates, des poivrons, et des concombres."), (18, 2, "Cuire des œufs durs et les couper en quartiers."), (18, 3, "Ajouter des olives noires et des filets de thon."), (18, 4, "Préparer une vinaigrette avec de l'huile d'olive, du vinaigre, du sel, et du poivre."), (18, 5, "Mélanger le tout et servir frais.");
+
+-- Step recipe baba au rhum
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(19, 1, "Préchauffer le four à 180°C."), (19, 2, "Préparer une pâte avec de la farine, des œufs, de la levure, du lait et du sucre."), (19, 3, "Verser la pâte dans des moules à baba et cuire au four pendant 25 minutes."),(19, 4, "Préparer un sirop au rhum avec de l'eau, du sucre, et du rhum."), (19, 5, "Imbiber les babas avec le sirop au rhum."), (19, 6, "Servir avec de la crème fouettée.");
+
+-- Step recipe Spaghetti aglio e olio
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(20, 1, "Cuire les spaghetti dans une grande casserole d'eau salée."), (20, 2, "Faire revenir de l'ail émincé dans une poêle avec de l'huile d'olive."), (20, 3, "Ajouter du piment en flocons selon le goût."), (20, 4, "Égoutter les spaghetti et les mélanger avec l'ail et l'huile."), (20, 5, "Servir immédiatement avec du persil frais.");
+
+-- Step recipe coq au vin 
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(21, 1, "Faire revenir des morceaux de coq dans une cocotte avec de l'huile."), (21, 2, "Ajouter des oignons, des carottes, des lardons, et des champignons."), (21, 3, "Déglacer avec du vin rouge et ajouter du bouillon."), (21, 4, "Couvrir et laisser mijoter pendant 2 à 3 heures."), (21, 5, "Servir avec des pommes de terre ou du pain.");
+
+-- Step recipe creme brulee
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(22, 1, "Préchauffer le four à 150°C."), (22, 2, "Mélanger des jaunes d'œufs avec du sucre et de la crème liquide."), (22, 3, "Verser la préparation dans des ramequins."), (22, 4, "Cuire au bain-marie pendant 45 minutes."), (22, 5, "Laisser refroidir, puis saupoudrer de sucre et caraméliser avec un chalumeau.");
+
+-- Step recipe Tomate garnie 
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(23, 1, "Couper le chapeau de la tomate et creuser le fond"), (23, 2, "Mélanger le thon avec les oignons ciselés, le mais et la ciboulette"), (23, 3, "Ajouter les pousses germées"), (23, 4, "mettre la vinaigrette er replacer le chapeau par dessus");
+
+-- Step recipe Verinne
+INSERT INTO recipe_step (recipe_id, step_number, description) VALUES 
+(24, 1, "Mixer l'avocat"), (24, 2, "Ajouter le jus de citron et le skyr, mélanger"), (24, 3, "Répartir dans les verinnes"), (24, 4, "Ajouter des morceaux de saumon fumé."), (24, 5, "Garnir d'œufs de lump et servir frais.");
+
+
 
 
 CREATE TABLE ingredient (
