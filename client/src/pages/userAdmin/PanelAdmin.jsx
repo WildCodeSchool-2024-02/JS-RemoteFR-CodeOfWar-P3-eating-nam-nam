@@ -4,7 +4,7 @@ import "../../styles/panelAdmin/dashboard.css";
 const sections = [
   { title: "Utilisateurs" },
   { title: "Recettes", path: "/admin-recipes" },
-  { title: "Commentaires" },
+  { title: "Commentaires", path: "/admin-comments" },
   { title: "Newsletters" },
 ];
 

@@ -12,7 +12,11 @@ import four from "../assets/images/four.svg";
 import smileyLangue from "../assets/images/smiley_langue.svg";
 import Comment from "../components/Comment";
 import { useAuth } from "../context/authContext";
-import { addFavorite, deleteFavorite, getFavorite } from "../services/fetchFavorite";
+import {
+  addFavorite,
+  deleteFavorite,
+  getFavorite,
+} from "../services/fetchFavorite";
 
 export default function RecipesInstruction() {
   const [recipeStep, setRecipeStep] = useState([]);
@@ -38,6 +42,11 @@ export default function RecipesInstruction() {
 
   const stars = [1, 2, 3, 4, 5];
 
+  const handleDeleteComment = (id) => {
+    const newComments = comments.filter((comment) => comment.id !== id);
+    setComments(newComments);
+  };
+
   const handleCommentChange = (event) => {
     setCommentData(event.currentTarget.value);
   };
@@ -53,6 +62,7 @@ export default function RecipesInstruction() {
         },
         { withCredentials: true }
       );
+      setCommentData("");
       setComments((prevData) => [...prevData, response.data]);
     } catch (err) {
       console.error(
@@ -67,14 +77,15 @@ export default function RecipesInstruction() {
     if (!favorite) await addFavorite(user.id, recipe.id);
     else await deleteFavorite(user.id, recipe.id);
     setFavorite((prevState) => !prevState);
-  }
+  };
 
   useEffect(() => {
     if (user) {
-      getFavorite(user.id, recipe.id)
-        .then(response => setFavorite(!!response.length)) 
+      getFavorite(user.id, recipe.id).then((response) =>
+        setFavorite(!!response.length)
+      );
     }
-  }, [])
+  }, []);
 
   return (
     <div className="card-recipe">
@@ -112,10 +123,11 @@ export default function RecipesInstruction() {
               <img src={difficulty} alt="difficulté" />
               <p className="difficulty-name">{recipe.difficulty}</p>
             </div>
-            { user ? <button type="button" onClick={handleFavorite}>
-                { !favorite ? "🖤" : "❤️" }
+            {user ? (
+              <button type="button" onClick={handleFavorite}>
+                {!favorite ? "🖤" : "❤️"}
               </button>
-           : null}
+            ) : null}
           </div>
           {user && user.id === recipe.user_id ? (
             <button
@@ -247,7 +259,11 @@ export default function RecipesInstruction() {
           <div className="CommentList">
             {comments.length > 0 ? (
               comments.map((commentary) => (
-                <Comment key={commentary.id} commentary={commentary} />
+                <Comment
+                  key={commentary.id}
+                  commentary={commentary}
+                  handleDeleteComment={handleDeleteComment}
+                />
               ))
             ) : (
               <p>Aucun commentaire pour cette recette.</p>
@@ -256,7 +272,7 @@ export default function RecipesInstruction() {
           <form onSubmit={handleCommentSubmit} className="CommentForm">
             <textarea
               name="comment"
-              value={commentData.comment}
+              value={commentData}
               onChange={handleCommentChange}
               placeholder="Écrivez votre commentaire ici"
             />
