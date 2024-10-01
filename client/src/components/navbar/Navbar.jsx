@@ -17,7 +17,6 @@ export default function Navbar() {
     navigate("/");
   };
 
-  console.info(user);
   return (
     <>
       <nav>

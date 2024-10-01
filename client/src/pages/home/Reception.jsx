@@ -83,7 +83,10 @@ export default function Reception() {
                   {results.map((recipe) => (
                     <li key={recipe.id}>
                       <Link to={`/recipes-instruction/${recipe.id}`}>
-                        <img src={recipe.image} alt={recipe.title} />
+                        <img
+                          src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
+                          alt={recipe.title}
+                        />
                         <span>{recipe.title}</span>
                       </Link>
                     </li>

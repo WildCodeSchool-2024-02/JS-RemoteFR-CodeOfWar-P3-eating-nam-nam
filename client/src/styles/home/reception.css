@@ -99,12 +99,25 @@ div.reception > .left > article {
   width: 100%;
   max-width: 25rem;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
+
+.modal .modal_content img {
+  width: 100px;
+  height: 95px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
 .modal_content > ul {
   list-style: none;
 }
 
 .modal_content > ul > li > a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1em;
   text-decoration: none;
   color: var(--primary-black);
   font-family: var(--lorem-font);

@@ -195,7 +195,7 @@ class RecipeRepository extends AbstractRepository {
 
   async search(term) {
     const [rows] = await this.database.query(
-      `SELECT id, title FROM ${this.table} WHERE title LIKE ?`,
+      `SELECT id, title, image_url FROM ${this.table} WHERE title LIKE ?`,
       [`%${term}%`]
     );
     return rows;
