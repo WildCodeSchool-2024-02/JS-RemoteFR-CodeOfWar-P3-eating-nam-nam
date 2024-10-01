@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
 import handleDeleteRecipe from "../services/handleDeleteRecipe";
@@ -10,9 +10,9 @@ import star from "../assets/images/étoile.png";
 import gantDeCuisson from "../assets/images/gant_de_cuisson.svg";
 import four from "../assets/images/four.svg";
 import smileyLangue from "../assets/images/smiley_langue.svg";
-import heartRed from "../assets/images/heart-red.svg";
 import Comment from "../components/Comment";
 import { useAuth } from "../context/authContext";
+import { addFavorite, deleteFavorite, getFavorite } from "../services/fetchFavorite";
 
 export default function RecipesInstruction() {
   const [recipeStep, setRecipeStep] = useState([]);
@@ -34,6 +34,7 @@ export default function RecipesInstruction() {
   const navigate = useNavigate();
   const [commentData, setCommentData] = useState("");
   const [comments, setComments] = useState(initialComments);
+  const [favorite, setFavorite] = useState(false);
 
   const stars = [1, 2, 3, 4, 5];
 
@@ -60,6 +61,20 @@ export default function RecipesInstruction() {
       );
     }
   };
+
+  const handleFavorite = async () => {
+    if (!user) return;
+    if (!favorite) await addFavorite(user.id, recipe.id);
+    else await deleteFavorite(user.id, recipe.id);
+    setFavorite((prevState) => !prevState);
+  }
+
+  useEffect(() => {
+    if (user) {
+      getFavorite(user.id, recipe.id)
+        .then(response => setFavorite(!!response.length)) 
+    }
+  }, [])
 
   return (
     <div className="card-recipe">
@@ -97,7 +112,10 @@ export default function RecipesInstruction() {
               <img src={difficulty} alt="difficulté" />
               <p className="difficulty-name">{recipe.difficulty}</p>
             </div>
-            <img src={heartRed} alt="coeur rouge" />
+            { user ? <button type="button" onClick={handleFavorite}>
+                { !favorite ? "🖤" : "❤️" }
+              </button>
+           : null}
           </div>
           {user && user.id === recipe.user_id ? (
             <button
