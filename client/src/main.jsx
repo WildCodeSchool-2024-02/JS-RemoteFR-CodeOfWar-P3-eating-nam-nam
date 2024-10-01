@@ -12,6 +12,7 @@ import SignUp from "./pages/SignUp";
 import UserProfil from "./pages/UserProfile";
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
 import AdminRecipe from "./pages/userAdmin/PanelAdminRecipes";
+import AdminComments from "./pages/userAdmin/PanelAdminComments";
 import User from "./pages/User";
 import Buffet from "./pages/leBuffet/Buffet";
 import TheRecipes from "./pages/TheRecipes";
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
         path: "/admin-recipes",
         element: <AdminRecipe />,
         loader: adminRecipesLoader,
+      },
+      {
+        path: "/admin-comments",
+        element: <AdminComments />,
       },
       {
         path: "/user",
