@@ -58,6 +58,20 @@
   text-underline-offset: 0.4em;
   margin-bottom: 2rem;
 }
+.selected-recipe {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.selected-recipe > button {
+  padding: 0.6rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  background-color: var(--primary-brown);
+  color: var(--secondary-brown);
+}
 
 @media (min-width: 768px) {
   .dish-row {

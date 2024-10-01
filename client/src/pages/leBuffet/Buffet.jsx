@@ -110,9 +110,11 @@ export default function LeBuffet() {
           ))}
         </div>
       </section>
-      <button onClick={handleNavigate} type="button">
-        Voir mes recettes sélectionnées
-      </button>
+      <div className="selected-recipe">
+        <button onClick={handleNavigate} type="button">
+          Voir mes recettes sélectionnées
+        </button>
+      </div>
     </div>
   );
 }
