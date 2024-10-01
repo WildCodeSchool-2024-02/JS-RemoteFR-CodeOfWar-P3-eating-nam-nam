@@ -1,22 +1,22 @@
-.comments-AdminList {
+.users-AdminList {
   width: 80%;
   margin: 0 auto;
   text-align: center;
   margin-bottom: 20rem;
 }
 
-.comments-AdminTitle {
+.users-AdminTitle {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.comments-AdminCards {
+.users-AdminCards {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.comments-AdminCard {
+.users-AdminCard {
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -27,34 +27,11 @@
   box-shadow: 1px 1px 1px 1px #bababa;
   position: relative;
   width: 300px;
-  height: 150px;
   overflow: hidden;
   text-align: center;
 }
 
-.comment-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.comment-details strong {
-  font-size: 1.1em;
-}
-
-.comment-text {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
-  cursor: pointer;
-}
-
-.delete-button {
+.delete-button-user {
   background: none;
   border: none;
   color: red;
@@ -63,40 +40,6 @@
   position: absolute;
   top: 10px;
   right: 0px;
-}
-
-.see-more-button {
-  box-shadow: 2px 2px 2px 2px #bababa;
-  padding: 0.5rem;
-  border-radius: 8px;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin: 3rem auto;
-}
-
-.see-more-button:active {
-  transform: scale(1.03);
-}
-
-.back-button {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background: green;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.modal-content {
-  background-color: var(--secondary-green);
-  border-radius: 8px;
-  padding: 5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20rem;
 }
 
 .modal-content-button-yes {
@@ -118,14 +61,14 @@
 }
 
 @media (min-width: 768px) {
-  .comments-AdminCards {
+  .users-AdminCards {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 3rem;
   }
 
-  .comments-AdminCard {
+  .users-AdminCard {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
@@ -133,11 +76,11 @@
     height: auto;
   }
 
-  .comments-AdminCard:hover {
+  .users-AdminCard:hover {
     transform: scale(1.03);
   }
 
-  .comment-details {
+  .users-details {
     align-items: center;
     padding: 10px;
   }

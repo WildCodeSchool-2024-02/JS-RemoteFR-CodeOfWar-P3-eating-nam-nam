@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import { useAuth } from "../context/authContext";
 
-export default function Comment({ commentary }) {
+export default function Comment({ commentary, handleDeleteComment }) {
   const { user } = useAuth();
 
   const handleDelete = async () => {
@@ -11,6 +11,7 @@ export default function Comment({ commentary }) {
         `${import.meta.env.VITE_API_URL}/api/comments/${commentary.id}`,
         { withCredentials: true }
       );
+      handleDeleteComment(commentary.id);
     } catch (err) {
       console.error(
         "Un problème est survenu lors du delete d'un commentaire: ",
@@ -41,4 +42,5 @@ Comment.propTypes = {
     content: PropTypes.string,
     created_at: PropTypes.string,
   }).isRequired,
+  handleDeleteComment: PropTypes.func.isRequired,
 };
