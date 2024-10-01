@@ -27,7 +27,15 @@ class FavoriteRepository extends AbstractRepository {
       query = `SELECT * FROM ${this.table} WHERE user_id = ? and recipe_id = ?`;
       params = [userId, recipeId]
     } else if (userId) {
-      query = `SELECT * FROM ${this.table} WHERE user_id = ?`;
+      query = `
+        SELECT 
+          ${this.table}.*,
+          recipe.title AS recipe_title,
+          recipe.image_url AS recipe_image_url
+        FROM ${this.table}
+        INNER JOIN recipe ON ${this.table}.recipe_id = recipe.id
+        WHERE ${this.table}.user_id = ?
+      `;
       params = [userId];
     } else if (recipeId) {
       query = `SELECT * FROM ${this.table} WHERE recipe_id = ?`;

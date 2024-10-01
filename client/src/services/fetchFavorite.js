@@ -8,3 +8,6 @@ export const deleteFavorite =  async (userId, recipeId) => axios.delete(`${impor
 
 export const getFavorite =  async (userId, recipeId) => axios.get(`${import.meta.env.VITE_API_URL}/api/favorite`, { params: { userId, recipeId }, withCredentials: true })
     .then(response => response.data);
+
+export const getUserFavorite =  async (userId) => axios.get(`${import.meta.env.VITE_API_URL}/api/favorite`, { params: { userId }, withCredentials: true })
+    .then(response => response.data);
