@@ -11,6 +11,7 @@ const difficultyRouter = require("./router/difficultyRouter");
 const authRouter = require("./router/authRouter");
 const uploadRouter = require("./router/uploadRouter");
 const categoryRouter = require("./router/categoryRouter");
+
 // Define Your API Routes Here (/api)
 
 router.use("/ingredients", ingredientsRouter);
