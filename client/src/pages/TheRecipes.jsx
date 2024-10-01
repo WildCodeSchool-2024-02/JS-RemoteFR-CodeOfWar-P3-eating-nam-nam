@@ -1,34 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import Carrousel from "../components/Carrousel";
 import "../styles/therecipes.css";
 
 export default function TheRecipes() {
   const { entrees, plats, desserts } = useLoaderData();
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedDifficulty, setSelectedDifficulty] = useState('all');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
-  const difficulties = ['Facile', 'Moyen', 'Difficile'];
+  const difficulties = ["Facile", "Intermédiaire", "Difficile"];
 
   useEffect(() => {
     const fetchSearchResults = async () => {
-      if (searchTerm || selectedCategory !== 'all' || selectedDifficulty !== 'all') {
+      if (
+        searchTerm ||
+        selectedCategory !== "all" ||
+        selectedDifficulty !== "all"
+      ) {
         setIsSearching(true);
         try {
-          const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/recipes/search`, {
-            params: {
-              search: searchTerm,
-              category: selectedCategory,
-              difficulty: selectedDifficulty
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/api/recipes/search`,
+            {
+              params: {
+                search: searchTerm,
+                category: selectedCategory,
+                difficulty: selectedDifficulty,
+              },
             }
-          });
+          );
           setSearchResults(response.data);
         } catch (error) {
-          console.error('Error fetching search results:', error);
+          console.error("Error fetching search results:", error);
           setSearchResults([]);
         }
       } else {
@@ -53,19 +60,32 @@ export default function TheRecipes() {
     setSelectedDifficulty(event.target.value);
   };
 
-  const renderSearchResults = () => (
-    <div className="search-results">
-      {searchResults.map((recipe) => (
-        <div key={recipe.id} className="recipe-card">
-          <img src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`} alt={recipe.title} />
-          <h3>{recipe.title}</h3>
-          <p>{recipe.description}</p>
-          <p>Catégorie: {recipe.category_name}</p>
-          <p>Difficulté: {recipe.difficulty_name}</p>
-        </div>
-      ))}
-    </div>
-  );
+  const renderSearchResults = () => {
+    const isSingleRecipe = searchResults.length === 1;
+
+    return (
+      <div
+        className={`search-results ${isSingleRecipe ? "single-recipe" : ""}`}
+      >
+        {searchResults.map((recipe) => (
+          <div
+            key={recipe.id}
+            className={`recipe-card ${isSingleRecipe ? "single-recipe" : ""}`}
+          >
+            <img
+              src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
+              alt={recipe.title}
+            />
+            <h3>{recipe.title}</h3>
+            <p>{recipe.description}</p>
+            <br />
+            <p>Catégorie: {recipe.category_name}</p>
+            <p>Difficulté: {recipe.difficulty_name}</p>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   const renderCarrousels = () => (
     <>
@@ -112,4 +132,4 @@ export default function TheRecipes() {
       {isSearching ? renderSearchResults() : renderCarrousels()}
     </div>
   );
-};
+}

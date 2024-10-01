@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import RecipeSection from "./user/RecipeSection";
+import userPicture from "../assets/images/user_picture.png";
 import "../styles/user.css";
 
 export default function User({
-  profileImage,
   username,
   description,
   latestRecipes = [],
@@ -19,7 +19,7 @@ export default function User({
       <header className="profile-header">
         <div className="profile-info">
           <Link to="/user-profil">
-            <img src={profileImage} alt="Profile" className="profile-image" />
+            <img src={userPicture} alt="Profile" className="profile-image" />
           </Link>
           <div className="profile-details">
             <h1>{username}</h1>
@@ -28,10 +28,7 @@ export default function User({
         </div>
       </header>
 
-      <RecipeSection
-        title="Dernières recettes publiées"
-        recipes={latestRecipes}
-      />
+      <RecipeSection title="Dernières recettes" recipes={latestRecipes} />
       <RecipeSection title="Mes recettes favorites" recipes={favoriteRecipes} />
 
       <div className="action-buttons">
@@ -57,7 +54,6 @@ export default function User({
 }
 
 User.propTypes = {
-  profileImage: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   latestRecipes: PropTypes.arrayOf(

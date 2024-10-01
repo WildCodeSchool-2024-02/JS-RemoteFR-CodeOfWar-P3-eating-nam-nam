@@ -40,7 +40,7 @@
   padding: 0.6rem 2rem;
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 0.3rem;
+  border-radius: 8px;
   background-color: var(--primary-green);
   color: white;
   transition:
@@ -52,7 +52,7 @@
   padding: 0.6rem 3.8rem;
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 0.3rem;
+  border-radius: 8px;
   background-color: var(--primary-green);
   color: white;
   transition:
@@ -64,7 +64,7 @@
   padding: 0.6rem 5.4rem;
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 0.3rem;
+  border-radius: 8px;
   background-color: var(--primary-green);
   color: white;
   transition:
@@ -75,5 +75,5 @@
 .add-recipe-button:hover,
 .edit-recipe-button:hover,
 .admin-panel-button:hover {
-  transform: scale(1.25);
+  transform: scale(1.1);
 }
