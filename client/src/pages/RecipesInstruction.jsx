@@ -12,7 +12,11 @@ import four from "../assets/images/four.svg";
 import smileyLangue from "../assets/images/smiley_langue.svg";
 import Comment from "../components/Comment";
 import { useAuth } from "../context/authContext";
-import { addFavorite, deleteFavorite, getFavorite } from "../services/fetchFavorite";
+import {
+  addFavorite,
+  deleteFavorite,
+  getFavorite,
+} from "../services/fetchFavorite";
 
 export default function RecipesInstruction() {
   const [recipeStep, setRecipeStep] = useState([]);
@@ -67,14 +71,15 @@ export default function RecipesInstruction() {
     if (!favorite) await addFavorite(user.id, recipe.id);
     else await deleteFavorite(user.id, recipe.id);
     setFavorite((prevState) => !prevState);
-  }
+  };
 
   useEffect(() => {
     if (user) {
-      getFavorite(user.id, recipe.id)
-        .then(response => setFavorite(!!response.length)) 
+      getFavorite(user.id, recipe.id).then((response) =>
+        setFavorite(!!response.length)
+      );
     }
-  }, [])
+  }, []);
 
   return (
     <div className="card-recipe">
@@ -112,10 +117,11 @@ export default function RecipesInstruction() {
               <img src={difficulty} alt="difficulté" />
               <p className="difficulty-name">{recipe.difficulty}</p>
             </div>
-            { user ? <button type="button" onClick={handleFavorite}>
-                { !favorite ? "🖤" : "❤️" }
+            {user ? (
+              <button type="button" onClick={handleFavorite}>
+                {!favorite ? "🖤" : "❤️"}
               </button>
-           : null}
+            ) : null}
           </div>
           {user && user.id === recipe.user_id ? (
             <button
