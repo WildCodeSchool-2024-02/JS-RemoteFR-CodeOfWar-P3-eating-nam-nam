@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import UserProfil from "./pages/UserProfile";
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
+import AdminUsers from "./pages/userAdmin/PanelAdminUsers";
 import AdminRecipe from "./pages/userAdmin/PanelAdminRecipes";
 import AdminComments from "./pages/userAdmin/PanelAdminComments";
 import User from "./pages/User";
@@ -21,7 +22,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import createRecipeLoader from "./services/loader/createRecipeLoader";
 import recipeLoader from "./services/loader/recipeLoader";
+import adminUsersLoader from "./services/loader/adminUsersLoader";
 import adminRecipesLoader from "./services/loader/adminRecipesLoader";
+import adminCommentsLoader from "./services/loader/adminCommentsLoader";
 import CategoryLoader from "./services/loader/categoryLoader";
 import buffetLoader from "./services/loader/buffetLoader";
 
@@ -62,6 +65,11 @@ const router = createBrowserRouter([
         element: <PanelAdmin />,
       },
       {
+        path: "/admin-users",
+        element: <AdminUsers />,
+        loader: adminUsersLoader,
+      },
+      {
         path: "/admin-recipes",
         element: <AdminRecipe />,
         loader: adminRecipesLoader,
@@ -69,6 +77,7 @@ const router = createBrowserRouter([
       {
         path: "/admin-comments",
         element: <AdminComments />,
+        loader: adminCommentsLoader,
       },
       {
         path: "/user",
