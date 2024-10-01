@@ -21,7 +21,7 @@ export default function Navbar() {
     <>
       <nav>
         <section>
-          { user ? <Link to="/create-recipe">Créer une recette</Link> : null }
+          {user ? <Link to="/create-recipe">Créer une recette</Link> : null}
           <Link to="/recipes">Recettes</Link>
         </section>
         <Link to="/">
