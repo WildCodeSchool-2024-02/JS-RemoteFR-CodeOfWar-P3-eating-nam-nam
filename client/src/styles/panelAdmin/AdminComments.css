@@ -1,24 +1,24 @@
-.recipe-AdminList {
+.comments-AdminList {
   width: 80%;
   margin: 0 auto;
   text-align: center;
 }
 
-.recipe-AdminTitle {
+.comments-AdminTitle {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.recipe-AdminCards {
+.comments-AdminCards {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.recipe-AdminCard {
+.comments-AdminCard {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 1rem;
   margin: 10px 0;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -28,28 +28,27 @@
   width: 300px;
   height: 150px;
   overflow: hidden;
+  text-align: center;
 }
 
-.recipe-AdminImage {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.recipe-details {
+.comment-details {
   flex: 1;
-  margin-left: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.recipe-AdminCard .delete-button {
+.comment-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  cursor: pointer;
+}
+
+.delete-button {
   background: none;
   border: none;
   color: red;
@@ -58,6 +57,19 @@
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.see-more-button {
+  box-shadow: 2px 2px 2px 2px #bababa;
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 3rem auto;
+}
+
+.see-more-button:active {
+  transform: scale(1.03);
 }
 
 .back-button {
@@ -71,49 +83,70 @@
   cursor: pointer;
 }
 
+.modal-content {
+  background-color: var(--secondary-green);
+  border-radius: 8px;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20rem;
+}
+
+.modal-content-button-yes {
+  background-color: var(--primary-green);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  width: 5rem;
+}
+
+.modal-content-button-no {
+  background-color: var(--primary-brown);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  width: 5rem;
+}
+
 @media (min-width: 768px) {
-  .recipe-AdminCards {
+  .comments-AdminCards {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 3rem;
   }
 
-  .recipe-AdminCard {
+  .comments-AdminCard {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     width: 250px;
-    height: 300px;
+    height: auto;
   }
-  .recipe-AdminCard:hover {
+
+  .comments-AdminCard:hover {
     transform: scale(1.03);
   }
 
-  .recipe-AdminImage {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-  }
-
-  .recipe-details {
+  .comment-details {
     align-items: center;
     padding: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
-  .recipe-AdminCard .delete-button {
+  .delete-button {
     top: auto;
     bottom: 10px;
     right: 10px;
   }
+
   .back-button {
     width: 12rem;
     padding: 1rem;
   }
+
   .back-button:active {
     transform: scale(1.03);
   }

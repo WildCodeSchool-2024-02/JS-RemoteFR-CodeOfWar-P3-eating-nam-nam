@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import "../../styles/panelAdmin/dashboard.css";
 
 const sections = [
   { title: "Utilisateurs" },
-  { title: "Recettes" },
+  { title: "Recettes", path: "/admin-recipes" },
   { title: "Commentaires" },
   { title: "Newsletters" },
 ];
@@ -13,9 +14,9 @@ export default function PanelAdmin() {
       <h1>Modération Miam</h1>
       <div className="card-flex">
         {sections.map((section) => (
-          <div key={section.title} className="card-Admin">
+          <Link key={section.title} to={section.path} className="card-Admin">
             <p>{section.title}</p>
-          </div>
+          </Link>
         ))}
       </div>
       <button className="Return-button" type="button">

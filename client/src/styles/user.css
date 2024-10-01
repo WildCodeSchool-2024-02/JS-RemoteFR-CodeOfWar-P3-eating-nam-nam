@@ -60,7 +60,20 @@
     transform 0.3s ease;
 }
 
+.admin-panel-button {
+  padding: 0.6rem 5.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  background-color: var(--primary-green);
+  color: white;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
 .add-recipe-button:hover,
-.edit-recipe-button:hover {
+.edit-recipe-button:hover,
+.admin-panel-button:hover {
   transform: scale(1.25);
 }

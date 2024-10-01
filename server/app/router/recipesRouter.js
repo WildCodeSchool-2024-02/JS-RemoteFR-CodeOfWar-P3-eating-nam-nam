@@ -23,6 +23,8 @@ const upload = multer({ storage });
 
 router.get("/", recipesActions.browse);
 
+router.get("/search", recipesActions.browseFilteredRecipes);
+
 router.get("/random", recipesActions.readRandom);
 
 router.get("/:id", recipesActions.read); // Récupérer une recette par ID

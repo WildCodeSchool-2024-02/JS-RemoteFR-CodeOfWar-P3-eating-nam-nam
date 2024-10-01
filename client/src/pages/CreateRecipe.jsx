@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./createRecipe/Header";
 import Ingredients from "./createRecipe/Ingredients";
@@ -6,15 +7,16 @@ import Step from "./createRecipe/Step";
 import "../styles/create/create.css";
 
 export default function CreateRecipe() {
+  const navigate = useNavigate();
   const [recipeData, setRecipeData] = useState({
     title: "",
     description: "",
     photo: null,
     ingredients: [],
     steps: [
-      { id: "1", content: "Préchauffez le four à 180°C" },
-      { id: "2", content: "Mélangez les ingrédients dans un bol" },
-      { id: "3", content: "Versez la pâte dans le moule" },
+      { id: "1", step_number: 1, content: "Préchauffez le four à 180°C" },
+      { id: "2", step_number: 2, content: "Mélangez les ingrédients dans un bol" },
+      { id: "3", step_number: 3, content: "Versez la pâte dans le moule" },
     ],
     difficulty: "0",
     category: "0",
@@ -53,6 +55,8 @@ export default function CreateRecipe() {
         }
       );
       console.info("Response request submit recipe: ", response);
+      if ("recipeId" in response.data) navigate(`/recipes-instruction/${response.data.recipeId}`);
+      else navigate("/")
     } catch (error) {
       console.error("Erreur lors de l'envoi de la recette:", error);
     }

@@ -13,7 +13,9 @@ const checkAuth = async (req, res, next) => {
       if (!decode) res.sendStatus(401);
       else {
         const user = await tables.user.read(decode.id);
-        res.status(200).json({ id: user.id, fullname: user.fullname });
+        res
+          .status(200)
+          .json({ id: user.id, fullname: user.fullname, role: user.role });
       }
     }
   } catch (err) {
@@ -37,6 +39,7 @@ const login = async (req, res, next) => {
       id: req.user.id,
       email: req.user.email,
       fullname: req.user.fullname,
+      role: req.user.role,
     });
   } catch (err) {
     next(err);

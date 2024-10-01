@@ -12,6 +12,7 @@ import SignUp from "./pages/SignUp";
 import UserProfil from "./pages/UserProfile";
 import PanelAdmin from "./pages/userAdmin/PanelAdmin";
 import AdminRecipe from "./pages/userAdmin/PanelAdminRecipes";
+import AdminComments from "./pages/userAdmin/PanelAdminComments";
 import User from "./pages/User";
 import Buffet from "./pages/leBuffet/Buffet";
 import TheRecipes from "./pages/TheRecipes";
@@ -20,7 +21,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import createRecipeLoader from "./services/loader/createRecipeLoader";
 import recipeLoader from "./services/loader/recipeLoader";
+import adminRecipesLoader from "./services/loader/adminRecipesLoader";
 import CategoryLoader from "./services/loader/categoryLoader";
+import buffetLoader from "./services/loader/buffetLoader";
 
 import "./styles/main.css";
 
@@ -61,6 +64,11 @@ const router = createBrowserRouter([
       {
         path: "/admin-recipes",
         element: <AdminRecipe />,
+        loader: adminRecipesLoader,
+      },
+      {
+        path: "/admin-comments",
+        element: <AdminComments />,
       },
       {
         path: "/user",
@@ -69,6 +77,7 @@ const router = createBrowserRouter([
       {
         path: "/buffet",
         element: <Buffet />,
+        loader: buffetLoader,
       },
       {
         path: "/recipes",
