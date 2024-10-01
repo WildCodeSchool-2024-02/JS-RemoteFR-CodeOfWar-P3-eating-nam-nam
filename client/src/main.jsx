@@ -20,7 +20,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import createRecipeLoader from "./services/loader/createRecipeLoader";
 import recipeLoader from "./services/loader/recipeLoader";
+import adminRecipesLoader from "./services/loader/adminRecipesLoader";
 import CategoryLoader from "./services/loader/categoryLoader";
+import buffetLoader from "./services/loader/buffetLoader";
 
 import "./styles/main.css";
 
@@ -61,6 +63,7 @@ const router = createBrowserRouter([
       {
         path: "/admin-recipes",
         element: <AdminRecipe />,
+        loader: adminRecipesLoader,
       },
       {
         path: "/user",
@@ -69,6 +72,7 @@ const router = createBrowserRouter([
       {
         path: "/buffet",
         element: <Buffet />,
+        loader: buffetLoader,
       },
       {
         path: "/recipes",

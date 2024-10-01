@@ -38,8 +38,8 @@ const verifyPassword = async (req, res, next) => {
     req.user = {
       id: user.id,
       email: user.email,
-      fullname: user.fullname,
       role: user.role,
+      fullname: user.fullname,
     };
     const verified = await argon2.verify(user.password, password);
     if (!verified) {
