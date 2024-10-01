@@ -1,0 +1,102 @@
+.users-AdminList {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 20rem;
+}
+
+.users-AdminTitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.users-AdminCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.users-AdminCard {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: var(--secondary-green);
+  box-shadow: 1px 1px 1px 1px #bababa;
+  position: relative;
+  width: 300px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.delete-button-user {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 0px;
+}
+
+.modal-content-button-yes {
+  background-color: var(--primary-green);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  width: 5rem;
+}
+
+.modal-content-button-no {
+  background-color: var(--primary-brown);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  width: 5rem;
+}
+
+@media (min-width: 768px) {
+  .users-AdminCards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .users-AdminCard {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    height: auto;
+  }
+
+  .users-AdminCard:hover {
+    transform: scale(1.03);
+  }
+
+  .users-details {
+    align-items: center;
+    padding: 10px;
+  }
+
+  .delete-button {
+    top: auto;
+    bottom: 10px;
+    right: 0px;
+  }
+
+  .back-button {
+    width: 12rem;
+    padding: 1rem;
+  }
+
+  .back-button:active {
+    transform: scale(1.03);
+  }
+}

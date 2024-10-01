@@ -15,7 +15,11 @@ export default function CreateRecipe() {
     ingredients: [],
     steps: [
       { id: "1", step_number: 1, content: "Préchauffez le four à 180°C" },
-      { id: "2", step_number: 2, content: "Mélangez les ingrédients dans un bol" },
+      {
+        id: "2",
+        step_number: 2,
+        content: "Mélangez les ingrédients dans un bol",
+      },
       { id: "3", step_number: 3, content: "Versez la pâte dans le moule" },
     ],
     difficulty: "0",
@@ -55,8 +59,9 @@ export default function CreateRecipe() {
         }
       );
       console.info("Response request submit recipe: ", response);
-      if ("recipeId" in response.data) navigate(`/recipes-instruction/${response.data.recipeId}`);
-      else navigate("/")
+      if ("recipeId" in response.data)
+        navigate(`/recipes-instruction/${response.data.recipeId}`);
+      else navigate("/");
     } catch (error) {
       console.error("Erreur lors de l'envoi de la recette:", error);
     }

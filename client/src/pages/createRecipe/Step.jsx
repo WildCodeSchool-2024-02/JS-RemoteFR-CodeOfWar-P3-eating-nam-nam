@@ -3,16 +3,17 @@ import { motion, Reorder } from "framer-motion";
 import "../../styles/create/recipeSteps.css";
 
 export default function RecipeSteps({ steps, updateSteps }) {
-  const updateStepNumbers = (stepsArray) => stepsArray.map((step, index) => ({
+  const updateStepNumbers = (stepsArray) =>
+    stepsArray.map((step, index) => ({
       ...step,
-      step_number: index + 1
+      step_number: index + 1,
     }));
 
   const addStep = () => {
     const newStep = {
       id: String(Date.now()),
       content: `Nouvelle étape ${steps.length + 1}`,
-      step_number: steps.length + 1
+      step_number: steps.length + 1,
     };
     updateSteps(updateStepNumbers([...steps, newStep]));
   };
