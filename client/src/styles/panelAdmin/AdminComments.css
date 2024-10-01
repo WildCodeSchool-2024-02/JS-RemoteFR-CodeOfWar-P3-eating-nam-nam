@@ -22,9 +22,9 @@
   padding: 1rem;
   margin: 10px 0;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: var(--secondary-green);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 1px 1px #bababa;
   position: relative;
   width: 300px;
   height: 150px;
@@ -38,6 +38,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+}
+
+.comment-details strong {
+  font-size: 1.1em;
 }
 
 .comment-text {
@@ -57,7 +62,7 @@
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 0px;
 }
 
 .see-more-button {
@@ -80,7 +85,7 @@
   background: green;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -124,7 +129,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 250px;
+    width: 300px;
     height: auto;
   }
 
@@ -140,7 +145,7 @@
   .delete-button {
     top: auto;
     bottom: 10px;
-    right: 10px;
+    right: 0px;
   }
 
   .back-button {
