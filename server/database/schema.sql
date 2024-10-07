@@ -24,7 +24,7 @@ CREATE TABLE category (
 id INT AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(50)
 );
-INSERT INTO category (name) VALUES ('ENTREES'), ('PLATS'), ('DESSERTS');
+INSERT INTO category (name) VALUES ('Entrées'), ('Plats'), ('Desserts');
 
 CREATE TABLE recipe (
     id INT AUTO_INCREMENT PRIMARY KEY,

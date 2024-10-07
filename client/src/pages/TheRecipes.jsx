@@ -12,7 +12,7 @@ export default function TheRecipes() {
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
-  const difficulties = ["Facile", "Moyen", "Difficile"];
+  const difficulties = ["Facile", "Intermédiaire", "Difficile"];
 
   useEffect(() => {
     const fetchSearchResults = async () => {
@@ -60,22 +60,32 @@ export default function TheRecipes() {
     setSelectedDifficulty(event.target.value);
   };
 
-  const renderSearchResults = () => (
-    <div className="search-results">
-      {searchResults.map((recipe) => (
-        <div key={recipe.id} className="recipe-card">
-          <img
-            src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
-            alt={recipe.title}
-          />
-          <h3>{recipe.title}</h3>
-          <p>{recipe.description}</p>
-          <p>Catégorie: {recipe.category_name}</p>
-          <p>Difficulté: {recipe.difficulty_name}</p>
-        </div>
-      ))}
-    </div>
-  );
+  const renderSearchResults = () => {
+    const isSingleRecipe = searchResults.length === 1;
+
+    return (
+      <div
+        className={`search-results ${isSingleRecipe ? "single-recipe" : ""}`}
+      >
+        {searchResults.map((recipe) => (
+          <div
+            key={recipe.id}
+            className={`recipe-card ${isSingleRecipe ? "single-recipe" : ""}`}
+          >
+            <img
+              src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
+              alt={recipe.title}
+            />
+            <h3>{recipe.title}</h3>
+            <p>{recipe.description}</p>
+            <br />
+            <p>Catégorie: {recipe.category_name}</p>
+            <p>Difficulté: {recipe.difficulty_name}</p>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   const renderCarrousels = () => (
     <>

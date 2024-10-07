@@ -24,8 +24,8 @@
 .dishes {
   display: flex;
   justify-content: center;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
   position: relative;
   margin: auto;
@@ -118,11 +118,11 @@
 
 .Liste-Ingredients {
   display: grid;
-  grid-template-columns: repeat(2, 3fr);
+  grid-template-columns: repeat(2, max-content);
   gap: 20px;
   max-width: 500px;
   margin: auto;
-  justify-items: left;
+  justify-items: start;
   text-align: left;
 }
 

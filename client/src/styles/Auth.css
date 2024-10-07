@@ -87,3 +87,9 @@ form.auth > a {
   font-family: Poppins;
   text-decoration-line: underline;
 }
+
+@media (max-width: 768px) {
+  form.auth {
+    width: 24rem;
+  }
+}
