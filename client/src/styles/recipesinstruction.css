@@ -6,7 +6,7 @@
 .card-recipe {
   width: 100%;
   padding: 1rem;
-  box-sizing: border-box; /* Pour éviter les débordements */
+  box-sizing: border-box;
 }
 
 .card-recipe-orange {
