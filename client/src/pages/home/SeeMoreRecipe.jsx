@@ -18,6 +18,16 @@ export default function SeeMoreRecipe() {
     fetchData();
   }, []);
 
+  const handleImageClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleImageClick();
+    }
+  };
+
   return (
     <div className="See_more">
       <h3>Voir aussi...</h3>
@@ -26,11 +36,19 @@ export default function SeeMoreRecipe() {
           <article key={little.id}>
             <div className="dishes1">
               <Link to={`/recipes-instruction/${little.id}`}>
-                <img
-                  src={`${import.meta.env.VITE_API_URL}/${little.image_url}`}
-                  alt={little.title}
+                <button
+                  onClick={handleImageClick}
+                  onKeyDown={handleKeyPress}
                   className="imageSeeMore"
-                />
+                  style={{ background: "none", border: "none", padding: 0 }}
+                  type="button"
+                >
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/${little.image_url}`}
+                    alt={little.title}
+                    className="imageSeeMore"
+                  />
+                </button>
               </Link>
             </div>
             <section>

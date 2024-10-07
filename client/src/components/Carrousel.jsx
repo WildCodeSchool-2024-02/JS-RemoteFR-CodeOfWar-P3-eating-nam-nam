@@ -5,7 +5,6 @@ import "../styles/carrousel.css";
 
 export default function Carrousel({ category }) {
   const carrouselRef = useRef(null);
-  console.info("Category: ", category);
 
   const scroll = (direction) => {
     if (!carrouselRef.current) return;
@@ -29,6 +28,16 @@ export default function Carrousel({ category }) {
     });
   };
 
+  const handleImageClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleImageClick();
+    }
+  };
+
   return (
     <div className="carrousel-container">
       <button
@@ -43,15 +52,24 @@ export default function Carrousel({ category }) {
           category.recipes.map((recipe) => (
             <div key={recipe.id} className="cards">
               <Link to={`/recipes-instruction/${recipe.id}`}>
-                <div className="dishes4">
+                <button
+                  onClick={handleImageClick}
+                  onKeyDown={handleKeyPress}
+                  className="dishes4"
+                  style={{ background: "none", border: "none", padding: 0 }}
+                  type="button"
+                >
                   <img
                     src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
                     alt={recipe.title}
                     className="imageCarrousel"
                   />
-                </div>
+                </button>
               </Link>
-              <Link to={`/recipes-instruction/${recipe.id}`}>
+              <Link
+                to={`/recipes-instruction/${recipe.id}`}
+                onClick={handleImageClick}
+              >
                 <h3>{recipe.title}</h3>
               </Link>
             </div>

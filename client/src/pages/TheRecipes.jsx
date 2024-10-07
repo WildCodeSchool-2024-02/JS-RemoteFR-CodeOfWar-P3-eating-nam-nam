@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import axios from "axios";
 import Carrousel from "../components/Carrousel";
 import "../styles/therecipes.css";
@@ -63,25 +63,43 @@ export default function TheRecipes() {
   const renderSearchResults = () => {
     const isSingleRecipe = searchResults.length === 1;
 
+    const handleImageClick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        handleImageClick();
+      }
+    };
+
     return (
       <div
         className={`search-results ${isSingleRecipe ? "single-recipe" : ""}`}
       >
         {searchResults.map((recipe) => (
-          <div
+          <Link
+            to={`/recipes-instruction/${recipe.id}`}
             key={recipe.id}
             className={`recipe-card ${isSingleRecipe ? "single-recipe" : ""}`}
           >
-            <img
-              src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
-              alt={recipe.title}
-            />
-            <h3>{recipe.title}</h3>
-            <p>{recipe.description}</p>
-            <br />
-            <p>Catégorie: {recipe.category_name}</p>
-            <p>Difficulté: {recipe.difficulty_name}</p>
-          </div>
+            <button
+              onClick={handleImageClick}
+              onKeyDown={handleKeyPress}
+              style={{ background: "none", border: "none", padding: 0 }}
+              type="button"
+            >
+              <img
+                src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
+                alt={recipe.title}
+              />
+              <h3>{recipe.title}</h3>
+              <p>{recipe.description}</p>
+              <br />
+              <p>Catégorie: {recipe.category_name}</p>
+              <p>Difficulté: {recipe.difficulty_name}</p>
+            </button>
+          </Link>
         ))}
       </div>
     );
