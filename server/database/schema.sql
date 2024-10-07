@@ -351,8 +351,8 @@ CREATE TABLE comment (
 );
 
 INSERT INTO comment (recipe_id, user_id, content) 
-VALUES (1, 2, 'Super recette ! Merci beaucoup.'),
-(1, 3, 'Super recette ! J"adore.');
+VALUES (1, 2, ' Super recette ! Merci beaucoup.'),
+(1, 3, ' Super recette ! Très bien.');
 
 
 CREATE TABLE Recipe_Ingredient (

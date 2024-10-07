@@ -1,6 +1,4 @@
 .carrousel-container {
-  display: flex;
-  justify-content: center;
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
@@ -190,6 +188,15 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .carrousel-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
   .search-results.single-recipe {
     display: flex;
     justify-content: center;
