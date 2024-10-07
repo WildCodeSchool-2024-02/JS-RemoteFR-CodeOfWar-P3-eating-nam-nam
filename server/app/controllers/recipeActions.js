@@ -7,6 +7,8 @@ const browse = async (req, res, next) => {
 
     if (searchTerm) {
       recipes = await tables.recipe.search(searchTerm);
+    } else if ("userId" in req.query) {
+      recipes = await tables.recipe.readRecipeUser(req.query);
     } else {
       recipes = await tables.recipe.readAll();
     }
