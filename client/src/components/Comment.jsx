@@ -26,9 +26,11 @@ export default function Comment({ commentary, handleDeleteComment }) {
       <p>{commentary.content}</p>
       <small>{new Date(commentary.created_at).toLocaleString()}</small>
       {user && user.id === commentary.user_id ? (
-        <button onClick={handleDelete} type="button">
-          Delete
-        </button>
+        <div>
+          <button onClick={handleDelete} type="button">
+            Supprimer
+          </button>
+        </div>
       ) : null}
     </div>
   );

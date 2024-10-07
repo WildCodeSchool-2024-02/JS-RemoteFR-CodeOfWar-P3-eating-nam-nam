@@ -165,6 +165,19 @@ class RecipeRepository extends AbstractRepository {
     return recipe;
   }
 
+  async readRecipeUser({ userId }) {
+    const query = `
+      SELECT 
+        id AS recipe_id,
+        title AS recipe_title,
+        image_url AS recipe_image_url
+      FROM ${this.table}
+      WHERE user_id = ?
+    `
+    const [rows] = await this.database.query(query, [userId]);
+    return rows;
+  }
+
   async update(recipe) {
     const [result] = await this.database.query(
       `update ${this.table} set user_id = ?,

@@ -54,11 +54,11 @@ const router = createBrowserRouter([
             element: <CreateRecipe />,
             loader: createRecipeLoader,
           },
+          {
+            path: "/user-profil",
+            element: <UserProfil />,
+          },
         ],
-      },
-      {
-        path: "/user-profil",
-        element: <UserProfil />,
       },
       {
         path: "/panel-admin",
