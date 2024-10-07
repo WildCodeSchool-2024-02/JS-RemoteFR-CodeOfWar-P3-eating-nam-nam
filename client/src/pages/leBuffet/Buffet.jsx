@@ -1,4 +1,5 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import DishCard from "./DishCard";
 import "../../styles/leBuffet/Buffet.css";
 import "../../styles/leBuffet/DishCard.css";
@@ -9,9 +10,34 @@ import DessertBanner from "../../assets/images/Dessert-buffet.png";
 export default function LeBuffet() {
   const { entrees, plats, desserts } = useLoaderData();
 
-  if (!entrees || !plats || !desserts) {
-    return <div>Chargement des recettes...</div>;
-  }
+  const [selectedRecipes, setSelectedRecipes] = useState(() => {
+    const savedRecipes = localStorage.getItem("selectedRecipes");
+    return savedRecipes ? JSON.parse(savedRecipes) : [];
+  });
+
+  const toggleSelectRecipe = (recipe) => {
+    const isSelected = selectedRecipes.find(
+      (recipeItem) => recipeItem.id === recipe.id
+    );
+    let newSelection;
+
+    if (isSelected) {
+      newSelection = selectedRecipes.filter(
+        (recipeItem) => recipeItem.id !== recipe.id
+      );
+    } else {
+      newSelection = [...selectedRecipes, recipe];
+    }
+
+    setSelectedRecipes(newSelection);
+    localStorage.setItem("selectedRecipes", JSON.stringify(newSelection));
+  };
+
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/buffet-select", { state: { selectedRecipes } });
+  };
 
   return (
     <div className="le-buffet-container">
@@ -33,7 +59,16 @@ export default function LeBuffet() {
         <img src={EntreeBanner} alt="Entrées" className="dish-banner" />
         <div className="dish-row">
           {entrees.map((entree) => (
-            <DishCard key={entree.id} dish={entree} />
+            <DishCard
+              key={entree.id}
+              dish={entree}
+              isSelected={
+                !!selectedRecipes.find(
+                  (recipeItem) => recipeItem.id === entree.id
+                )
+              }
+              onToggleSelect={() => toggleSelectRecipe(entree)}
+            />
           ))}
         </div>
       </section>
@@ -43,7 +78,16 @@ export default function LeBuffet() {
         <img src={PlatBanner} alt="Plats" className="dish-banner" />
         <div className="dish-row">
           {plats.map((plat) => (
-            <DishCard key={plat.id} dish={plat} />
+            <DishCard
+              key={plat.id}
+              dish={plat}
+              isSelected={
+                !!selectedRecipes.find(
+                  (recipeItem) => recipeItem.id === plat.id
+                )
+              }
+              onToggleSelect={() => toggleSelectRecipe(plat)}
+            />
           ))}
         </div>
       </section>
@@ -53,10 +97,24 @@ export default function LeBuffet() {
         <img src={DessertBanner} alt="Desserts" className="dish-banner" />
         <div className="dish-row">
           {desserts.map((dessert) => (
-            <DishCard key={dessert.id} dish={dessert} />
+            <DishCard
+              key={dessert.id}
+              dish={dessert}
+              isSelected={
+                !!selectedRecipes.find(
+                  (recipeItem) => recipeItem.id === dessert.id
+                )
+              }
+              onToggleSelect={() => toggleSelectRecipe(dessert)}
+            />
           ))}
         </div>
       </section>
+      <div className="selected-recipe">
+        <button onClick={handleNavigate} type="button">
+          Voir mes recettes sélectionnées
+        </button>
+      </div>
     </div>
   );
 }
