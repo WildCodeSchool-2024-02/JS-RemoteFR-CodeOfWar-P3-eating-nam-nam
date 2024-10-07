@@ -24,12 +24,6 @@ export default function RecipeCard() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      handleImageClick();
-    }
-  };
-
   return (
     <div className="Recipe-card">
       <h2>{recipe.title}</h2>
@@ -43,9 +37,7 @@ export default function RecipeCard() {
           <Link to={`/recipes-instruction/${recipe.id}`}>
             <button
               onClick={handleImageClick}
-              onKeyDown={handleKeyPress}
               className="imageRecipeCard"
-              style={{ background: "none", border: "none", padding: 0 }}
               type="button"
             >
               <img

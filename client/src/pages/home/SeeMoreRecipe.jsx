@@ -22,12 +22,6 @@ export default function SeeMoreRecipe() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      handleImageClick();
-    }
-  };
-
   return (
     <div className="See_more">
       <h3>Voir aussi...</h3>
@@ -38,9 +32,7 @@ export default function SeeMoreRecipe() {
               <Link to={`/recipes-instruction/${little.id}`}>
                 <button
                   onClick={handleImageClick}
-                  onKeyDown={handleKeyPress}
                   className="imageSeeMore"
-                  style={{ background: "none", border: "none", padding: 0 }}
                   type="button"
                 >
                   <img

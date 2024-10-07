@@ -18,8 +18,6 @@ export default function AdminRecipe() {
       })
       .then((response) => {
         if (response.status === 200) {
-          console.info("Recette supprimée avec succès.");
-        } else {
           console.error("Erreur lors de la suppression de la recette.");
           setRecipes((prevRecipes) => [
             ...prevRecipes,

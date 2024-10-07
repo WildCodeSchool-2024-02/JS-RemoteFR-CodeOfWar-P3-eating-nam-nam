@@ -67,12 +67,6 @@ export default function TheRecipes() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    const handleKeyPress = (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        handleImageClick();
-      }
-    };
-
     return (
       <div
         className={`search-results ${isSingleRecipe ? "single-recipe" : ""}`}
@@ -83,12 +77,7 @@ export default function TheRecipes() {
             key={recipe.id}
             className={`recipe-card ${isSingleRecipe ? "single-recipe" : ""}`}
           >
-            <button
-              onClick={handleImageClick}
-              onKeyDown={handleKeyPress}
-              style={{ background: "none", border: "none", padding: 0 }}
-              type="button"
-            >
+            <button onClick={handleImageClick} type="button">
               <img
                 src={`${import.meta.env.VITE_API_URL}/${recipe.image_url}`}
                 alt={recipe.title}

@@ -32,12 +32,6 @@ export default function Carrousel({ category }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      handleImageClick();
-    }
-  };
-
   return (
     <div className="carrousel-container">
       <button
@@ -54,9 +48,7 @@ export default function Carrousel({ category }) {
               <Link to={`/recipes-instruction/${recipe.id}`}>
                 <button
                   onClick={handleImageClick}
-                  onKeyDown={handleKeyPress}
-                  className="dishes4"
-                  style={{ background: "none", border: "none", padding: 0 }}
+                  className="dishes4 no-style-button"
                   type="button"
                 >
                   <img
