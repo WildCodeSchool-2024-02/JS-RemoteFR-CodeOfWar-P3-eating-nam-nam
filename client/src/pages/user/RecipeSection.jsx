@@ -14,7 +14,7 @@ export default function RecipeSection({ title, recipes = [] }) {
       <div className="recipe-list">
         {Array.isArray(recipes) && recipes.length > 0 ? (
           recipes.map((recipe) => (
-            <Recipe key={recipe.id} title={recipe.title} image={recipe.image} />
+            <Recipe key={recipe.id} id={recipe.recipe_id} title={recipe.recipe_title} image={recipe.recipe_image_url} />
           ))
         ) : (
           <p>Aucune recette disponible</p>

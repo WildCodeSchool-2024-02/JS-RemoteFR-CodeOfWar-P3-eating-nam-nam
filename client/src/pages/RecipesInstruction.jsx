@@ -42,6 +42,11 @@ export default function RecipesInstruction() {
 
   const stars = [1, 2, 3, 4, 5];
 
+  const handleDeleteComment = (id) => {
+    const newComments = comments.filter((comment) => comment.id !== id);
+    setComments(newComments);
+  };
+
   const handleCommentChange = (event) => {
     setCommentData(event.currentTarget.value);
   };
@@ -57,6 +62,7 @@ export default function RecipesInstruction() {
         },
         { withCredentials: true }
       );
+      setCommentData("");
       setComments((prevData) => [...prevData, response.data]);
     } catch (err) {
       console.error(
@@ -253,7 +259,11 @@ export default function RecipesInstruction() {
           <div className="CommentList">
             {comments.length > 0 ? (
               comments.map((commentary) => (
-                <Comment key={commentary.id} commentary={commentary} />
+                <Comment
+                  key={commentary.id}
+                  commentary={commentary}
+                  handleDeleteComment={handleDeleteComment}
+                />
               ))
             ) : (
               <p>Aucun commentaire pour cette recette.</p>
@@ -262,7 +272,7 @@ export default function RecipesInstruction() {
           <form onSubmit={handleCommentSubmit} className="CommentForm">
             <textarea
               name="comment"
-              value={commentData.comment}
+              value={commentData}
               onChange={handleCommentChange}
               placeholder="Écrivez votre commentaire ici"
             />

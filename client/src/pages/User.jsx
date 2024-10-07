@@ -1,25 +1,45 @@
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import RecipeSection from "./user/RecipeSection";
+import { getUserFavorite } from "../services/fetchFavorite";
 import "../styles/user.css";
+import getUserRecipe from "../services/fetchRecipe";
 
-export default function User({
-  profileImage,
-  username,
-  description,
-  latestRecipes = [],
-  favoriteRecipes = [],
-}) {
+export default function User({ username, description }) {
   const { user } = useAuth();
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [latestRecipes, setLatestRecipes] = useState([]);
   const isAdmin = user && user.role === "admin";
+
+  useEffect(() => {
+    if (user) {
+      Promise.all([getUserFavorite(user.id), getUserRecipe(user.id)]).then(
+        (response) => {
+          setFavoriteRecipes(response[0]);
+          console.info(response);
+          setLatestRecipes(response[1]);
+        }
+      );
+    }
+  }, [user]);
 
   return (
     <div className="user-page">
       <header className="profile-header">
         <div className="profile-info">
           <Link to="/user-profil">
-            <img src={profileImage} alt="Profile" className="profile-image" />
+            {user ? (
+              <>
+                <img
+                  src={`https://api.dicebear.com/6.x/initials/svg?seed=${user.fullname}`}
+                  alt={user.fullname}
+                  className="user-avatar"
+                />
+                <h2>{user.fullname}</h2>
+              </>
+            ) : null}
           </Link>
           <div className="profile-details">
             <h1>{username}</h1>
@@ -28,10 +48,7 @@ export default function User({
         </div>
       </header>
 
-      <RecipeSection
-        title="Dernières recettes publiées"
-        recipes={latestRecipes}
-      />
+      <RecipeSection title="Dernières recettes" recipes={latestRecipes} />
       <RecipeSection title="Mes recettes favorites" recipes={favoriteRecipes} />
 
       <div className="action-buttons">
@@ -57,21 +74,6 @@ export default function User({
 }
 
 User.propTypes = {
-  profileImage: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  latestRecipes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  favoriteRecipes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
 };
