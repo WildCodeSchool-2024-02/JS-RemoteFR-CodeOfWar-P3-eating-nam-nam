@@ -1,6 +1,4 @@
 .carrousel-container {
-  display: flex;
-  justify-content: center;
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
@@ -16,6 +14,12 @@
 
 .carrousel::-webkit-scrollbar {
   display: none;
+}
+
+.no-style-button {
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .cards {
@@ -62,7 +66,7 @@
   font-size: 1.2rem;
   margin-top: -1rem;
   padding: 1.2rem;
-  color: #010101;
+  color: #010103;
 }
 
 .cards:hover h3 {
@@ -190,6 +194,15 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .carrousel-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
   .search-results.single-recipe {
     display: flex;
     justify-content: center;

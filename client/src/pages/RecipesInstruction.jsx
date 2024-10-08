@@ -85,7 +85,7 @@ export default function RecipesInstruction() {
         setFavorite(!!response.length)
       );
     }
-  }, []);
+  }, [user, recipe.id]);
 
   return (
     <div className="card-recipe">

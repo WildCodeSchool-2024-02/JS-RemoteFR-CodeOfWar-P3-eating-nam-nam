@@ -67,7 +67,7 @@ export default function Header({ recipeData, updateRecipeData }) {
                   ))
               : null}
           </select>
-          <button type="submit">Enregister</button>
+          <button type="submit">Enregistrer</button>
         </section>
         <label htmlFor="input-file">
           {recipeData.photo ? (

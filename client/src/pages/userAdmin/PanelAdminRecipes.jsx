@@ -1,25 +1,36 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
 import "../../styles/panelAdmin/AdminRecipes.css";
 
 export default function AdminRecipe() {
-  const recipes = useLoaderData();
-  const navigate = useNavigate();
+  const loadedRecipes = useLoaderData();
+  const [recipes, setRecipes] = useState(loadedRecipes);
 
   const handleDelete = (id) => {
+    setRecipes((prevRecipes) =>
+      prevRecipes.filter((recipe) => recipe.id !== id)
+    );
+
     axios
       .delete(`${import.meta.env.VITE_API_URL}/api/recipes/${id}`, {
         withCredentials: true,
       })
       .then((response) => {
         if (response.status === 200) {
-          navigate("/admin-recipes", { replace: true });
-        } else {
           console.error("Erreur lors de la suppression de la recette.");
+          setRecipes((prevRecipes) => [
+            ...prevRecipes,
+            loadedRecipes.find((r) => r.id === id),
+          ]);
         }
       })
       .catch((error) => {
         console.error("Erreur lors de la requête DELETE:", error);
+        setRecipes((prevRecipes) => [
+          ...prevRecipes,
+          loadedRecipes.find((r) => r.id === id),
+        ]);
       });
   };
 

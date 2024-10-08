@@ -31,14 +31,14 @@ export default function User({ username, description }) {
         <div className="profile-info">
           <Link to="/user-profil">
             {user ? (
-              <>
+              <div className="avatar-name-container">
                 <img
                   src={`https://api.dicebear.com/6.x/initials/svg?seed=${user.fullname}`}
                   alt={user.fullname}
                   className="user-avatar"
                 />
-                <h2>{user.fullname}</h2>
-              </>
+                <h2 className="user-name">{user.fullname}</h2>
+              </div>
             ) : null}
           </Link>
           <div className="profile-details">
