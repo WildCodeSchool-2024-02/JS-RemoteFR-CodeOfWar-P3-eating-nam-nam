@@ -1,0 +1,14 @@
+.RecipeCard-SeeMore {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (min-width: 1280px) {
+  .RecipeCard-SeeMore {
+    justify-content: center;
+    flex-direction: row;
+    padding: 4rem;
+    gap: 10rem;
+  }
+}

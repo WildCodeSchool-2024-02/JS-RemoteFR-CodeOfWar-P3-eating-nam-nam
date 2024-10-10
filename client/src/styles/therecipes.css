@@ -1,0 +1,11 @@
+section h2 {
+  color: var(--primary-green);
+  text-align: center;
+}
+
+.search-results,
+.single-recipe,
+h3,
+p {
+  color: #010101;
+}

@@ -1,0 +1,132 @@
+.Recipe-card {
+  display: flex;
+  width: 23rem;
+  height: fit-content;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  background: #ffff;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+.dishes3 {
+  display: flex;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.imageRecipeCard {
+  width: 300px;
+  height: 250px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+.Recipe-card > h2 {
+  margin: 0;
+  display: flex;
+  width: 100%;
+  padding: 2rem 0rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--secondary-brown);
+  color: var(--primary-brown);
+  font-family: var(--title-font);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.Recipe-card > section {
+  margin: 1rem;
+  margin-bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: transparent;
+}
+
+.Recipe-card > section > h3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-black);
+  font-family: var(--title-font);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  background-color: transparent;
+  margin: 0;
+}
+
+.Recipe-card > section > div {
+  width: 7.6875rem;
+  height: 0.3125rem;
+  background: var(--secondary-brown, #fdf1e3);
+}
+
+.card {
+  width: 298px;
+  color: var(--primary-black);
+  text-align: center;
+  font-family: var(--lorem-font);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+  background-color: transparent;
+  padding-bottom: 1rem;
+}
+
+.card > p {
+  color: var(--primary-black, #010101);
+  text-align: center;
+  font-family: var(--lorem-font);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6rem;
+  background-color: transparent;
+  margin: 1rem;
+}
+
+@media (min-width: 1280px) {
+  .Recipe-card {
+    display: flex;
+    width: 100%;
+    max-width: 55rem;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .card {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card > p {
+    color: var(--primary-black);
+    font-family: var(--lorem-font);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    text-align: start;
+    margin: 1rem;
+    flex: 1;
+  }
+
+  .dishes3 {
+    width: 300px;
+    height: 250px;
+    margin-top: -3rem;
+    padding: 1rem;
+  }
+
+  .imageRecipeCard {
+    width: 14rem;
+    height: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+}
